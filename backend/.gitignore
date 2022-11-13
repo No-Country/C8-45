@@ -1,0 +1,8 @@
+#Node Modules
+node_modules
+# API keys and secrets
+.env
+#dist
+dist
+#log
+log
