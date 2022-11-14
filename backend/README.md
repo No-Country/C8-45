@@ -12,10 +12,7 @@
 
 - [Acerca del sitio](#acerca-del-sitio)
 - [Datos Técnicos](#datos-técnicos)
-- [To Do List](#to-do-list)
-- [Licence](#license)
-- [Versions](#versions)
-- [Contact Information](#contact-information)
+- [Contacto](#contacto)
 
 ### Acerca del sitio
 
@@ -67,7 +64,7 @@ http://localhost:3000/
 
 - Version 1.0 DATE 19/01/2020
 
-### Contact Information
+### Contacto
 
 Si usted encuentra algún erro, o tiene algun feedback o alguna pregunta puede reportarla
 [aquí](https://github.com/No-Country/C8-45/issues).
