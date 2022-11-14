@@ -11,8 +11,10 @@
     "test": "jest --verbose",
     "typeorm": "typeorm-ts-node-commonjs -d src/database/datasource.ts",
     "db:migration": "npm run typeorm migration:run",
-    "db:showM": "npm run typeorm migration:generate ./src/database/migrations/migrations",
-    "db:revert": "npm run typeorm migration:revert"
+    "db:generate": "npm run typeorm migration:generate ./src/database/migrations/migrations",
+    "db:revert": "npm run typeorm migration:revert",
+    "db:reset": "npm run db:revert && npm run db:migration && npm run db:seed",
+    "db:seed": "ts-node src/database/seed.ts"
   },
   "repository": {
     "type": "git",
@@ -44,12 +46,14 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.10",
+    "typeorm-extension": "^2.2.12",
     "winston": "^3.8.2"
   },
   "bugs": {
