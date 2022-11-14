@@ -1,7 +1,6 @@
 <p align="center">
 
   <h1 align="center">C8-45 Backend</h3>
-
   <p align="center">
     En este espacio se encuentra el servidor de la aplicación <br>
     </p>
@@ -20,27 +19,24 @@
 
 ### Acerca del sitio
 
-Explain what your website is about. This is ideally not technical but you are exlplaining to a non-techie.
-
-#### Hosted?
+#### Host?
 
 ### Datos técnicos
 
 #### Tecnologías usadas
 
-```
 Este proyecto usa:
-* Typescript
-* Nodejs
-* Mysql
-* TypeOrm
-```
+
+- **Typescript**
+- **Nodejs**
+- **Mysql**
+- **TypeOrm**
 
 #### Iniciando el proyecto
 
 - Clone el proyecto
 - Diríjase a esta carpeta C8-45/backend/
-- Duplicar el archivo .env.template y cambiarle de nombre a .env
+- Duplicar el archivo **.env.template** y cambiarle de nombre a **.env**
 - reemplazar los datos
 - Instale las dependencias
 
@@ -55,27 +51,17 @@ npm install
 npm run db:reset
 ```
 
-- inicie el servidor
+- Inicie el servidor
 
 ```
 npm run dev
 ```
 
-- El servidor quedará expuesto en
+- El servidor quedará expuesto en el puerto 3000 por defecto, puede cambiar esto modificando la variable **PORT** en el archivo **.env**
 
-#### CONTRIBUTING
-
-I would/ We'd love to have your help in making **{this app (replace with name of your project)}** better. The project is still very incomplete, but if there's an issue you'd like to see addressed sooner rather than later, let me(/us) know.
-
-Before you contribute though read the contributing guide here: [COntributing.md{edit this}](https://github.com/YourUserNameHere/ProjectName/contributing.md)
-
-For any concerns, please open an [issue{edit this}](https://github.com/YourUserNameHere/ProjectName/issues), or JUST, [fork the project and send a pull request{edit this}](https://github.com/YourUserNameHere/ProjectName/pulls).
-
-<hr>
-
-### License
-
-- see [LICENSE](https://github.com/YourUserNameHere/ProjectName/LICENSE.md) file
+```
+http://localhost:3000/
+```
 
 ### Versions
 
@@ -83,7 +69,8 @@ For any concerns, please open an [issue{edit this}](https://github.com/YourUserN
 
 ### Contact Information
 
-If you have found any bugs, or have any feedback or questions and or want to post a feature request please use the [Issuetracker](https://github.com/tamzi/ReadMe-MasterTemplates/issues) to report them.
+Si usted encuentra algún erro, o tiene algun feedback o alguna pregunta puede reportarla
+[aquí](https://github.com/No-Country/C8-45/issues).
 
 <hr>
 
