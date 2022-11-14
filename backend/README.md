@@ -8,7 +8,7 @@
 
 <br>
 
-## Table of contents
+## Contenido
 
 - [Acerca del sitio](#acerca-del-sitio)
 - [Datos Técnicos](#datos-técnicos)
@@ -42,7 +42,7 @@ npm install
 ```
 
 - Asegúrese que la base de datos haya iniciado
-- Ejecute las migraciones y los seeders con el comando
+- Ejecute las migraciones y los seeders
 
 ```
 npm run db:reset
