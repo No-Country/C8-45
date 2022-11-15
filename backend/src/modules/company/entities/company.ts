@@ -1,10 +1,10 @@
 import { Column, Entity, ManyToOne } from "typeorm";
-
 import { Uuid } from "../../../common/baseModel";
+
 import { Role } from "../../role/entities/role";
 
-@Entity({ name: "users" })
-export class User extends Uuid {
+@Entity({ name: "companies" })
+export class Company extends Uuid {
   @Column({ nullable: false, type: "varchar", unique: true })
   email!: string;
   @Column({ nullable: false, type: "varchar" })
@@ -12,7 +12,7 @@ export class User extends Uuid {
   @Column({ nullable: true, type: "varchar" })
   avatar?: string;
   @Column({ nullable: true, type: "varchar" })
-  lastName?: string;
+  description?: string;
   @Column({ nullable: false, type: "float" })
   reviewsQuantity!: number;
   @Column({ nullable: true, type: "varchar" })
@@ -25,6 +25,12 @@ export class User extends Uuid {
   country?: string;
   @Column({ nullable: true, type: "varchar" })
   city?: string;
+  @Column({ nullable: false, type: "varchar" })
+  website!: string;
+  @Column({ nullable: false, type: "varchar" })
+  workEmail!: string;
+  @Column({ nullable: false, type: "float" })
+  ratingGeneral!: number;
   @ManyToOne(() => Role, (role) => role.user, { nullable: false })
   role!: Role | number;
 }

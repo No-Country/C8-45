@@ -5,8 +5,11 @@ import { DataSource, DataSourceOptions } from "typeorm";
 import { SeederOptions } from "typeorm-extension";
 
 import UserFactory from "./factories/user";
+import CompanyFactory from "./factories/company";
+
 import RoleSeeder from "./seeds/role";
 import UserSeeder from "./seeds/user";
+import CompanySeeder from "./seeds/company";
 
 const options: DataSourceOptions & SeederOptions = {
   type: process.env.DB_DRIVER as "mysql",
@@ -15,14 +18,12 @@ const options: DataSourceOptions & SeederOptions = {
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  seeds: [RoleSeeder, UserSeeder],
-  factories: [UserFactory],
+  seeds: [RoleSeeder, UserSeeder, CompanySeeder],
+  factories: [UserFactory, CompanyFactory],
   migrations: [path.join(__dirname + "/migrations/*{.js,.ts}")],
   entities: [path.join(__dirname + "/../modules/**/entities/*{.js,.ts}")],
 };
 
-/* seeds: [path.join(__dirname + "/seeds/seeder/*{.js,.ts}")],
-factories: [path.join(__dirname + "/seeds/factories/*{.js,.ts}")], */
 const AppDataSource: DataSource = new DataSource(options);
 
 export default AppDataSource;
