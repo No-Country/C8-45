@@ -14,6 +14,8 @@ export default setSeederFactory(User, (faker) => {
   user.reviewsQuantity = 0;
   user.address = faker.address.streetAddress();
   user.phone = faker.phone.number();
+  user.country = faker.address.country();
+  user.city = faker.address.cityName();
 
   return user;
 });

@@ -20,4 +20,8 @@ export class User extends Uuid {
   phone?: string;
   @Column({ default: false, nullable: false, type: "boolean" })
   banned!: boolean;
+  @Column({ nullable: true, type: "varchar" })
+  country?: string;
+  @Column({ nullable: true, type: "varchar" })
+  city?: string;
 }
