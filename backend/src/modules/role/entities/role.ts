@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 
 import { NumberId } from "../../../common/baseModel";
 import { User } from "../../user/entities/user";

@@ -1,4 +1,5 @@
 import { setSeederFactory } from "typeorm-extension";
+
 import { Role } from "../../modules/role/entities/role";
 
 Role;
