@@ -5,6 +5,7 @@ import { DataSource, DataSourceOptions } from "typeorm";
 import { SeederOptions } from "typeorm-extension";
 
 import UserFactory from "./factories/user";
+import RoleSeeder from "./seeds/role";
 import UserSeeder from "./seeds/user";
 
 const options: DataSourceOptions & SeederOptions = {
@@ -14,7 +15,7 @@ const options: DataSourceOptions & SeederOptions = {
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  seeds: [UserSeeder],
+  seeds: [UserSeeder, RoleSeeder],
   factories: [UserFactory],
   migrations: [path.join(__dirname + "/migrations/*{.js,.ts}")],
   entities: [path.join(__dirname + "/../modules/**/entities/*{.js,.ts}")],
