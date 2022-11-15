@@ -1,8 +1,8 @@
 import { Repository } from "typeorm";
 
-import { BaseModel } from "./baseModel";
+import { Uuid } from "./baseModel";
 
-export abstract class RepositoryDB<T extends BaseModel> {
+export abstract class RepositoryDB<T extends Uuid> {
   abstract getRepository(): Repository<T>;
   async findAll(): Promise<T[]> {
     try {

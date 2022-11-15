@@ -4,10 +4,16 @@ import { User } from "../../modules/user/entities/user";
 
 export default setSeederFactory(User, (faker) => {
   const user = new User();
-  user.firstName = faker.name.firstName("male");
+  user.email = faker.internet.email();
+  user.name =
+    faker.name.firstName("female") + " " + faker.name.firstName("female");
   user.lastName =
     faker.name.lastName("male") + " " + faker.name.lastName("female");
-  user.isActive = true;
+  user.banned = false;
+  user.avatar = faker.internet.avatar();
+  user.reviewsQuantity = 0;
+  user.address = faker.address.streetAddress();
+  user.phone = faker.phone.number();
 
   return user;
 });
