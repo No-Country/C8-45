@@ -2,10 +2,10 @@ import "dotenv/config";
 
 import * as path from "path";
 import { DataSource, DataSourceOptions } from "typeorm";
-import { runSeeders, SeederOptions } from "typeorm-extension";
-import UserSeeder from "./seeds/user";
+import { SeederOptions } from "typeorm-extension";
+
 import UserFactory from "./factories/user";
-console.log(__dirname + "../");
+import UserSeeder from "./seeds/user";
 
 const options: DataSourceOptions & SeederOptions = {
   type: process.env.DB_DRIVER as "mysql",

@@ -1,6 +1,8 @@
 import { runSeeders } from "typeorm-extension";
+
 import { Logger } from "../utils/logger";
 import AppDataSource from "./datasource";
+
 (async () => {
   await AppDataSource.initialize();
   try {

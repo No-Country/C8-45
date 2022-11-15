@@ -1,5 +1,5 @@
 import "dotenv/config";
-import * as path from "path";
+
 import { runSeeders } from "typeorm-extension";
 
 import app from "./app";
