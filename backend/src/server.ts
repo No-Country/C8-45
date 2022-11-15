@@ -1,7 +1,5 @@
 import "dotenv/config";
 
-import { runSeeders } from "typeorm-extension";
-
 import app from "./app";
 import AppDataSource from "./database/datasource";
 import { Logger } from "./utils/logger";

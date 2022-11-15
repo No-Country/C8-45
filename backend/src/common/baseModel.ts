@@ -1,5 +1,5 @@
-import { IsNumber, isUUID, IsUUID } from "class-validator";
-import { Column, Generated, PrimaryGeneratedColumn } from "typeorm";
+import { IsNumber, IsUUID } from "class-validator";
+import { PrimaryGeneratedColumn } from "typeorm";
 
 export class Uuid {
   @IsUUID()
