@@ -1,11 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToMany,
-  ManyToOne,
-  OneToMany,
-} from "typeorm";
+import { Column, Entity, ManyToOne } from "typeorm";
 
 import { Uuid } from "../../../common/baseModel";
 import { Role } from "../../role/entities/role";
