@@ -62,7 +62,7 @@ http://localhost:3000/
 
 ### Versions
 
-- Version 1.0 DATE 19/01/2020
+- Version 1.0 DATE 14/11/2022
 
 ### Contacto
 
