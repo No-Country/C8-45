@@ -6,7 +6,9 @@ export abstract class RepositoryDB<T extends Uuid> {
   abstract getRepository(): Repository<T>;
   async findAll(): Promise<T[]> {
     try {
-      return await this.getRepository().find();
+      return await this.getRepository().find({
+        loadRelationIds: true,
+      });
     } catch (error) {
       console.log(error);
 

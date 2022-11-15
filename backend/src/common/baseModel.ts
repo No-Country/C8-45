@@ -9,6 +9,6 @@ export class Uuid {
 
 export class NumberId {
   @IsNumber()
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("increment")
   id!: number;
 }
