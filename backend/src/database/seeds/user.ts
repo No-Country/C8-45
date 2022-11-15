@@ -8,8 +8,16 @@ export default class UserSeeder implements Seeder {
     dataSource: DataSource,
     factoryManager: SeederFactoryManager
   ): Promise<void> {
+    const userRepository = dataSource.getRepository(User);
+    const user = new User();
+    user.email = "admin@gmail.com";
+    user.name = "admin";
+    user.lastName = "lastname admin";
+    user.banned = false;
+    user.reviewsQuantity = 0;
+    user.role = 2;
+    await userRepository.insert([user]);
     const userFactory = await factoryManager.get(User);
-    // save 5 factory generated entities, to the database
-    await userFactory.saveMany(25);
+    await userFactory.saveMany(10);
   }
 }

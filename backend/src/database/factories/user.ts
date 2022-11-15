@@ -16,6 +16,6 @@ export default setSeederFactory(User, (faker) => {
   user.phone = faker.phone.number();
   user.country = faker.address.country();
   user.city = faker.address.cityName();
-
+  user.role = 1;
   return user;
 });
