@@ -1,6 +1,7 @@
-import { Column, Entity, ManyToOne } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 
 import { Uuid } from "../../../common/baseModel";
+import { Review } from "../../review/entities/review";
 import { Role } from "../../role/entities/role";
 
 @Entity({ name: "users" })
@@ -25,6 +26,10 @@ export class User extends Uuid {
   country?: string;
   @Column({ nullable: true, type: "varchar" })
   city?: string;
-  @ManyToOne(() => Role, (role) => role.user, { nullable: false })
+  @ManyToOne(() => Role, (role) => role.user, { nullable: false, eager: true })
   role!: Role | number;
+  @OneToMany(() => Review, (review) => review.user, {
+    eager: true,
+  })
+  review!: Review[];
 }
