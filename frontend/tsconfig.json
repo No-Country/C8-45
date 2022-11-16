@@ -22,6 +22,8 @@
   },
   "include": [
     "vite.config.ts",
+    "postcss.config.cjs",
+    "tailwind.config.cjs",
     ".eslintrc.cjs",
     "src"
   ],
