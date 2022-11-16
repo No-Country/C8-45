@@ -18,6 +18,8 @@ export class User extends Uuid {
   reviewsQuantity!: number;
   @Column({ nullable: true, type: "varchar" })
   address?: string;
+  @Column({ nullable: false, type: "varchar" })
+  password?: string;
   @Column({ nullable: true, type: "varchar" })
   phone?: string;
   @Column({ default: false, nullable: false, type: "boolean" })
