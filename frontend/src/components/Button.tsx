@@ -1,8 +1,22 @@
-import React from "react";
-
-export const Button = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  return <button className="bg-sky-500 hover:bg-sky-700" {...props} />;
+export const Button = (props: ButtonProps) => {
+    // value is a secondary=Secondarybutton
+    if (props.value === 'secondary' || props.value === 'Secondary') {
+        return (
+            <button
+                className="bg-black text-white  px-10 rounded-full"
+            >    {props.children} 
+            </button>   // use props.children to pass in the text
+        )
+    }
+    // value is a undefined=primaryButton
+    return (
+        <button
+            className="bg-blue-600 text-white px-10 rounded-full"
+            {...props}
+        />
+    );
 };
-  
-// Path: C8-45\frontend\src\components\Button.tsx
 
+export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+    specialProp?: string;
+}
