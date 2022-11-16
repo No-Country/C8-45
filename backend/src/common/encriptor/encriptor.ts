@@ -1,4 +1,5 @@
 import * as bcrypt from "bcrypt";
+
 export class Encryptor {
   static instance = bcrypt;
   static saltRounds = 10;

@@ -1,7 +1,6 @@
 import { setSeederFactory } from "typeorm-extension";
-import { Review } from "../../modules/review/entities/review";
 
-import { User } from "../../modules/user/entities/user";
+import { Review } from "../../modules/review/entities/review";
 
 export default setSeederFactory(Review, (faker) => {
   const entity = new Review();

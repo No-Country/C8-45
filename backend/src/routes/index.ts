@@ -1,8 +1,8 @@
 import { Router } from "express";
+
 import { AuthRouter } from "../modules/auth/company.router";
 import { CompanyRouter } from "../modules/company/company.router";
 import { ReviewRouter } from "../modules/review/review.router";
-
 import { UserRouter } from "../modules/user/user.router";
 
 const router = Router();

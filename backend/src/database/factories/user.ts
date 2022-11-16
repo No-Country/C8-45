@@ -1,6 +1,6 @@
 import { setSeederFactory } from "typeorm-extension";
-import { Encryptor } from "../../common/encriptor/encriptor";
 
+import { Encryptor } from "../../common/encriptor/encriptor";
 import { User } from "../../modules/user/entities/user";
 
 export default setSeederFactory(User, async (faker) => {

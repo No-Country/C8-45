@@ -9,7 +9,7 @@ export class ErrorService {
 }
 
 export class ErrorJwt {
-  public status: number = 500;
+  public status = 500;
   constructor(public message: string) {
     Logger.error(message);
   }

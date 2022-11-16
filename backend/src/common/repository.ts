@@ -1,4 +1,4 @@
-import { Entity, EntitySchema, Repository } from "typeorm";
+import { Repository } from "typeorm";
 
 import { NumberId, Uuid } from "./baseModel";
 

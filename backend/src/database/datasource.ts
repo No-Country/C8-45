@@ -5,13 +5,14 @@ import { DataSource, DataSourceOptions } from "typeorm";
 import { SeederOptions } from "typeorm-extension";
 
 import CompanyFactory from "./factories/company";
-import UserFactory from "./factories/user";
 import ReviewFactory from "./factories/review";
+import UserFactory from "./factories/user";
 import CompanySeeder from "./seeds/company";
-import RoleSeeder from "./seeds/role";
-import UserSeeder from "./seeds/user";
 import ReviewSeeder from "./seeds/review";
 import ReviewAsSeeder from "./seeds/reviewAs";
+import RoleSeeder from "./seeds/role";
+import UserSeeder from "./seeds/user";
+
 const options: DataSourceOptions & SeederOptions = {
   type: process.env.DB_DRIVER as "mysql",
   host: process.env.DB_HOST,

@@ -2,6 +2,7 @@ import * as jwt from "jsonwebtoken";
 
 import { Logger } from "../../utils/logger";
 import { ErrorService } from "../error/errorModel";
+
 export class Jwt {
   static secret = process.env.SECRETORPRIVATEKEY as string;
   static expiration = "3d";
