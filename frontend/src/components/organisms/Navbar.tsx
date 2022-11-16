@@ -12,6 +12,7 @@ function Navbar() {
     setOpen(!open);
   };
   // Todo make a method to close menu on link click
+  // Todo make it responsive
   return (
     <div>
       <nav className="md:flex items-center md:p-5 justify-between relative ">
@@ -21,7 +22,7 @@ function Navbar() {
         </div>
         {open ? (
           <>
-            <ul className="flex flex-col md:flex-row items-center fixed relative md:order-3 bg-white ">
+            <ul className="flex flex-col md:flex-row items-center  md:order-3 bg-white ">
               <li className="m-4 md:mx-4">
                 <NavigationLink path="login" value="Log In" />
               </li>
@@ -33,7 +34,7 @@ function Navbar() {
                 />
               </li>
             </ul>
-            <ul className="flex flex-col md:flex-row items-center fixed border-b-2 p-2 z-1 bg-white w-full  ">
+            <ul className="flex flex-col md:flex-row items-center  bg-white  ">
               <li className="m-4 md:mx-4">
                 <NavigationLink path="howitworks" value="How it works?" />
               </li>

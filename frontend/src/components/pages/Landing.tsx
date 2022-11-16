@@ -1,7 +1,9 @@
+import CategoryCard from '../atoms/CategoryCard';
+
 function Landing() {
   return (
     <main className="min-h-screen">
-      <p>Landing</p>
+      <CategoryCard title="Example" image="example" link="/login" />
     </main>
   );
 }
