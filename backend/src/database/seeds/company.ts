@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
+
 import { Company } from "../../modules/company/entities/company";
 
 export default class CompanySeeder implements Seeder {

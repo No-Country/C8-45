@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne } from "typeorm";
-import { Uuid } from "../../../common/baseModel";
 
+import { Uuid } from "../../../common/baseModel";
 import { Role } from "../../role/entities/role";
 
 @Entity({ name: "companies" })
