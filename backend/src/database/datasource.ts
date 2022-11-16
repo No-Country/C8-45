@@ -4,12 +4,11 @@ import * as path from "path";
 import { DataSource, DataSourceOptions } from "typeorm";
 import { SeederOptions } from "typeorm-extension";
 
-import UserFactory from "./factories/user";
 import CompanyFactory from "./factories/company";
-
+import UserFactory from "./factories/user";
+import CompanySeeder from "./seeds/company";
 import RoleSeeder from "./seeds/role";
 import UserSeeder from "./seeds/user";
-import CompanySeeder from "./seeds/company";
 
 const options: DataSourceOptions & SeederOptions = {
   type: process.env.DB_DRIVER as "mysql",
