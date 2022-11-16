@@ -27,5 +27,6 @@ export default function Button(props: Props) {
 type Props = {
   value: string;
   type: 'Primary' | 'Secondary';
+  // This may need a fix
   callback: () => void;
 };
