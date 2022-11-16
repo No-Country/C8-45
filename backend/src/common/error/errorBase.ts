@@ -1,8 +1,8 @@
 import { ErrorService } from "./errorModel";
 
 export class ErrorBase {
-  status: number = 500;
-  message: string = "error en el servidor";
+  status = 500;
+  message = "error en el servidor";
   constructor(error: unknown) {
     if (error instanceof ErrorService) {
       this.message = error.message;

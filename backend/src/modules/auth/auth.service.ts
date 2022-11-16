@@ -1,9 +1,8 @@
 import { Encryptor } from "../../common/encriptor/encriptor";
 import { ErrorService } from "../../common/error/errorModel";
 import { Jwt } from "../../common/jwt/jwt";
-
-import { Logger } from "../../utils/logger";
 import { userService } from "../user/user.service";
+
 userService;
 export class AuthService {
   userService = new userService();
@@ -12,7 +11,10 @@ export class AuthService {
     if (!entity) throw new ErrorService(404, "Usuario no encontrado");
     let validate: boolean;
     try {
-      validate = await Encryptor.compare(passwordRequest, entity.password!);
+      validate = await Encryptor.compare(
+        passwordRequest,
+        entity.password as string
+      );
     } catch (error) {
       throw new ErrorService(500, "En el servidor");
     }

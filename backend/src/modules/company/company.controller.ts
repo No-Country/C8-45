@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import { CompanyService } from "./company.service";
 
 export class CompanyController {

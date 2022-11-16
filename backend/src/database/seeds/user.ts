@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
-import { Encryptor } from "../../common/encriptor/encriptor";
 
+import { Encryptor } from "../../common/encriptor/encriptor";
 import { User } from "../../modules/user/entities/user";
 
 export default class UserSeeder implements Seeder {
