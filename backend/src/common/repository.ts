@@ -1,13 +1,13 @@
-import { Repository } from "typeorm";
+import { Entity, EntitySchema, Repository } from "typeorm";
 
-import { Uuid } from "./baseModel";
+import { NumberId, Uuid } from "./baseModel";
 
-export abstract class RepositoryDB<T extends Uuid> {
+export abstract class RepositoryDB<T extends Uuid | NumberId> {
   abstract getRepository(): Repository<T>;
   async findAll(): Promise<T[]> {
     try {
       return await this.getRepository().find({
-        loadRelationIds: true,
+        loadEagerRelations: true,
       });
     } catch (error) {
       console.log(error);

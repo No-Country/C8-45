@@ -1,6 +1,7 @@
-import { Column, Entity, ManyToOne } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 
 import { Uuid } from "../../../common/baseModel";
+import { Review } from "../../review/entities/review";
 import { Role } from "../../role/entities/role";
 
 @Entity({ name: "companies" })
@@ -31,6 +32,10 @@ export class Company extends Uuid {
   workEmail!: string;
   @Column({ nullable: false, type: "float" })
   ratingGeneral!: number;
-  @ManyToOne(() => Role, (role) => role.user, { nullable: false })
+  @ManyToOne(() => Role, (role) => role.user, {
+    nullable: false,
+  })
   role!: Role | number;
+  @OneToMany(() => Review, (review) => review.user)
+  review!: Review[];
 }

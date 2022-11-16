@@ -8,8 +8,8 @@ import { User } from "../../user/entities/user";
 export class Role extends NumberId {
   @Column({ nullable: false, type: "varchar" })
   name!: string;
-  @OneToMany(() => User, (user) => user.role)
+  @OneToMany(() => User, (user) => user.role, {})
   user!: User[];
-  @OneToMany(() => Company, (company) => company.role)
+  @OneToMany(() => Company, (company) => company.role, {})
   company!: Company[];
 }
