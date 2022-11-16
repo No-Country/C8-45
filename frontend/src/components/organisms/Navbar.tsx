@@ -1,0 +1,51 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '../atoms/Button';
+import Logo from '../atoms/Logo';
+import NavigationLink from '../atoms/NavigationLink';
+import NavResButton from '../atoms/NavResButton';
+
+function Navbar() {
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(true);
+  const closeMenu = () => {
+    setOpen(!open);
+  };
+  // Todo make a method to close menu on link click
+  return (
+    <div>
+      <nav className="md:flex items-center md:p-5 justify-between relative ">
+        <div className="flex justify-between p-5 items-center md:order-2">
+          <Logo />
+          <NavResButton callback={closeMenu} open={open} />
+        </div>
+        {open ? (
+          <>
+            <ul className="flex flex-col md:flex-row items-center fixed relative md:order-3 bg-white ">
+              <li className="m-4 md:mx-4">
+                <NavigationLink path="login" value="Log In" />
+              </li>
+              <li className="mx-4">
+                <Button
+                  value="Sign Up"
+                  type="Secondary"
+                  callback={() => navigate('signup')}
+                />
+              </li>
+            </ul>
+            <ul className="flex flex-col md:flex-row items-center fixed border-b-2 p-2 z-1 bg-white w-full  ">
+              <li className="m-4 md:mx-4">
+                <NavigationLink path="howitworks" value="How it works?" />
+              </li>
+              <li className=" md:mx-4">
+                <NavigationLink path="business" value="For business" />
+              </li>
+            </ul>
+          </>
+        ) : null}
+      </nav>
+    </div>
+  );
+}
+
+export default Navbar;

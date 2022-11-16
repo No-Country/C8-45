@@ -28,7 +28,8 @@ Este proyecto usa:
 - **Nodejs**
 - **Mysql**
 - **TypeOrm**
-
+#### Diagrama de base de datos:
+- **https://drawsql.app/teams/alvaros-team/diagrams/c8-45**
 #### Iniciando el proyecto
 
 - Clone el proyecto

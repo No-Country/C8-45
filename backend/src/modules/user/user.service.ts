@@ -8,4 +8,9 @@ export class userService extends RepositoryDB<User> {
   getRepository(): Repository<User> {
     return AppDataSource.getRepository(User);
   }
+  async findOneByEmail(email: string) {
+    return await this.getRepository().findOneBy({
+      email,
+    });
+  }
 }
