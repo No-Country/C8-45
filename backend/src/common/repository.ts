@@ -27,8 +27,10 @@ export abstract class RepositoryDB<T extends Uuid | NumberId> {
     try {
       return await this.getRepository().save(entity);
     } catch (error) {
+      console.log(error);
+
       if (error instanceof QueryFailedError) {
-        throw new ErrorService(404, "Duplicidad de campos");
+        throw new ErrorService(404, "Error en la solicitud");
       }
       throw new ErrorService(500, "error Database");
     }
