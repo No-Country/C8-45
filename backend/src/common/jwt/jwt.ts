@@ -14,8 +14,6 @@ export class Jwt {
       return { token };
     } catch (error) {
       Logger.error((error as string) + "ENCODERS");
-      console.log(error);
-
       throw new ErrorService(409, "error en el token");
     }
   }

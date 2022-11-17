@@ -9,4 +9,10 @@ export class UserController {
     res.send(user);
     return;
   }
+  static async ownData(req: Request, res: Response) {
+    const { email } = req.body.user;
+    const profile = await UserController.userService.findOneByEmail(email);
+    res.send(profile);
+    return;
+  }
 }
