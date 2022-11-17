@@ -13,5 +13,6 @@ export default function Input(props: Props) {
 type Props = {
   type: 'text' | 'file' | 'password' | 'email' | 'number' | 'date';
   placeholder: string;
-  callback: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  // eslint-disable-next-line react/require-default-props
+  callback?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
