@@ -1,6 +1,7 @@
 import { Encryptor } from "../../common/encriptor/encriptor";
 import { ErrorService } from "../../common/error/errorModel";
 import { Jwt } from "../../common/jwt/jwt";
+import { User } from "../user/entities/user";
 import { userService } from "../user/user.service";
 
 userService;
@@ -22,6 +23,22 @@ export class AuthService {
       throw new ErrorService(401, "Credenciales inválidas");
     }
     const { password, ...data } = entity;
+    password?.at(4);
     return Jwt.encoder(data);
+  }
+  async register(data: User) {
+    try {
+      const Password = await Encryptor.hash(data.password as string);
+      const entity = await this.userService.create({
+        ...data,
+        password: Password,
+        role: 1,
+        banned: false,
+        reviewsQuantity: 0,
+      });
+      return entity;
+    } catch (error) {
+      throw error;
+    }
   }
 }

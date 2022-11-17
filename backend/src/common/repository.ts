@@ -1,6 +1,7 @@
-import { Repository } from "typeorm";
+import { QueryFailedError, Repository } from "typeorm";
 
 import { NumberId, Uuid } from "./baseModel";
+import { ErrorService } from "./error/errorModel";
 
 export abstract class RepositoryDB<T extends Uuid | NumberId> {
   abstract getRepository(): Repository<T>;
@@ -26,7 +27,12 @@ export abstract class RepositoryDB<T extends Uuid | NumberId> {
     try {
       return await this.getRepository().save(entity);
     } catch (error) {
-      throw new Error("error Database");
+      console.log(error);
+
+      if (error instanceof QueryFailedError) {
+        throw new ErrorService(404, "Error en la solicitud");
+      }
+      throw new ErrorService(500, "error Database");
     }
   }
   async delete(id: number) {
