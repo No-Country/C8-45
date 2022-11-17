@@ -32,6 +32,8 @@ export class AuthService {
         ...data,
         password: Password,
         role: 1,
+        banned: false,
+        reviewsQuantity: 0,
       });
       return entity;
     } catch (error) {

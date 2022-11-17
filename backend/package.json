@@ -59,7 +59,8 @@
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.10",
     "typeorm-extension": "^2.2.12",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "yup": "^0.32.11"
   },
   "bugs": {
     "url": "https://github.com/Alvaro1599/C8-45-Backend/issues"
