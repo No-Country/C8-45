@@ -6,7 +6,7 @@ export default function Button(props: Props) {
       <button
         type="button"
         onClick={callback}
-        className="bg-black text-white text-lg px-10 p-3 rounded-full hover:bg-gray-800"
+        className="my-2 bg-black text-white text-lg px-10 p-3 rounded-full hover:bg-gray-800"
       >
         {value}
       </button>
@@ -17,7 +17,7 @@ export default function Button(props: Props) {
     <button
       type="button"
       onClick={callback}
-      className="bg-blue-600 text-white text-lg  px-10 p-3 rounded-full hover:bg-blue-700"
+      className="my-2 bg-blue-600 text-white text-lg  px-10 p-3 rounded-full hover:bg-blue-700"
     >
       {value}
     </button>
