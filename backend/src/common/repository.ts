@@ -16,13 +16,7 @@ export abstract class RepositoryDB<T extends Uuid | NumberId> {
       throw new Error("error Database");
     }
   }
-  async findOne(id: string): Promise<T | null> {
-    try {
-      return await this.getRepository().findOne({ [id as keyof T]: id });
-    } catch (error) {
-      throw new Error("error Database");
-    }
-  }
+
   async create(entity: T): Promise<T> {
     try {
       return await this.getRepository().save(entity);
