@@ -4,7 +4,7 @@ function Login() {
   return (
     <main className="min-h-screen">
       <div className="w-3/12">
-        <LogInForm />
+        <p>Login form</p>
       </div>
     </main>
   );

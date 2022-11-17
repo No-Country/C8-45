@@ -33,7 +33,6 @@ export default function LogInForm() {
           placeholder="Password"
           type={showPassword ? 'text' : 'password'}
         />
-        <Input />
         <div className="icon_button relative inset-y-0">
           <button
             type="button"

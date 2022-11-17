@@ -17,7 +17,7 @@ function Navbar() {
     <div>
       <nav className="md:flex items-center md:p-5 justify-between relative ">
         <div className="flex justify-between p-5 items-center md:order-2">
-          <Logo />
+          <Logo type="light" />
           <NavResButton callback={closeMenu} open={open} />
         </div>
         {open ? (
@@ -36,7 +36,7 @@ function Navbar() {
             </ul>
             <ul className="flex flex-col md:flex-row items-center  bg-white  ">
               <li className="m-4 md:mx-4">
-                <NavigationLink path="howitworks" value="How it works?" />
+                <NavigationLink path="how-it-works" value="How it works?" />
               </li>
               <li className=" md:mx-4">
                 <NavigationLink path="business" value="For business" />
