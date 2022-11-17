@@ -1,14 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import * as yup from "yup";
 import { ValidationError } from "yup";
-interface Login {
-  password: string;
-  email: string;
-}
 
 export class AuthValidator {
   static async login(req: Request, res: Response, next: NextFunction) {
-    let schema = yup.object().shape({
+    const schema = yup.object().shape({
       password: yup.string().required(),
       email: yup.string().email().required(),
     });
@@ -16,12 +12,12 @@ export class AuthValidator {
       await schema.validate(req.body);
       next();
     } catch (error) {
-      let err = error as ValidationError;
+      const err = error as ValidationError;
       res.status(400).json({ [err.name]: [...err.errors] });
     }
   }
   static async register(req: Request, res: Response, next: NextFunction) {
-    let schema = yup.object().shape({
+    const schema = yup.object().shape({
       email: yup.string().required().email(),
       name: yup.string().required(),
       avatar: yup.string().optional(),
@@ -38,7 +34,7 @@ export class AuthValidator {
       await schema.validate(req.body);
       next();
     } catch (error) {
-      let err = error as ValidationError;
+      const err = error as ValidationError;
       res.status(400).json({ [err.name]: [...err.errors] });
     }
   }
