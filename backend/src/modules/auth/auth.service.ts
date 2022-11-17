@@ -1,8 +1,8 @@
 import { Encryptor } from "../../common/encriptor/encriptor";
 import { ErrorService } from "../../common/error/errorModel";
 import { Jwt } from "../../common/jwt/jwt";
+import { User } from "../user/entities/user";
 import { userService } from "../user/user.service";
-
 userService;
 export class AuthService {
   userService = new userService();
@@ -23,5 +23,13 @@ export class AuthService {
     }
     const { password, ...data } = entity;
     return Jwt.encoder(data);
+  }
+  async register(data: User) {
+    try {
+      const entity = await this.userService.create(data);
+      return entity;
+    } catch (error) {
+      throw error;
+    }
   }
 }

@@ -9,6 +9,8 @@ export class AuthRouter {
   static controller = AuthController;
   static getRoutes() {
     AuthRouter.router.post("/login", AuthRouter.controller.login);
+    AuthRouter.router.post("/register", AuthRouter.controller.register);
+
     return AuthRouter.router;
   }
 }
