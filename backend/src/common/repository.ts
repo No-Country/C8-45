@@ -1,5 +1,4 @@
-import { Repository } from "typeorm";
-import { QueryFailedError } from "typeorm";
+import { QueryFailedError, Repository } from "typeorm";
 
 import { NumberId, Uuid } from "./baseModel";
 import { ErrorService } from "./error/errorModel";

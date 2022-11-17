@@ -3,6 +3,7 @@ import { ErrorService } from "../../common/error/errorModel";
 import { Jwt } from "../../common/jwt/jwt";
 import { User } from "../user/entities/user";
 import { userService } from "../user/user.service";
+
 userService;
 export class AuthService {
   userService = new userService();
@@ -26,7 +27,12 @@ export class AuthService {
   }
   async register(data: User) {
     try {
-      const entity = await this.userService.create(data);
+      const Password = await Encryptor.hash(data.password as string);
+      const entity = await this.userService.create({
+        ...data,
+        password: Password,
+        role: 1,
+      });
       return entity;
     } catch (error) {
       throw error;
