@@ -4,7 +4,8 @@ export default function Input(props: Props) {
     <input
       type={type}
       placeholder={placeholder}
-      className="block p-3 bg-gray-100 border border-slate-300 rounded-full text-sm shadow-sm placeholder-slate-500 gap-2"
+      className="my-2 block p-3 bg-gray-100 border border-slate-300 rounded-full text-sm shadow-sm placeholder-slate-500 gap-2"
+      onChange={callback}
     />
   );
 }
@@ -12,5 +13,5 @@ export default function Input(props: Props) {
 type Props = {
   type: 'text' | 'file' | 'password' | 'email' | 'number' | 'date';
   placeholder: string;
-  callback: () => void;
+  callback: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
