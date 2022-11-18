@@ -18,7 +18,7 @@ function ResponsiveNavbar() {
         <NavResButton open={open} callback={openNavbar} />
       </div>
       {open ? (
-        <div className="border flex justify-center fixed bg-white w-full z-1">
+        <div className="border flex justify-center fixed bg-white w-full z-1 md:hidden">
           <ul className="flex flex-col items-center my-4">
             <li className="mb-3">
               <NavigationLink path="how-it-works" value="How it works?" />
