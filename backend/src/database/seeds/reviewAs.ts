@@ -16,11 +16,45 @@ export default class ReviewAsSeeder implements Seeder {
     const reviews = await review.findAll();
     const reviewRepository = dataSource.getRepository(Review);
 
+    const indexU = [];
+    const indexC = [];
+
     for (let index = 0; index < reviews.length; index++) {
+      indexU.push(Math.floor(Math.random() * 10));
+      indexC.push(Math.floor(Math.random() * 10));
+    }
+
+    for (let index = 0; index < reviews.length; index++) {
+      const element = indexU[index];
+      const userI = users[element];
+      userI.reviewsQuantity = userI.reviewsQuantity + 1;
+      await user.getRepository().save(userI);
+    }
+
+    for (let index = 0; index < reviews.length; index++) {
+      const element = indexC[index];
+      const companyI = companies[element];
+      companyI.reviewsQuantity = companyI.reviewsQuantity + 1;
+      await company.getRepository().save(companyI);
+    }
+
+    for (let index = 0; index < reviews.length; index++) {
+      const companyI = companies[indexC[index]];
+      const userI = users[indexU[index]];
       const review = reviews[index];
-      review.company = companies[Math.floor(Math.random() * 10)];
-      review.user = users[Math.floor(Math.random() * 10)];
+      review.company = companyI;
+      review.user = userI;
       await reviewRepository.save(review);
     }
+
+    /*     for (let index = 0; index < reviews.length; index++) {
+      const companyI = companies[Math.floor(Math.random() * 10)]
+      const review = reviews[index];
+      review.company = companyI;
+      review.user = userI;
+      indexU.push()
+      userI.reviewsQuantity=userI.reviewsQuantity+1
+      companyI.reviewsQuantity=companyI.reviewsQuantity+1
+    } */
   }
 }
