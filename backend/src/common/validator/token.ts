@@ -16,7 +16,7 @@ export class Token {
   static hasToken(req: Request) {
     const token = req.headers["authorization"];
     if (!token) {
-      throw new ErrorService(401, "token was required");
+      throw new ErrorService(401, "token is required");
     }
     let formatToken = Mapper.getToken(token as string);
     return formatToken;
