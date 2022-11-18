@@ -17,16 +17,22 @@ export default function LogInForm() {
   };
 
   return (
-    <div className="flex flex-col">
-      <Input type="email" placeholder="Email" callback={handleChangeEmail} />
-      <InputPassword callback={handleChangePassword} />
-      <Button value="Log In" type="Primary" callback={() => {}} />
-      <Link
-        to="password-recovery"
-        className="my-3 text-black flex justify-center"
+    <div>
+      <form
+        action="
+      "
+        className="flex flex-col"
       >
-        Forgot password?
-      </Link>
+        <Input type="email" placeholder="Email" callback={handleChangeEmail} />
+        <InputPassword callback={handleChangePassword} />
+        <Button value="Log In" type="Primary" callback={() => {}} />
+        <Link
+          to="password-recovery"
+          className="my-3 text-black flex justify-center"
+        >
+          Forgot password?
+        </Link>
+      </form>
     </div>
   );
 }
