@@ -11,20 +11,20 @@ export default function InputPassword(props: Props) {
   };
 
   return (
-    <div className="relative flex flex-col">
+    <div className="flex flex-col">
       <input
         type={showPassword ? 'text' : 'password'}
         placeholder="Password"
         className="my-2 block p-3 bg-gray-100 border border-slate-300 rounded-full text-sm shadow-sm placeholder-slate-500 gap-2"
         onChange={callback}
       />
-      <div className="icon_button relative inset-y-0">
+      <div className="icon_button relative ">
         <button
           type="button"
           onClick={handleClickShowPassword}
           className="absolute bottom-5 right-4 bg-transparent focus:bg-transparent focus:outline-none focus:border-transparent hover:border-transparent"
         >
-          <span className="text-xl">
+          <span className="text-xl z-0">
             {showPassword ? <FiEyeOff /> : <FiEye />}
           </span>
         </button>

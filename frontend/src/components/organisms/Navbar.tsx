@@ -4,6 +4,7 @@ import Button from '../atoms/Button';
 import Logo from '../atoms/Logo';
 import NavigationLink from '../atoms/NavigationLink';
 import NavResButton from '../atoms/NavResButton';
+import ResponsiveNavbar from './ResponsiveNavbar';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -14,11 +15,10 @@ function Navbar() {
   // Todo make a method to close menu on link click
   // Todo make it responsive
   return (
-    <div>
-      <nav className="md:flex items-center md:p-5 justify-between relative ">
+    <>
+      <nav className="hidden md:flex items-center p-1 md:p-5 justify-between relative  ">
         <div className="flex justify-between p-5 items-center md:order-2">
           <Logo type="light" />
-          <NavResButton callback={closeMenu} open={open} />
         </div>
         {open ? (
           <>
@@ -45,7 +45,8 @@ function Navbar() {
           </>
         ) : null}
       </nav>
-    </div>
+      <ResponsiveNavbar />
+    </>
   );
 }
 
