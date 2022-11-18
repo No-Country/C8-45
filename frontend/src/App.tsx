@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Business from './components/pages/Business';
+import CreateReview from './components/pages/CreateReview';
 import Howitworks from './components/pages/Howitworks';
 import Landing from './components/pages/Landing';
 import Login from './components/pages/Login';
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Landing />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="createReview" element={<CreateReview />} />
           <Route path="how-it-works" element={<Howitworks />} />
           <Route path="business" element={<Business />} />
         </Route>
