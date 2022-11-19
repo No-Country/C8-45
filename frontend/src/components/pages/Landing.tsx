@@ -45,7 +45,7 @@ function Landing() {
         />
         <div className="md:w-6/12 mx-auto z-10">
           <h1 className="text-5xl font-title font-bold text-center leading-snug">
-            {`Making client's voices to be listened outloud`}
+            {`Making client's voices to be listened out loud`}
           </h1>
         </div>
         <div className="md:w-6/12 mx-auto z-10 my-10 z-1">
