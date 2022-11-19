@@ -8,7 +8,7 @@ interface IUserState {
 
 const initialState: IUserState = {
     user: null,
-}
+};
 
 export const userSlice = createSlice({
     initialState,
@@ -16,10 +16,11 @@ export const userSlice = createSlice({
     reducers: {
         logout: () => initialState,
         setUser: (state, action: PayloadAction<IUser>) => {
-            // eslint-disable-next-line no-param-reassign
-            state.user = action.payload
-        }
-    }
-})
+            state.user = action.payload;
+        },
+    },
+});
+
 export default userSlice.reducer;
+
 export const { logout, setUser } = userSlice.actions;
