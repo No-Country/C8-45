@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { AuthController } from "./auth.controller";
-import { AuthValidator } from "./schemas/login";
+import { AuthValidator } from "./schemas/authValidator";
 
 const routerCompany = Router();
 

@@ -30,8 +30,6 @@ export class User extends Uuid {
   city?: string;
   @ManyToOne(() => Role, (role) => role.user, { nullable: false, eager: true })
   role!: Role | number;
-  @OneToMany(() => Review, (review) => review.user, {
-    eager: true,
-  })
+  @OneToMany(() => Review, (review) => review.user, {})
   review!: Review[];
 }
