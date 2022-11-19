@@ -1,4 +1,13 @@
 import { AiOutlineBank } from 'react-icons/ai';
+import { SlPlane } from 'react-icons/sl';
+import {
+  MdOutlineHealthAndSafety,
+  MdOutlineSportsVolleyball,
+} from 'react-icons/md';
+import { TbBooks } from 'react-icons/tb';
+import { IoFastFoodOutline } from 'react-icons/io5';
+import { CgScreen } from 'react-icons/cg';
+import { VscCircuitBoard } from 'react-icons/vsc';
 import Button from '../atoms/Button';
 import SearchBar from '../molecules/SearchBar';
 import thumbsUp from '../../assets/thumbsUp.png';
@@ -8,13 +17,17 @@ import CategoryCard from '../atoms/CategoryCard';
 function Landing() {
   const Categories = [
     { name: 'Finance', path: 'finance', icon: <AiOutlineBank /> },
-    { name: 'Travel', path: 'travel', icon: <AiOutlineBank /> },
-    { name: 'Health', path: 'health', icon: <AiOutlineBank /> },
-    { name: 'Education', path: 'education', icon: <AiOutlineBank /> },
-    { name: 'Food', path: 'food', icon: <AiOutlineBank /> },
-    { name: 'Sports', path: 'health', icon: <AiOutlineBank /> },
-    { name: 'TV', path: 'tv', icon: <AiOutlineBank /> },
-    { name: 'Technology', path: 'technology', icon: <AiOutlineBank /> },
+    { name: 'Travel', path: 'travel', icon: <SlPlane /> },
+    { name: 'Health', path: 'health', icon: <MdOutlineHealthAndSafety /> },
+    {
+      name: 'Education',
+      path: 'education',
+      icon: <TbBooks />,
+    },
+    { name: 'Food', path: 'food', icon: <IoFastFoodOutline /> },
+    { name: 'Sports', path: 'health', icon: <MdOutlineSportsVolleyball /> },
+    { name: 'TV', path: 'tv', icon: <CgScreen /> },
+    { name: 'Technology', path: 'technology', icon: <VscCircuitBoard /> },
   ];
 
   return (
