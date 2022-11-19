@@ -17,8 +17,8 @@ function Landing() {
         className="h-44 absolute z-0 top-5 hidden sm:block md:top-20 right-0 lg:right-20 "
       />
       <div className="md:w-6/12 mx-auto z-10">
-        <h1 className="text-5xl font-title font-bold text-center">
-          Making the clients voices to be listened outloud
+        <h1 className="text-5xl font-title font-bold text-center leading-snug">
+          {`Making client's voices to be listened outloud`}
         </h1>
       </div>
       <div className="md:w-6/12 mx-auto z-10 my-10 z-1">
