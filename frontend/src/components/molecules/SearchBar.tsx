@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function SearchBar() {
   const [url, setUrl] = useState('');
   return (
-    <div className="border rounded-full p-2 flex justify-between">
+    <div className="border rounded-full p-2 flex justify-between bg-white">
       <form
         action="
         "
@@ -11,10 +11,11 @@ function SearchBar() {
       >
         <input
           type="text"
-          className="p-3 rounded-full text-xl w-8/12"
+          className="p-3 rounded-full font-poppins text-lg text-blue-600 w-8/12"
           onChange={(e) => {
             setUrl(e.target.value);
           }}
+          placeholder="Insert the URL here"
         />
         <button
           type="submit"
