@@ -1,5 +1,5 @@
-import * as yup from "yup"
 import { NextFunction, Request, Response } from "express";
+import * as yup from "yup";
 
 import { ErrorService } from "../error/errorModel";
 import { Token } from "./token";
@@ -35,7 +35,7 @@ export class CommonValidator {
     }
   }
 
-  static async uuidValidator(req: Request, res: Response, next: NextFunction){
+  static async uuidValidator(req: Request, res: Response, next: NextFunction) {
     const schema = yup.object().shape({
       id: yup.string().required().uuid(),
     });

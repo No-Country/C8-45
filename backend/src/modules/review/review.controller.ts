@@ -56,20 +56,28 @@ export class ReviewController {
   }
   static async updateReview(req: Request, res: Response) {
     const { id } = req.params;
-    const userId=req.body.user.id
-    const {title,rating,description} = req.body ;
+    const userId = req.body.user.id;
+    const { title, rating, description } = req.body;
     try {
+      console.log(userId, id);
 
-      console.log(userId,id);
-      
-      const review = await ReviewController.service.getRepository().update({id
-      ,user:{
-        id:userId
-      }},{
-        title,rating,description
-      })
-      if (review.affected===0) {
-        return res.status(400).send("Review wasn't found or isn't your property");
+      const review = await ReviewController.service.getRepository().update(
+        {
+          id,
+          user: {
+            id: userId,
+          },
+        },
+        {
+          title,
+          rating,
+          description,
+        }
+      );
+      if (review.affected === 0) {
+        return res
+          .status(400)
+          .send("Review wasn't found or isn't your property");
       }
       return res.status(201).send("review actualizado correctamente");
     } catch (error) {
