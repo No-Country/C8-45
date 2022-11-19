@@ -8,6 +8,5 @@ export default setSeederFactory(Review, (faker) => {
   entity.description = faker.lorem.sentences(2);
   entity.rating = Math.floor(Math.random() * 4.9);
   entity.title = faker.lorem.sentence(3);
-  entity.email = faker.internet.email();
   return entity;
 });

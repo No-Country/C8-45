@@ -9,6 +9,6 @@ const router = Router();
 router.use("/auth", AuthRouter.getRoutes());
 router.use("/company", CompanyRouter.getRoutes());
 router.use("/user", UserRouter.getRoutes());
-router.use("/reviews", ReviewRouter.getRoutes());
+router.use("/review", ReviewRouter.getRoutes());
 
 export default router;
