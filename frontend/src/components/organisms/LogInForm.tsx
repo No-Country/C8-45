@@ -5,17 +5,13 @@ import Input from '../atoms/Input';
 import InputPassword from '../atoms/InputPassword';
 
 export default function LogInForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event?.target.value);
-  };
-
-  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event?.target.value);
-  };
-
+  const [inputs, setInputs] = useState({})
+  const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+    console.log(inputs)
+  }
   return (
     <div>
       <form
@@ -23,8 +19,8 @@ export default function LogInForm() {
       "
         className="flex flex-col"
       >
-        <Input type="email" placeholder="Email" callback={handleChangeEmail} />
-        <InputPassword callback={handleChangePassword} />
+        <Input type="email" placeholder="Email" callback={handleChange} />
+        <InputPassword callback={handleChange} />
         <Button value="Log In" type="Primary" callback={() => {}} />
         <Link
           to="password-recovery"

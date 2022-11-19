@@ -5,33 +5,28 @@ import RatingStars from '../molecules/RatingStars';
 
 export default function ReviewForm() {
   const [RatingIndex, setRatingIndex] = useState<number>(0);
-
+  const [inputs, setInputs] = useState({})
   const submit = (e: any) => {
     e.preventDefault();
 
-    const data = {
-      companyName: e.target.form[0].value,
-      companyUrl: e.target.form[1].value,
-      rating: RatingIndex,
-      date: e.target.form[7].value,
-      about: e.target.form[8].value,
-    };
-    alert(`Review Submitted ${data.companyName}`);
-    console.log(data);
-  };
+  const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
 
   return (
     <form>
       <div className="flex flex-col">
-        <Input type="text" placeholder="Company Name" />
-        <Input type="text" placeholder="Company URL" />
+        <Input type="text" placeholder="Company Name" callback={handleChange}/>
+        <Input type="text" placeholder="Company URL" callback={handleChange} />
         <label className="text-slate-500">Your Rating</label>
         <RatingStars
           RatingIndex={RatingIndex}
           setRatingIndex={setRatingIndex}
         />
         <Input type="date" placeholder="Date" />
-        <TextArea placeholder="What fo you think about(Company Name)..." />
+        <TextArea placeholder="What fo you think about(Company Name)..."  />
 
         <button
           onClick={submit}
@@ -43,4 +38,4 @@ export default function ReviewForm() {
       </div>
     </form>
   );
-}
+}};
