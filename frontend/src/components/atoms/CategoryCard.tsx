@@ -1,16 +1,17 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function CategoryCard(props: Props) {
-  const { link, image, title } = props;
+  const [hover, sethover] = useState(false);
+  const { path, icon, title } = props;
   return (
-    <Link to={link}>
-      <div className="p-6 py-8 max-w-sm mx-auto bg-gray-50 rounded-xl shadow-lg flex items-center space-x-4">
-        <div className="flex-shrink-0">
-          <img className="h-20 w-20" src={image} alt={title} />
-        </div>
-        <div>
-          <div className="text-xl font-roboto text-black">{title}</div>
-        </div>
+    <Link
+      to={path}
+      className="min-w-min p-8 w-full mx-auto bg-gray-50 rounded-xl border-2 hover:border-blue-500 flex items-center"
+    >
+      <span className="text-3xl ">{icon}</span>
+      <div>
+        <div className="text-xl font-roboto text-black">{title}</div>
       </div>
     </Link>
   );
@@ -18,6 +19,6 @@ export default function CategoryCard(props: Props) {
 
 type Props = {
   title: string;
-  image: string;
-  link: string;
+  icon: JSX.Element;
+  path: string;
 };

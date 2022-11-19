@@ -1,9 +1,7 @@
+import Maintenance from '../organisms/Maintenance';
+
 function Howitworks() {
-  return (
-    <main className="min-h-screen">
-      <p>How it works!</p>
-    </main>
-  );
+  return <Maintenance />;
 }
 
 export default Howitworks;
