@@ -12,13 +12,13 @@ function ResponsiveNavbar() {
   };
   const navigate = useNavigate();
   return (
-    <nav className="mb-2 fixed bg-white w-full z-1">
+    <nav className="mb-2 fixed bg-white w-full z-20 bg-white">
       <div className="flex justify-between md:hidden p-4">
         <Logo type="light" />
         <NavResButton open={open} callback={openNavbar} />
       </div>
       {open ? (
-        <div className="border flex justify-center fixed bg-white w-full z-1 md:hidden">
+        <div className=" flex justify-center fixed bg-white w-full z-30 md:hidden">
           <ul className="flex flex-col items-center my-4">
             <li className="mb-3">
               <NavigationLink path="how-it-works" value="How it works?" />

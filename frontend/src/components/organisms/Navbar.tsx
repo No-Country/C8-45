@@ -16,13 +16,13 @@ function Navbar() {
   // Todo make it responsive
   return (
     <>
-      <nav className="hidden md:flex items-center p-1 md:p-5 justify-between relative  ">
+      <nav className="hidden md:flex items-center p-1 md:p-5 justify-between relative">
         <div className="flex justify-between p-5 items-center md:order-2">
           <Logo type="light" />
         </div>
         {open ? (
           <>
-            <ul className="flex flex-col md:flex-row items-center  md:order-3 bg-white ">
+            <ul className="flex flex-col md:flex-row items-center font-poppins md:order-3 bg-white ">
               <li className="m-4 md:mx-4">
                 <NavigationLink path="login" value="Log In" />
               </li>

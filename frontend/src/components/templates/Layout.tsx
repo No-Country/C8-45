@@ -6,7 +6,7 @@ function Layout() {
   return (
     <>
       <Navbar />
-      <main className=" md:my-0 py-20 md:py-0">
+      <main className="py-20 md:my-0 md:py-0 min-h-screen">
         <Outlet />
       </main>
       <Footer />
