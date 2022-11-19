@@ -17,6 +17,13 @@ export class ReviewRouter {
       CommonValidator.owner,
       ReviewRouter.controller.createReview
     );
+    ReviewRouter.router.put(
+      "/:id",
+      CommonValidator.uuidValidator,
+      ReviewValidator.updateReview,
+      CommonValidator.owner,
+      ReviewRouter.controller.updateReview
+    );
     return ReviewRouter.router;
   }
 }

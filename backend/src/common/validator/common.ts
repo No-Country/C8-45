@@ -1,3 +1,4 @@
+import * as yup from "yup"
 import { NextFunction, Request, Response } from "express";
 
 import { ErrorService } from "../error/errorModel";
@@ -31,6 +32,19 @@ export class CommonValidator {
         return res.status(errI.status).send(errI.message);
       }
       return res.status(400).send(error);
+    }
+  }
+
+  static async uuidValidator(req: Request, res: Response, next: NextFunction){
+    const schema = yup.object().shape({
+      id: yup.string().required().uuid(),
+    });
+    try {
+      await schema.validate(req.params);
+      next();
+    } catch (error) {
+      const err = error as yup.ValidationError;
+      res.status(400).json({ [err.name]: [...err.errors] });
     }
   }
 }
