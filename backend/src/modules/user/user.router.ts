@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { CommonValidator } from "../../common/validator/common";
 
+import { CommonValidator } from "../../common/validator/common";
 import { UserController } from "./user.controller";
 
 const routerUser = Router();

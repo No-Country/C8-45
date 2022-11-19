@@ -1,4 +1,5 @@
 import { Request } from "express";
+
 import { Company } from "../../modules/company/entities/company";
 import { Role } from "../../modules/role/entities/role";
 import { User } from "../../modules/user/entities/user";
@@ -18,7 +19,7 @@ export class Token {
     if (!token) {
       throw new ErrorService(401, "token is required");
     }
-    let formatToken = Mapper.getToken(token as string);
+    const formatToken = Mapper.getToken(token as string);
     return formatToken;
   }
 

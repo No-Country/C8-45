@@ -1,4 +1,5 @@
-import { Response, Request, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
+
 import { ErrorService } from "../error/errorModel";
 import { Token } from "./token";
 
@@ -10,7 +11,7 @@ export class CommonValidator {
       next();
       return;
     } catch (error) {
-      let errI = error as ErrorService;
+      const errI = error as ErrorService;
       res.status(errI.status).send(errI.message);
       return;
     }
@@ -26,7 +27,7 @@ export class CommonValidator {
       return;
     } catch (error) {
       if (error instanceof ErrorService) {
-        let errI = error as ErrorService;
+        const errI = error as ErrorService;
         return res.status(errI.status).send(errI.message);
       }
       return res.status(400).send(error);
