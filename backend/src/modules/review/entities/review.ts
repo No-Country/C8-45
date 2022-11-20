@@ -6,8 +6,6 @@ import { User } from "../../user/entities/user";
 
 @Entity({ name: "reviews" })
 export class Review extends Uuid {
-  @Column({ nullable: false, type: "varchar", unique: true })
-  email!: string;
   @Column({ nullable: true, type: "varchar" })
   description?: string;
   @Column({ nullable: false, type: "numeric" })

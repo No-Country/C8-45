@@ -13,4 +13,9 @@ export class userService extends RepositoryDB<User> {
       email,
     });
   }
+  async findOneById(id: string) {
+    return await this.getRepository().findOneBy({
+      id: id,
+    });
+  }
 }

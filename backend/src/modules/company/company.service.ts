@@ -8,4 +8,9 @@ export class CompanyService extends RepositoryDB<Company> {
   getRepository(): Repository<Company> {
     return AppDataSource.getRepository(Company);
   }
+  async findOneById(id: string) {
+    return await this.getRepository().findOneBy({
+      id: id,
+    });
+  }
 }

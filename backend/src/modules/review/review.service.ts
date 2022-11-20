@@ -8,4 +8,9 @@ export class ReviewService extends RepositoryDB<Review> {
   getRepository(): Repository<Review> {
     return AppDataSource.getRepository(Review);
   }
+  async findOneById(id: string) {
+    return await this.getRepository().findOneBy({
+      id: id,
+    });
+  }
 }
