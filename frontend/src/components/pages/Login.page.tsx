@@ -12,7 +12,7 @@ function Login() {
       navigate('/')
     }
     if(isError){
-
+      console.log(error)
     }
   }, [isLoading])
   

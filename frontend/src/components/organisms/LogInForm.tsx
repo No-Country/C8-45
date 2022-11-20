@@ -13,17 +13,17 @@ import InputPassword from '../atoms/InputPassword';
   }
   const handleSubmit=(event:React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
-    callback(inputs)
+    callback(inputs);
   }
   
   return (
     <div>
       <form
-        action="POST"
+        method='post'
       onSubmit={handleSubmit}
         className="flex flex-col"
       >
-        <Input type="email" placeholder="Email" callback={handleChange} />
+        <Input name="email" type="email" placeholder="Email" callback={handleChange} />
         <InputPassword callback={handleChange} />
         <input type='submit' className='p-3 bg-blue-600 my-2 text-white font-poppins rounded-full cursor-pointer hover:bg-blue-700'/>
         <Link

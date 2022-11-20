@@ -14,7 +14,7 @@ export default function InputPassword(props: Props) {
     <div className="flex flex-col">
       <input
         type={showPassword ? 'text' : 'password'}
-        name="Password"
+        name="password"
         placeholder="Password"
         className="my-2 block p-3 bg-gray-100 border border-slate-300 rounded-full text-md shadow-sm placeholder-slate-500 gap-2"
         onChange={callback}

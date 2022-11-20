@@ -8,6 +8,8 @@ import Signup from './components/pages/Signup';
 import Layout from './components/templates/Layout';
 
 function App() {
+  const base_url=import.meta.env.VITE_SERVER_ENDPOINT as string;
+  console.log(base_url);
   return (
     <div className="App">
       <Routes>

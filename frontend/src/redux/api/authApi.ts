@@ -5,7 +5,7 @@ import { IGenericResponse } from './types';
 
 import userApi from './userApi';
 
-const BASE_URL = import.meta.env.VITE_SERVER_ENPOINT as string;
+const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 type RegisterUser = {
     email: string;
     name: string;
@@ -19,7 +19,7 @@ type LoginInput = {
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: `${BASE_URL}auth`,
+        baseUrl: `${BASE_URL}/auth/`,
     }),
     endpoints: (builder) => ({
         registerUser: builder.mutation<IGenericResponse, RegisterUser>({

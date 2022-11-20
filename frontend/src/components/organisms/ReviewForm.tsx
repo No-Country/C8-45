@@ -18,14 +18,14 @@ export default function ReviewForm() {
   return (
     <form>
       <div className="flex flex-col">
-        <Input type="text" placeholder="Company Name" callback={handleChange}/>
-        <Input type="text" placeholder="Company URL" callback={handleChange} />
+        <Input name="company" type="text" placeholder="Company Name" callback={handleChange}/>
+        <Input name="url" type="text" placeholder="Company URL" callback={handleChange} />
         <label className="text-slate-500">Your Rating</label>
         <RatingStars
           RatingIndex={RatingIndex}
           setRatingIndex={setRatingIndex}
         />
-        <Input type="date" placeholder="Date" />
+        <Input name="date" type="date" placeholder="Date" />
         <TextArea placeholder="What fo you think about(Company Name)..."  />
 
         <button
