@@ -3,7 +3,7 @@ import Business from './components/pages/Business';
 import CreateReview from './components/pages/CreateReview';
 import Howitworks from './components/pages/Howitworks';
 import Landing from './components/pages/Landing';
-import Login from './components/pages/Login';
+import Login from './components/pages/Login.page';
 import Signup from './components/pages/Signup';
 import Layout from './components/templates/Layout';
 
