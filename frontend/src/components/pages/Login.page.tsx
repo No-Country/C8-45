@@ -9,12 +9,14 @@ function Login() {
   const location=useLocation();
   useEffect(() => {
     if(isSuccess){
-      console.log(data)
+      console.log('success');
     }
     if(isError){
-      console.log(error)
+      console.log(error);
     }
   }, [isLoading])
+
+
   
   return (
     <section className="min-h-[86vh] flex">
@@ -23,7 +25,7 @@ function Login() {
           Lorem ipsum dolor sit amet.
         </h2>
         <div className="w-11/12 sm:w-8/12 md:w-5/12 lg:w-3/12 mx-auto my-auto">
-          <LogInForm callback={loginUser} />
+          <LogInForm />
         </div>
       </div>
     </section>

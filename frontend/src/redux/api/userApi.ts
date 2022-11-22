@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { setUser } from '../features/userSlice';
+import { setCredentials } from '../features/userSlice';
 import { IUser } from './types';
 
 const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
@@ -24,7 +24,7 @@ const userApi = createApi({
             async onQueryStarted(args, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
-                    dispatch(setUser(data));
+                    console.log(data)
                     // eslint-disable-next-line no-empty
                 } catch (error) { }
             },
