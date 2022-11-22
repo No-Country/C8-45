@@ -17,8 +17,6 @@ export class AuthService {
         entity.password as string
       );
     } catch (error) {
-      console.log(error);
-
       throw new ErrorService(500, "En el servidor");
     }
     if (!validate) {

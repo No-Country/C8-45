@@ -59,8 +59,6 @@ export class ReviewController {
     const userId = req.body.user.id;
     const { title, rating, description } = req.body;
     try {
-      console.log(userId, id);
-
       const review = await ReviewController.service.getRepository().update(
         {
           id,

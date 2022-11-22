@@ -20,6 +20,9 @@ export abstract class RepositoryDB<T extends Uuid | NumberId> {
       return await this.getRepository().save(entity);
     } catch (error) {
       if (error instanceof QueryFailedError) {
+        if (error.driverError.errno === 1062) {
+          throw new ErrorService(404, "El correo ya se encuentra registrado");
+        }
         throw new ErrorService(404, "Error en la solicitud");
       }
       throw new ErrorService(500, "error Database");
