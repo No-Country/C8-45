@@ -37,4 +37,5 @@ export default function InputPassword(props: Props) {
 type Props = {
   // eslint-disable-next-line react/require-default-props
   callback?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?:boolean;
 };

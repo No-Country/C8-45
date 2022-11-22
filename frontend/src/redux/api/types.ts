@@ -1,11 +1,17 @@
 /* eslint-disable prettier/prettier */
 export interface IUser {
     name: string;
+    lastName: string;
     email: string;
-    role: string;
-    _id: string;
-    createdAt: Date;
-    updatedAt: Date;
+    role: {
+        id: number,
+        name: string,
+    };
+    id: string;
+    address?: string,
+    avatar?: string,
+    banned: boolean,
+    phone?: string,
 }
 export interface IGenericResponse {
     status: string;

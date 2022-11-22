@@ -1,9 +1,8 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-empty */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IGenericResponse } from './types';
-
-import userApi from './userApi';
+import { setCredentials } from '../features/userSlice';
+import { IGenericResponse, IUser } from './types';
 
 const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 type RegisterUser = {
@@ -12,7 +11,7 @@ type RegisterUser = {
     lastName: string;
     password: string;
 };
-type LoginInput = {
+export type LoginInput = {
     email: string;
     password: string;
 };
@@ -32,7 +31,7 @@ export const authApi = createApi({
             },
         }),
         loginUser: builder.mutation<
-            { access_token: string; status: string },
+            { token: string, user: IUser },
             LoginInput>({
                 query(data) {
                     return {
@@ -41,12 +40,6 @@ export const authApi = createApi({
                         body: data,
                         headers: { 'Access-Control-Allow-Origin': '*' }
                     };
-                },
-                async onQueryStarted(args, { dispatch, queryFulfilled }) {
-                    try {
-                        await queryFulfilled;
-                        await dispatch(userApi.endpoints.getCurrentUser.initiate(null));
-                    } catch (error) { }
                 },
             }),
     }),
