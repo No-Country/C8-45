@@ -7,12 +7,12 @@ import userReducer from './features/userSlice';
 export const store = configureStore({
     reducer: {
         [authApi.reducerPath]: authApi.reducer,
-        // [userApi.reducerPath]: userApi.reducer,
+        [userApi.reducerPath]: userApi.reducer,
         userState: userReducer,
     },
-    devTools: process.env.NODE_ENV === 'development',
-    // middleware: (getDefaultMiddleware) =>
-    //     getDefaultMiddleware({}).concat([authApi.middleware, userApi.middleware]),
+    devTools: import.meta.env.MODE === 'development',
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({}).concat([authApi.middleware, userApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

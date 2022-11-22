@@ -6,8 +6,8 @@ import RatingStars from '../molecules/RatingStars';
 export default function ReviewForm() {
   const [RatingIndex, setRatingIndex] = useState<number>(0);
   const [inputs, setInputs] = useState({})
-  const submit = (e: any) => {
-    e.preventDefault();
+  const handleSubmit = (event:React.FormEvent<HTMLFormElement> ) => {
+    event.preventDefault();};
 
   const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -16,26 +16,19 @@ export default function ReviewForm() {
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-col">
-        <Input type="text" placeholder="Company Name" callback={handleChange}/>
-        <Input type="text" placeholder="Company URL" callback={handleChange} />
+        <Input name="company" type="text" placeholder="Company Name" callback={handleChange}/>
+        <Input name="url" type="text" placeholder="Company URL" callback={handleChange} />
         <label className="text-slate-500">Your Rating</label>
         <RatingStars
           RatingIndex={RatingIndex}
           setRatingIndex={setRatingIndex}
         />
-        <Input type="date" placeholder="Date" />
+        <Input name="date" type="date" placeholder="Date" />
         <TextArea placeholder="What fo you think about(Company Name)..."  />
-
-        <button
-          onClick={submit}
-          type="submit"
-          className="my-2 bg-blue-600 text-white text-lg  px-10 p-3 rounded-full hover:bg-blue-700"
-        >
-          Publish
-        </button>
+        <input type='submit' value={'Publish'} className='p-3 bg-blue-600 my-2 text-white font-poppins rounded-full cursor-pointer hover:bg-blue-700'/>
       </div>
     </form>
   );
-}};
+};

@@ -1,5 +1,4 @@
-import ReviewForm from '../organisms/ReviewForm';
-
+import ReviewForm from '../organisms/ReviewForm'
 export default function CreateReview() {
   return (
     <main className="min-h-screen ">
@@ -11,7 +10,7 @@ export default function CreateReview() {
           </h1>
         </div>
         <div className="my-3 w-11/12 sm:w-8/12 md:w-5/12 lg:w-4/12 mx-auto lg:ml-0">
-          <ReviewForm />
+          <ReviewForm/>
         </div>
       </div>
     </main>
