@@ -12,10 +12,7 @@ export class userService extends RepositoryDB<User> {
     const user = await this.getRepository().findOneBy({
       email,
     });
-    if (user) {
-      delete user?.password;
-      return user;
-    }
+    return user;
   }
   async findOneById(id: string) {
     return await this.getRepository().findOneBy({
