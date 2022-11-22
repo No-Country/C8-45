@@ -11,6 +11,8 @@ export class AuthController {
         req.body.email,
         req.body.password
       );
+      console.log(entity);
+
       res.status(200).json(entity);
     } catch (error) {
       const errorI = new ErrorBase(error);

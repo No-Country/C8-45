@@ -24,7 +24,7 @@ export class AuthService {
     }
     const { password, ...data } = entity;
     password?.at(4);
-    return Jwt.encoder(data);
+    return { ...Jwt.encoder(data), user: { ...data } };
   }
   async register(data: User) {
     try {
@@ -36,6 +36,7 @@ export class AuthService {
         banned: false,
         reviewsQuantity: 0,
       });
+      delete entity.password;
       return entity;
     } catch (error) {
       throw error;
