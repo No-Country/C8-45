@@ -3,39 +3,38 @@ import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import InputPassword from '../atoms/InputPassword';
 
-export default function SignUpForm() {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event?.target.value);
-  };
-
-  const handleChangeLastName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLastName(event?.target.value);
-  };
-
-  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event?.target.value);
-  };
-
-  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event?.target.value);
-  };
+export default function SignUpForm(props:Props) {
+  const [inputs, setInputs] = useState({})
+  const {callback}=props;
+  const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
+  const handleSubmit=(event:React.FormEvent<HTMLFormElement>)=>{
+    event.preventDefault();
+    callback(inputs);
+  }
 
   return (
     <div className="flex flex-col">
-      <Input type="text" placeholder="Name" callback={handleChangeName} />
+      <form className='flex flex-col' onSubmit={handleSubmit}>
+       <Input type="text" name='name' placeholder="Name" callback={handleChange} />
       <Input
         type="text"
+        name='lastName'
         placeholder="Last Name"
-        callback={handleChangeLastName}
+        callback={handleChange}
       />
-      <Input type="text" placeholder="Email" callback={handleChangeEmail} />
-      <InputPassword callback={handleChangePassword} />
-      <Button value="Sign Up" type="Primary" callback={() => {}} />
+      <Input type="text" name='email' placeholder="Email" callback={handleChange} />
+      <InputPassword callback={handleChange} />
+      <input type='submit' className='p-3 bg-blue-600 my-2 text-white font-poppins rounded-full cursor-pointer hover:bg-blue-700'/>
+      </form>
+      
     </div>
   );
+}
+
+type Props={
+  callback:(inputs:any)=>void;
 }

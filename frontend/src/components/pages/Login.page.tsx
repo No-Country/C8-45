@@ -4,12 +4,12 @@ import { useLoginUserMutation } from '../../redux/api/authApi';
 import LogInForm from '../organisms/LogInForm';
 
 function Login() {
-  const [loginUser,{isLoading,isSuccess,error,isError}]=useLoginUserMutation();
+  const [loginUser,{isLoading,isSuccess,error,isError,data}]=useLoginUserMutation();
   const navigate=useNavigate();
   const location=useLocation();
   useEffect(() => {
     if(isSuccess){
-      navigate('/')
+      console.log(data)
     }
     if(isError){
       console.log(error)

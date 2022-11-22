@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import Business from './components/pages/Business';
-import CreateReview from './components/pages/CreateReview';
-import Howitworks from './components/pages/Howitworks';
-import Landing from './components/pages/Landing';
+import Business from './components/pages/Business.page';
+import CreateReview from './components/pages/CreateReview.page';
+import Howitworks from './components/pages/How-it-works.page';
+import Landing from './components/pages/Landing.page';
 import Login from './components/pages/Login.page';
-import Signup from './components/pages/Signup';
+import Signup from './components/pages/Signup.page';
 import Layout from './components/templates/Layout';
 
 function App() {

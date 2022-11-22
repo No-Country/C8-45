@@ -8,7 +8,7 @@ const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: `${BASE_URL}/user`,
+        baseUrl: `${BASE_URL}/`,
     }),
     tagTypes: ['User'],
     endpoints: (builder) => ({
@@ -16,7 +16,7 @@ const userApi = createApi({
             query() {
                 return {
                     url: 'user',
-                    credentials: 'include',
+                    headers: { 'Access-Control-Allow-Origin': '*' }
                 };
             },
             transformResponse: (result: { data: { user: IUser } }) =>
