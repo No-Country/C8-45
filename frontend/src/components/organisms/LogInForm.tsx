@@ -23,8 +23,7 @@ import InputPassword from '../atoms/InputPassword';
     dispatch(setCredentials(data));
     navigate('/');
   }
-  const errorMessage={...error};
-
+  
   return (
     <div>
       <form

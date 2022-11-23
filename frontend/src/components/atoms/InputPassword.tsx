@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 export default function InputPassword(props: Props) {
-  const { callback } = props;
+  const { callback,disabled} = props;
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -18,6 +18,7 @@ export default function InputPassword(props: Props) {
         placeholder="Password"
         className="my-2 block p-3 bg-gray-100 border border-slate-300 rounded-full text-md shadow-sm placeholder-slate-500 gap-2"
         onChange={callback}
+        disabled={disabled}
       />
       <div className="icon_button relative ">
         <button

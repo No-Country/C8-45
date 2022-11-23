@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setCredentials } from '../features/userSlice';
+import { RootState } from '../store';
 import { IUser } from './types';
 
 const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
@@ -8,28 +9,31 @@ const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: `${BASE_URL}/`,
+        baseUrl: `${BASE_URL}/user`,
+        prepareHeaders: (headers, { getState }) => {
+            const token = (getState() as RootState).auth.token;
+            if (token) {
+                headers.set('authorization', `Bearer ${token}`)
+            }
+            return headers;
+        }
     }),
     tagTypes: ['User'],
     endpoints: (builder) => ({
         getCurrentUser: builder.query<IUser, null>({
             query() {
                 return {
-                    url: 'user',
-                    headers: { 'Access-Control-Allow-Origin': '*' }
+                    url: '/me',
                 };
             },
-            transformResponse: (result: { data: { user: IUser } }) =>
-                result.data.user,
             async onQueryStarted(args, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
-                    console.log(data)
-                    // eslint-disable-next-line no-empty
+                    dispatch(setCredentials({ user: data, token: localStorage.getItem('auth_token') }))
+                    // eslint-disable-next-lin  e no-empty
                 } catch (error) { }
             },
         }),
     }),
 });
-
 export default userApi;
