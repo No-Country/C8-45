@@ -1,7 +1,18 @@
 export default function Button(props: Props) {
   // value is a secondary=Secondarybutton
   const { value, callback, type } = props;
-  if (type === 'Secondary') {
+
+  if (type === 'Tertiary') {
+    return (
+      <button
+        type="button"
+        onClick={callback}
+        className="my-2 bg-gray-100 text-black text-lg px-10 p-3 rounded-full hover:bg-gray-300"
+      >
+        {value}
+      </button>
+    );
+  } else if (type === 'Secondary') {
     return (
       <button
         type="button"
@@ -26,7 +37,7 @@ export default function Button(props: Props) {
 
 type Props = {
   value: string;
-  type: 'Primary' | 'Secondary';
+  type: 'Primary' | 'Secondary' | 'Tertiary';
   // This may need a fix
   callback: () => void;
 };

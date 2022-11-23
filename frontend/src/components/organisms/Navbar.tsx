@@ -4,14 +4,18 @@ import Button from '../atoms/Button';
 import Logo from '../atoms/Logo';
 import NavigationLink from '../atoms/NavigationLink';
 import NavResButton from '../atoms/NavResButton';
+import NavBarAvatar from '../molecules/NavBarAvatar';
 import ResponsiveNavbar from './ResponsiveNavbar';
 
 function Navbar() {
+
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const closeMenu = () => {
     setOpen(!open);
   };
+  let isLogged = false
+
   // Todo make a method to close menu on link click
   // Todo make it responsive
   return (
@@ -24,14 +28,14 @@ function Navbar() {
           <>
             <ul className="flex flex-col md:flex-row items-center font-poppins md:order-3 bg-white ">
               <li className="m-4 md:mx-4">
-                <NavigationLink path="login" value="Log In" />
+                {isLogged ? <NavigationLink path="userReviews" value="Your Reviews" /> : <NavigationLink path="login" value="Log In" />}
               </li>
               <li className="mx-4">
-                <Button
+                {isLogged ? <NavBarAvatar name={'Jon'} lastname={'Doe'} image={''} /> : <Button
                   value="Sign Up"
                   type="Secondary"
                   callback={() => navigate('signup')}
-                />
+                />}
               </li>
             </ul>
             <ul className="flex flex-col md:flex-row items-center  bg-white  ">
