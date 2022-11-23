@@ -8,7 +8,7 @@ export const store = configureStore({
     reducer: {
         [authApi.reducerPath]: authApi.reducer,
         [userApi.reducerPath]: userApi.reducer,
-        auth: authReducer
+        auth: authReducer,
     },
     devTools: import.meta.env.MODE === 'development',
     middleware: (getDefaultMiddleware) =>

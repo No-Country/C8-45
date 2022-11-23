@@ -1,3 +1,4 @@
+
 import { Route, Routes } from 'react-router-dom';
 import Business from './components/pages/Business.page';
 import CreateReview from './components/pages/CreateReview.page';
@@ -10,7 +11,7 @@ import Layout from './components/templates/Layout';
 import SignupBusiness from './components/pages/SignupBusiness.page';
 
 function App() {
-  const base_url=import.meta.env.VITE_SERVER_ENDPOINT as string;
+  
   return (
     <div className="App">
       <Routes>
