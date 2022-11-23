@@ -11,6 +11,7 @@ import UserNavbar from '../molecules/UserNavbar';
 import ResponsiveNavbar from './ResponsiveNavbar';
 
 function Navbar() {
+
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const closeMenu = () => {
