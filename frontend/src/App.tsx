@@ -4,6 +4,7 @@ import CreateReview from './components/pages/CreateReview.page';
 import Howitworks from './components/pages/How-it-works.page';
 import Landing from './components/pages/Landing.page';
 import Login from './components/pages/Login.page';
+import Settings from './components/pages/Settings.page';
 import Signup from './components/pages/Signup.page';
 import Layout from './components/templates/Layout';
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="createReview" element={<CreateReview />} />
           <Route path="how-it-works" element={<Howitworks />} />
           <Route path="business" element={<Business />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </div>
