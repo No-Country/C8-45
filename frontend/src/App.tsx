@@ -7,6 +7,7 @@ import Login from './components/pages/Login.page';
 import Settings from './components/pages/Settings.page';
 import Signup from './components/pages/Signup.page';
 import Layout from './components/templates/Layout';
+import SignupBusiness from './components/pages/SignupBusiness.page';
 
 function App() {
   const base_url=import.meta.env.VITE_SERVER_ENDPOINT as string;
@@ -17,6 +18,7 @@ function App() {
           <Route index element={<Landing />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="signupBusiness" element={<SignupBusiness />} />
           <Route path="createReview" element={<CreateReview />} />
           <Route path="how-it-works" element={<Howitworks />} />
           <Route path="business" element={<Business />} />
