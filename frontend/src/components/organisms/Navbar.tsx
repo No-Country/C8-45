@@ -31,18 +31,7 @@ function Navbar() {
         {open && (
           <>
             <UserNavbar/>
-            <ul className="flex flex-col md:flex-row items-center font-poppins md:order-3 bg-white ">
-              <li className="m-4 md:mx-4">
-                {isLogged ? <NavigationLink path="userReviews" value="Your Reviews" /> : <NavigationLink path="login" value="Log In" />}
-              </li>
-              <li className="mx-4">
-                {isLogged ? <NavBarAvatar name={'Jon'} lastname={'Doe'} image={''} /> : <Button
-                  value="Sign Up"
-                  type="Secondary"
-                  callback={() => navigate('signup')}
-                />}
-              </li>
-            </ul>
+
             <ul className="flex flex-col md:flex-row items-center  bg-white  ">
               <li className="m-4 md:mx-4">
                 <NavigationLink path="how-it-works" value="How it works?" />
