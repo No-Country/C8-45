@@ -11,6 +11,8 @@ export class ReviewRouter {
   static controller = ReviewController;
   static getRoutes() {
     ReviewRouter.router.get("/", ReviewRouter.controller.getReviews);
+    ReviewRouter.router.get("/me",
+    CommonValidator.owner,ReviewRouter.controller.getMeReviews);
     ReviewRouter.router.post(
       "/",
       ReviewValidator.createReview,

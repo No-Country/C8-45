@@ -13,4 +13,10 @@ export class ReviewService extends RepositoryDB<Review> {
       id: id,
     });
   }
-}
+  async findByUserId(id: string) {
+    return await this.getRepository().findBy({
+      user:{
+        id:id
+      }
+    });
+}}
