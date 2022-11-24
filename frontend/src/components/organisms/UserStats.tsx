@@ -4,6 +4,7 @@ import { BsStar } from "react-icons/bs";
 
 function UserStats(props: Props) {
   const { name, lastname, image } = props;
+  //TODO make a fetch to each user 
   return (
     <div className='flex items-center justify-around'>
       <UserStatsAvatar name={name} lastname={lastname} image={image} />
@@ -17,8 +18,8 @@ function UserStats(props: Props) {
 }
 
 type Props = {
-  name: string,
-  lastname: string,
+  name ?: string,
+  lastname?: string,
   // eslint-disable-next-line react/require-default-props
   image?: string,
 }

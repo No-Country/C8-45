@@ -5,18 +5,17 @@ import { authApi } from './api/authApi';
 import userApi from './api/userApi';
 import authReducer from './features/userSlice';
 export const store = configureStore({
-    reducer: {
-        [authApi.reducerPath]: authApi.reducer,
-        [userApi.reducerPath]: userApi.reducer,
-        auth: authReducer,
-    },
-    devTools: import.meta.env.MODE === 'development',
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({}).concat([authApi.middleware, userApi.middleware]),
+  reducer: {
+    [authApi.reducerPath]: authApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+    auth: authReducer,
+  },
+  devTools: import.meta.env.MODE === 'development',
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({}).concat([authApi.middleware, userApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
