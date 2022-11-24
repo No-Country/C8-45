@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setCredentials } from '../features/userSlice';
 import { RootState } from '../store';
@@ -13,7 +12,7 @@ const userApi = createApi({
         prepareHeaders: (headers, { getState }) => {
             const token = (getState() as RootState).auth.token;
             if (token) {
-                headers.set('authorization', `Bearer ${token}`)
+                headers.set('authorization', `Bearer ${token}`);
             }
             return headers;
         }
@@ -24,13 +23,13 @@ const userApi = createApi({
             query() {
                 return {
                     url: '/me',
+                    method:'GET'
                 };
             },
             async onQueryStarted(args, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
                     dispatch(setCredentials({ user: data, token: localStorage.getItem('auth_token') }))
-                    // eslint-disable-next-lin  e no-empty
                 } catch (error) { }
             },
         }),
