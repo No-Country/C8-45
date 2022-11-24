@@ -1,6 +1,6 @@
 import SignUpBusinessForm from '../organisms/SignUpBusinessForm';
 
-export default function CreateReview() {
+export default function SignUpBusiness() {
   return (
     <main className="min-h-screen ">
       <div className="lg:flex my-24">
