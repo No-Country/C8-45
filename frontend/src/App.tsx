@@ -10,6 +10,7 @@ import SignupBusiness from './components/pages/SignupBusiness.page';
 import MyProfile from './components/pages/User.page';
 import UserSettings from './components/pages/Settings.user.page';
 import MyReviews from './components/pages/Reviews.user.page';
+import LogInBusiness from './components/pages/LogInBusiness.page';
 import BusinessProfile from './components/pages/BusinessProfile.page';
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route index element={<Landing />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="login-business" element={<LogInBusiness />} />
           <Route path="signup-business" element={<SignupBusiness />} />
           <Route path="createReview" element={<CreateReview />} />
           <Route path="how-it-works" element={<Howitworks />} />
