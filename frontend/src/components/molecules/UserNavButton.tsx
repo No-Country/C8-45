@@ -9,9 +9,12 @@ type Props = {
 };
 //Todo fetch on login
 const UserNavButton = (props: Props) => {
-  const { name, id, avatar } = props;
+  const { name, avatar } = props;
   return (
-    <Link to={`me/${id}`} className="flex md:flex-row items-center font-poppins md:order-3 bg-white bg-indigo-100 p-1 rounded-full">
+    <Link
+      to={`me/reviews`}
+      className="flex md:flex-row items-center font-poppins md:order-3 bg-white bg-indigo-100 p-1 rounded-full"
+    >
       <div>
         <img src={avatar ? avatar : defaultAvatar} className="h-12" alt="" />
       </div>
