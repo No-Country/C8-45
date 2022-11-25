@@ -12,14 +12,12 @@ import UserNavbar from '../molecules/UserNavbar';
 import ResponsiveNavbar from './ResponsiveNavbar';
 
 function Navbar() {
-
-
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const closeMenu = () => {
     setOpen(!open);
   };
-  let isLogged = false
+  let isLogged = false;
 
   //Logged user
   return (
@@ -30,18 +28,18 @@ function Navbar() {
         </div>
         {open && (
           <>
-            <UserNavbar/>
+            <UserNavbar />
 
             <ul className="flex flex-col md:flex-row items-center  bg-white  ">
               <li className="m-4 md:mx-4">
                 <NavigationLink path="how-it-works" value="How it works?" />
               </li>
               <li className=" md:mx-4">
-                <NavigationLink path="business" value="For business" />
+                <NavigationLink path="for-business" value="For business" />
               </li>
             </ul>
           </>
-        ) }
+        )}
       </nav>
       <ResponsiveNavbar />
     </>
