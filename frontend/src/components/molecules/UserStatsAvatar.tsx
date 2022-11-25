@@ -1,23 +1,24 @@
+import { useAppSelector } from '../../redux/store';
 import Avatar from '../atoms/Avatar';
 
-function UserStatsAvatar(props: Props) {
-  const { name, lastname, image } = props;
-  return (
-    <div className="flex items-center gap-2">
-      <Avatar size="medium" name={name} lastname={lastname} image={image} />
-      <div>
-        <div>{name + ' ' + lastname}</div>
-        <div>Country</div>
+function UserStatsAvatar() {
+  const {user}=useAppSelector(state=>state.auth);
+  
+  if(user?.name&&user.lastName){
+    return (
+      <div className="flex items-center  gap-2">
+        <Avatar/>
+        <div>
+          <div>{user?.name + ' ' + user.lastName}</div>
+          <div>Country</div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }else{
+    return null;
+  }
+  
 }
 
-type Props = {
-  name: string;
-  lastname: string;
-  // eslint-disable-next-line react/require-default-props
-  image?: string;
-};
 
 export default UserStatsAvatar;

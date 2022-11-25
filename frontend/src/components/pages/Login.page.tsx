@@ -1,23 +1,18 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useLoginUserMutation } from '../../redux/api/authApi';
+import { useAppSelector } from '../../redux/store';
 import LogInForm from '../organisms/LogInForm';
 
 function Login() {
-  const [loginUser,{isLoading,isSuccess,error,isError,data}]=useLoginUserMutation();
+  const {user,token}=useAppSelector(state=>state.auth);
   const navigate=useNavigate();
   const location=useLocation();
   useEffect(() => {
-    if(isSuccess){
-      console.log('success');
+    if(user&&token){
+      navigate(`/me`)
     }
-    if(isError){
-      console.log(error);
-    }
-  }, [isLoading])
-
-
-  
+  }, [user,token])
   return (
     <section className="min-h-[86vh] flex">
       <div className=" w-full my-auto my-24 ">
