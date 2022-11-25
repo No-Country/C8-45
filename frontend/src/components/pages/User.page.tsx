@@ -1,25 +1,25 @@
-import React from 'react'
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '../../redux/store';
 import UserSidebar from '../molecules/UserSidebar';
 import UserStats from '../organisms/UserStats';
 
 const MyProfile = () => {
-  const user=useAppSelector(state=>state.auth.user)
-  
+  const user = useAppSelector((state) => state.auth.user);
+
   return (
-    <section className='py-10'>
-      <UserStats name={user?.name} lastname={user?.lastName} />
-      <div className='flex mx-auto w-9/12 my-10 divide-x-2 '>
-        <aside className='w-3/12'>
-          <UserSidebar/>
+    <section className="py-10">
+      <UserStats />
+      <div className="flex flex-col md:flex-row mx-auto lg:w-9/12 my-10 divide-x-2 ">
+        <aside className="hidden md:block md:w-3/12 lg:w-3/12 ">
+          <UserSidebar />
         </aside>
-        <main className='w-8/12'>
-          <Outlet/>
+        <main className="md:w-8/12 md:p-4">
+          <Outlet />
         </main>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default MyProfile;
