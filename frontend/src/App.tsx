@@ -9,7 +9,8 @@ import Signup from './components/pages/Signup.page';
 import Layout from './components/templates/Layout';
 import SignupBusiness from './components/pages/SignupBusiness.page';
 import MyProfile from './components/pages/User.page';
-
+import UserSettings from './components/pages/Settings.user.page'
+import MyReviews from './components/pages/Reviews.user.page'
 function App() {
   return (
     <div className="App">
@@ -23,7 +24,10 @@ function App() {
           <Route path="how-it-works" element={<Howitworks />} />
           <Route path="business" element={<Business />} />
           <Route path="settings" element={<Settings />} />
-          <Route path='/user/:id' element={<MyProfile/>}/>
+          <Route path='/me' element={<MyProfile/>}>
+            <Route index path='reviews' element={<MyReviews/>}/>
+            <Route path='settings' element={<UserSettings/>}/>
+          </Route>
         </Route>
       </Routes>
     </div>
