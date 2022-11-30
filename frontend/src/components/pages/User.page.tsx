@@ -14,7 +14,7 @@ const MyProfile = () => {
         <aside className="hidden md:block md:w-3/12 lg:w-3/12 ">
           <UserSidebar />
         </aside>
-        <main className="md:w-8/12 md:p-4">
+        <main className="md:w-9/12 md:p-4">
           <Outlet />
         </main>
       </div>
