@@ -12,6 +12,7 @@ import UserSettings from './components/pages/Settings.user.page';
 import MyReviews from './components/pages/Reviews.user.page';
 import LogInBusiness from './components/pages/LogInBusiness.page';
 import BusinessProfile from './components/pages/BusinessProfile.page';
+import ReviewFormPage from './components/pages/MakeReview.user.page';
 function App() {
   return (
     <div className="App">
@@ -27,7 +28,8 @@ function App() {
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<BusinessProfile />} />
           <Route path="/me" element={<MyProfile />}>
-            <Route index path="reviews" element={<MyReviews />} />
+            <Route index element={<ReviewFormPage />} />
+            <Route path="reviews" element={<MyReviews />} />
             <Route path="settings" element={<UserSettings />} />
           </Route>
         </Route>

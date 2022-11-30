@@ -13,8 +13,11 @@ import SearchBar from '../molecules/SearchBar';
 import thumbsUp from '../../assets/thumbsUp.png';
 import thumbsDown from '../../assets/thumbsDown.png';
 import CategoryCard from '../atoms/CategoryCard';
-
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../redux/store';
 function Landing() {
+  const { user, token } = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
   const Categories = [
     { name: 'Finance', path: 'finance', icon: <AiOutlineBank /> },
     { name: 'Travel', path: 'travel', icon: <SlPlane /> },
@@ -29,6 +32,13 @@ function Landing() {
     { name: 'TV', path: 'tv', icon: <CgScreen /> },
     { name: 'Technology', path: 'technology', icon: <VscCircuitBoard /> },
   ];
+  const makeReviewHandler = () => {
+    if (user && token) {
+      navigate('/review-form');
+    } else {
+      navigate('/login');
+    }
+  };
 
   return (
     <>
@@ -61,7 +71,7 @@ function Landing() {
             <Button
               type="Secondary"
               value="Make a review ⭐️"
-              callback={() => {}}
+              callback={makeReviewHandler}
             />
           </div>
         </div>
