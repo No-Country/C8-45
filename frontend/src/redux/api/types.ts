@@ -19,4 +19,12 @@ export interface IGenericResponse {
   message: string;
 }
 
-export interface IMyReview {}
+export interface IMyReview { }
+
+export interface IReview {
+  description: string,
+  rating: string,
+  title: string,
+  createdAt: string,
+  id: string,
+}
