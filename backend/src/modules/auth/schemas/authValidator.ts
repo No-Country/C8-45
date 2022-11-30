@@ -48,8 +48,8 @@ export class AuthValidator {
       phone: yup.string().optional(),
       country: yup.string().optional(),
       city: yup.string().optional(),
-      website: yup.string().required(),
-      workEmail: yup.string().required(),
+      website: yup.string().url().required(),
+      workEmail: yup.string().email().required(),
     });
     try {
       await schema.validate(req.body);
