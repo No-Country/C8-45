@@ -1,11 +1,17 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../redux/store';
 import UserSidebar from '../molecules/UserSidebar';
 import UserStats from '../organisms/UserStats';
 
 const MyProfile = () => {
-  const user = useAppSelector((state) => state.auth.user);
+  const navigate = useNavigate();
+  const { user, token } = useAppSelector((state) => state.auth);
+  useEffect(() => {
+    if (!user && !token) {
+      navigate('/');
+    }
+  }, [user]);
 
   return (
     <section className="py-10">

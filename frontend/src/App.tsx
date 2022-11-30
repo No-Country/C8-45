@@ -13,6 +13,7 @@ import UserSettings from './components/pages/Settings.user.page';
 import MyReviews from './components/pages/Reviews.user.page';
 import LogInBusiness from './components/pages/LogInBusiness.page';
 import BusinessProfile from './components/pages/BusinessProfile.page';
+import ReviewFormPage from './components/pages/MakeReview.user.page';
 import MyBusinessReviews from './components/pages/Reviews.business.page';
 import BusinessSettings from './components/pages/Setting.business.page';
 
@@ -34,7 +35,8 @@ function App() {
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<BusinessProfile />} />
           <Route path="/me" element={isAdmin ? <BusinessProfile /> : <MyProfile />}>
-            <Route index path="reviews" element={isAdmin ? <MyBusinessReviews /> : <MyReviews />} />
+            <Route index element={<ReviewFormPage />} />
+            <Route path="reviews" element={isAdmin ? <MyBusinessReviews /> : <MyReviews />} />
             <Route path="settings" element={isAdmin ? <BusinessSettings /> : <UserSettings />} />
           </Route>
         </Route>
