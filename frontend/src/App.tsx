@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { useAppSelector } from './redux/store';
 import ForBusiness from './components/pages/ForBusiness.page';
 import CreateReview from './components/pages/CreateReview.page';
 import Howitworks from './components/pages/How-it-works.page';
@@ -13,7 +14,13 @@ import MyReviews from './components/pages/Reviews.user.page';
 import LogInBusiness from './components/pages/LogInBusiness.page';
 import BusinessProfile from './components/pages/BusinessProfile.page';
 import ReviewFormPage from './components/pages/MakeReview.user.page';
+import MyBusinessReviews from './components/pages/Reviews.business.page';
+import BusinessSettings from './components/pages/Setting.business.page';
+
 function App() {
+  const { user } = useAppSelector((state) => state.auth);
+  const isAdmin = user?.role.id === 2
+
   return (
     <div className="App">
       <Routes>
@@ -27,10 +34,10 @@ function App() {
           <Route path="how-it-works" element={<Howitworks />} />
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<BusinessProfile />} />
-          <Route path="/me" element={<MyProfile />}>
-            <Route index element={<ReviewFormPage />} />
-            <Route path="reviews" element={<MyReviews />} />
-            <Route path="settings" element={<UserSettings />} />
+          <Route path="/me" element={isAdmin ? <BusinessProfile /> : <MyProfile />}>
+            <Route index element={isAdmin ? '' : <ReviewFormPage />} />
+            <Route path="reviews" element={isAdmin ? <MyBusinessReviews /> : <MyReviews />} />
+            <Route path="settings" element={isAdmin ? <BusinessSettings /> : <UserSettings />} />
           </Route>
         </Route>
       </Routes>
