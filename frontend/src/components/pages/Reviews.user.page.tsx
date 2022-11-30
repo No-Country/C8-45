@@ -1,7 +1,16 @@
-import React from 'react';
+import MyReviewCard from '../organisms/MyReviewCard';
 
 const MyReviews = () => {
-  return <div>Reviews.user.page</div>;
+  return (
+    <div className="w-full">
+      <MyReviewCard />
+      <MyReviewCard />
+      <MyReviewCard />
+      <MyReviewCard />
+      <MyReviewCard />
+      <MyReviewCard />
+    </div>
+  );
 };
 
 export default MyReviews;

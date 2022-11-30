@@ -13,7 +13,7 @@ export default function LogInForm() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loginUser, { isLoading, isSuccess, error, isError, data }] =
     useLoginUserMutation();
@@ -22,8 +22,8 @@ export default function LogInForm() {
     const data = await loginUser(inputs).unwrap();
     localStorage.setItem('auth_token', data.token);
     dispatch(setCredentials(data));
-    if(isSuccess){
-      console.log("WOrks")
+    if (isSuccess) {
+      console.log('WOrks');
     }
   };
 
