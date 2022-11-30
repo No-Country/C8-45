@@ -35,7 +35,7 @@ function App() {
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<BusinessProfile />} />
           <Route path="/me" element={isAdmin ? <BusinessProfile /> : <MyProfile />}>
-            <Route index element={<ReviewFormPage />} />
+            <Route index element={isAdmin ? '' : <ReviewFormPage />} />
             <Route path="reviews" element={isAdmin ? <MyBusinessReviews /> : <MyReviews />} />
             <Route path="settings" element={isAdmin ? <BusinessSettings /> : <UserSettings />} />
           </Route>
