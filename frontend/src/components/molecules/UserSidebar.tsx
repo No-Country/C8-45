@@ -1,10 +1,16 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '../atoms/Button';
-import { logout } from '../../redux/features/userSlice';
-import { NavLink } from 'react-router-dom';
+import { logOut } from '../../redux/features/userSlice';
+import { useAppDispatch } from '../../redux/store';
+import { NavLink, useNavigate, useNavigation } from 'react-router-dom';
 function UserSidebar() {
-  const dispatch = useDispatch;
-  dispatch();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const logOutHandler = (e: React.MouseEvent<HTMLElement>) => {
+    dispatch(logOut());
+    navigate('/');
+  };
   const className = 'bg-gray-100 p-2 text-lg rounded-lg font-poppins my-2';
   const activeClassName = ' bg-indigo-100 text-blue-600 ';
   return (
@@ -25,7 +31,10 @@ function UserSidebar() {
       >
         Settings
       </NavLink>
-      <button className="bg-gray-100 p-2 text-lg rounded-lg font-poppins my-2 text-left">
+      <button
+        onClick={(e) => logOutHandler(e)}
+        className="bg-gray-100 p-2 text-lg rounded-lg font-poppins my-2 text-left"
+      >
         Log Out
       </button>
     </nav>
