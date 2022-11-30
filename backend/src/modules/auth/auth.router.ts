@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { CompanyController } from "../company/company.controller";
 
 import { AuthController } from "./auth.controller";
 import { AuthValidator } from "./schemas/authValidator";
@@ -8,6 +9,7 @@ const routerCompany = Router();
 export class AuthRouter {
   static router = Router();
   static controller = AuthController;
+  static controllerCompany = CompanyController;
   static getRoutes() {
     AuthRouter.router.post(
       "/login",
@@ -19,7 +21,11 @@ export class AuthRouter {
       AuthValidator.register,
       AuthRouter.controller.register
     );
-
+    AuthRouter.router.post(
+      "/registerCompany",
+      AuthValidator.registerCompany,
+      AuthRouter.controllerCompany.createCompany
+    );
     return AuthRouter.router;
   }
 }
