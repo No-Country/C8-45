@@ -12,6 +12,7 @@ export class UserController {
   static async ownData(req: Request, res: Response) {
     const { email } = req.body.user;
     const profile = await UserController.userService.findOneByEmail(email);
+    delete profile?.password;
     res.send(profile);
     return;
   }
