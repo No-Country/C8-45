@@ -2,6 +2,7 @@ import UserStatsAvatar from '../molecules/UserStatsAvatar';
 import Button from '../atoms/Button';
 import { AiFillStar } from 'react-icons/ai';
 import { useAppSelector } from '../../redux/store';
+import { Link } from 'react-router-dom';
 
 function UserStats() {
   const { user } = useAppSelector((state) => state.auth);
@@ -20,7 +21,12 @@ function UserStats() {
           {user?.reviewsQuantity}
         </div>
       </div>
-      <Button type="Primary" value="New Review" callback={() => {}} />
+      <Link
+        className="p-3 bg-blue-600 rounded-full hover:bg-blue-700 font-poppints text-white"
+        to="/me"
+      >
+        Make a review
+      </Link>
     </div>
   );
 }

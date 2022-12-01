@@ -13,9 +13,8 @@ function RatingStars(props: Props) {
   };
 
   return (
-    <div>
-      <h2>{RATING[RatingIndex]}</h2>
-      <div className="flex">
+    <div className="flex  items-center">
+      <div className="flex items-center ">
         {RATING.map((Rating, index) => (
           <Star
             index={index}
@@ -25,6 +24,7 @@ function RatingStars(props: Props) {
           />
         ))}
       </div>
+      <h2 className="my-auto">{RATING[RatingIndex]}</h2>
     </div>
   );
 }
@@ -44,10 +44,10 @@ function Star(props: any) {
   };
 
   return (
-    <label className="w-auto h-14 cursor-pointer">
+    <label className="w-auto cursor-pointer">
       <svg
-        width="58"
-        height="58"
+        width="35"
+        height="35"
         viewBox="0 0 24 24"
         fill="none"
         stroke="#393939"
