@@ -32,6 +32,8 @@ export class Company extends Uuid {
   workEmail!: string;
   @Column({ nullable: false, type: "float" })
   ratingGeneral!: number;
+  @Column({nullable:false,type:"varchar"})
+  password!:string
   @ManyToOne(() => Role, (role) => role.user, {
     nullable: false,
   })

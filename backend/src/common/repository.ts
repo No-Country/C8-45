@@ -21,7 +21,7 @@ export abstract class RepositoryDB<T extends Uuid | NumberId> {
     } catch (error) {
       if (error instanceof QueryFailedError) {
         if (error.driverError.errno === 1062) {
-          throw new ErrorService(404, "El correo ya se encuentra registrado");
+          throw new ErrorService(404, "Uno o más campos ya se encuentran registrados");
         }
         throw new ErrorService(404, "Error en la solicitud");
       }
