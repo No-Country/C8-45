@@ -34,7 +34,7 @@ function Landing() {
   ];
   const makeReviewHandler = () => {
     if (user && token) {
-      navigate('/review-form');
+      navigate('/me');
     } else {
       navigate('/login');
     }
