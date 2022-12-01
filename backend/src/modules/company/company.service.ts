@@ -13,4 +13,18 @@ export class CompanyService extends RepositoryDB<Company> {
       id: id,
     });
   }
+  async findOneByEmail(email: string) {
+    return await this.getRepository().findOneBy({
+      email,
+    });
+  }
+  async updateById(data:Partial<Company>,id:string){
+    return await this.getRepository().update(
+      id
+    ,data)
+  }
+  async deleteById(id:string){
+    this.getRepository().delete(
+      id)
+  }
 }

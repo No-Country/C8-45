@@ -17,6 +17,11 @@ export class AuthRouter {
       AuthRouter.controller.login
     );
     AuthRouter.router.post(
+      "/loginCompany",
+      AuthValidator.login,
+      AuthRouter.controller.loginCompany
+    );
+    AuthRouter.router.post(
       "/register",
       AuthValidator.register,
       AuthRouter.controller.register

@@ -10,13 +10,20 @@ export class ReviewService extends RepositoryDB<Review> {
   }
   async findOneById(id: string) {
     return await this.getRepository().findOneBy({
-      id: id,
+      id,
     });
   }
   async findByUserId(id: string) {
     return await this.getRepository().findBy({
       user:{
-        id:id
+        id
       }
     });
+}
+async findByCompanyId(id: string) {
+  return await this.getRepository().findBy({
+    company:{
+      id
+    }
+  });
 }}

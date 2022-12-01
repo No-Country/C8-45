@@ -35,7 +35,7 @@ export class Company extends Uuid {
   @Column({nullable:false,type:"varchar"})
   password!:string
   @ManyToOne(() => Role, (role) => role.user, {
-    nullable: false,
+    nullable: false,onDelete:"CASCADE", eager: true
   })
   role!: Role | number;
   @OneToMany(() => Review, (review) => review.user)
