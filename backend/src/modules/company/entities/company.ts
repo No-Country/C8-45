@@ -26,16 +26,18 @@ export class Company extends Uuid {
   country?: string;
   @Column({ nullable: true, type: "varchar" })
   city?: string;
-  @Column({ nullable: false, type: "varchar",unique:true })
+  @Column({ nullable: false, type: "varchar", unique: true })
   website!: string;
   @Column({ nullable: false, type: "varchar" })
   workEmail!: string;
   @Column({ nullable: false, type: "float" })
   ratingGeneral!: number;
-  @Column({nullable:false,type:"varchar"})
-  password!:string
+  @Column({ nullable: false, type: "varchar" })
+  password!: string;
   @ManyToOne(() => Role, (role) => role.user, {
-    nullable: false,onDelete:"CASCADE", eager: true
+    nullable: false,
+    onDelete: "CASCADE",
+    eager: true,
   })
   role!: Role | number;
   @OneToMany(() => Review, (review) => review.user)

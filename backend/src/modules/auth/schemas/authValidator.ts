@@ -38,7 +38,11 @@ export class AuthValidator {
       res.status(400).json({ [err.name]: [...err.errors] });
     }
   }
-  static async registerCompany(req: Request, res: Response, next: NextFunction) {
+  static async registerCompany(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
     const schema = yup.object().shape({
       email: yup.string().required().email(),
       name: yup.string().required(),
