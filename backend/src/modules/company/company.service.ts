@@ -18,13 +18,10 @@ export class CompanyService extends RepositoryDB<Company> {
       email,
     });
   }
-  async updateById(data:Partial<Company>,id:string){
-    return await this.getRepository().update(
-      id
-    ,data)
+  async updateById(data: Partial<Company>, id: string) {
+    return await this.getRepository().update(id, data);
   }
-  async deleteById(id:string){
-    this.getRepository().delete(
-      id)
+  async deleteById(id: string) {
+    this.getRepository().delete(id);
   }
 }

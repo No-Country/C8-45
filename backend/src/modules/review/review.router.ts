@@ -10,11 +10,21 @@ export class ReviewRouter {
   static router = Router();
   static controller = ReviewController;
   static getRoutes() {
-    ReviewRouter.router.get("/", CommonValidator.isAdmin,ReviewRouter.controller.getReviews);
-    ReviewRouter.router.get("/user",
-    CommonValidator.isUser,ReviewRouter.controller.getMeReviews);
-    ReviewRouter.router.get("/company",
-    CommonValidator.isCompany,ReviewRouter.controller.getMeReviewsCompany);
+    ReviewRouter.router.get(
+      "/",
+      CommonValidator.isAdmin,
+      ReviewRouter.controller.getReviews
+    );
+    ReviewRouter.router.get(
+      "/user",
+      CommonValidator.isUser,
+      ReviewRouter.controller.getMeReviews
+    );
+    ReviewRouter.router.get(
+      "/company",
+      CommonValidator.isCompany,
+      ReviewRouter.controller.getMeReviewsCompany
+    );
     ReviewRouter.router.post(
       "/",
       ReviewValidator.createReview,

@@ -17,14 +17,14 @@ export class ReviewController {
     res.send(entity);
     return;
   }
-  static async  getMeReviews(req: Request, res: Response){
-    const {id} = await req.body.user
+  static async getMeReviews(req: Request, res: Response) {
+    const { id } = await req.body.user;
     const entity = await ReviewController.service.findByUserId(id);
-    res.status(200).send(entity);
+    res.status(200).send({ ...entity, company: entity?.company.website });
     return;
   }
-  static async  getMeReviewsCompany(req: Request, res: Response){
-    const {id} = await req.body.user
+  static async getMeReviewsCompany(req: Request, res: Response) {
+    const { id } = await req.body.user;
     const entity = await ReviewController.service.findByCompanyId(id);
     res.status(200).send(entity);
     return;

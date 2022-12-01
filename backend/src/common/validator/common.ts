@@ -5,7 +5,6 @@ import { ErrorService } from "../error/errorModel";
 import { Token } from "./token";
 
 export class CommonValidator {
-
   static owner(req: Request, res: Response, next: NextFunction) {
     try {
       const info = Token.verifyToken(req);
@@ -37,7 +36,6 @@ export class CommonValidator {
   }
   static isCompany(req: Request, res: Response, next: NextFunction) {
     try {
-      
       const info = Token.verifyToken(req);
       if (!(info.role.id === 3)) {
         return res.status(400).send("acceso solo a compañias");

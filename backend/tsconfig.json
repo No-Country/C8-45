@@ -3,7 +3,7 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "target": "ES6",
     "strict": true,
     "moduleResolution": "node",
     "sourceMap": true,
@@ -11,7 +11,10 @@
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }

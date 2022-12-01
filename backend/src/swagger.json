@@ -1,281 +1,322 @@
 {
-    "openapi": "3.0.3",
-    "info": {
-        "title": "C8-45 BACKEND",
-        "description": "Aquí se encuentra la documentación del servidor C8-45",
-        "version": "1.0.0.0"
-    },
-    "servers": [
-        {
-            "url": "http://localhost:3000"
-        }
-    ],
-    "tags": [
-        {
-            "name": "auth"
-        },
-        {
-            "name": "user"
-        }
-    ],
-    "components": {
-        "schemas": {
-            "User": {
-                "type": "object",
-                "properties": {
-                    "email": {
-                        "type": "string",
-                        "example": "john@email.com"
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Pedro"
-                    },
-                    "avatar": {
-                        "type": "string",
-                        "example": "James"
-                    },
-                    "lastName": {
-                        "type": "string",
-                        "example": "James"
-                    },
-                    "address": {
-                        "type": "string",
-                        "example": "Av. Example 324"
-                    },
-                    "password": {
-                        "type": "string",
-                        "example": "12345"
-                    },
-                    "country": {
-                        "type": "string",
-                        "example": "Argentina"
-                    },
-                    "phone": {
-                        "type": "string",
-                        "example": "123445415"
-                    }
-                }
-            },
-            "Login": {
-                "type": "object",
-                "properties": {
-                    "email": {
-                        "type": "string",
-                        "example": "john@email.com"
-                    },
-                    "password": {
-                        "type": "string",
-                        "example": "12345"
-                    }
-                }
-            },
-            "ApiResponse": {
-                "type": "object",
-                "properties": {
-                    "code": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "type": {
-                        "type": "string"
-                    },
-                    "message": {
-                        "type": "string"
-                    }
-                }
-            }
-        },
-        "requestBodies": {
-            "Pet": {
-                "description": "Pet object that needs to be added to the store",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Pet"
-                        }
-                    }
-                }
-            },
-            "UserArray": {
-                "description": "List of user object",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/components/schemas/User"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "securitySchemes": {
-            "auth": {
-                "type": "http",
-                "in": "header",
-                "scheme": "bearer",
-                "bearerFormat": "JWT"
-            }
-        }
-    },
-    "paths": {
-        "/auth/register": {
-            "post": {
-                "tags": [
-                    "auth"
-                ],
-                "summary": "Registrar un usuario",
-                "description": "Solo registra usuarios con el rol usuario",
-                "operationId": "createUser",
-                "requestBody": {
-                    "description": "Created user object",
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/User"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                }
-            }
-        },
-        "/auth/login": {
-            "post": {
-                "tags": [
-                    "auth"
-                ],
-                "summary": "Inicio de sesión de un usuario",
-                "operationId": "loginUser",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Login"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                }
-            }
-        },
-        "/user/me": {
-            "get": {
-                "tags": [
-                    "user"
-                ],
-                "summary": "Información de un usuario",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                },
-                "security": [
-                    {
-                        "auth": []
-                    }
-                ]
-            }
-        },
-        "/user": {
-            "get": {
-                "tags": [
-                    "user"
-                ],
-                "summary": "Lista de usuarios",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                },
-                "security": [
-                    {
-                        "auth": []
-                    }
-                ]
-            }
-        },
-        "/review": {
-            "get": {
-                "tags": [
-                    "review"
-                ],
-                "summary": "Lista de Reviews",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                },
-                "security": [
-                    {
-                        "auth": []
-                    }
-                ]
-            },
-            "post":{
-                "tags": [
-                    "review"
-                ],
-                "summary": "Crear review",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                }
-            }
-        },
-        "/review/me": {
-            "get": {
-                "tags": [
-                    "review"
-                ],
-                "summary": "Informacion de mis reviews",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                },
-                "security": [
-                    {
-                        "auth": []
-                    }
-                ]
-            }
-        },
-        "/review/{userId}": {
-            "put": {
-                "tags": [
-                    "review"
-                ],
-                "parameters":[{
-                    "name":"userId",
-                    "in":"path",
-                    "required":true,
-                    "schema":{
-                        "type":"string"             }
-                }],
-                "summary": "Lista de usuarios",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                },
-                "security": [
-                    {
-                        "auth": []
-                    }
-                ]
-            }
-        }
+  "openapi": "3.0.3",
+  "info": {
+    "title": "C8-45 BACKEND",
+    "description": "Aquí se encuentra la documentación del servidor C8-45",
+    "version": "1.0.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
     }
+  ],
+  "tags": [
+    {
+      "name": "auth"
+    },
+    {
+      "name": "user"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "john@email.com"
+          },
+          "name": {
+            "type": "string",
+            "example": "Pedro"
+          },
+          "avatar": {
+            "type": "string",
+            "example": "James"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "James"
+          },
+          "address": {
+            "type": "string",
+            "example": "Av. Example 324"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345"
+          },
+          "country": {
+            "type": "string",
+            "example": "Argentina"
+          },
+          "phone": {
+            "type": "string",
+            "example": "123445415"
+          }
+        }
+      },
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "john@email.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345"
+          }
+        }
+      },
+      "UpdateUser": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "john@email.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345"
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "Pet": {
+        "description": "Pet object that needs to be added to the store",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        }
+      },
+      "UserArray": {
+        "description": "List of user object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "auth": {
+        "type": "http",
+        "in": "header",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Registrar un usuario",
+        "description": "Solo registra usuarios con el rol usuario",
+        "operationId": "createUser",
+        "requestBody": {
+          "description": "Created user object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Inicio de sesión de un usuario",
+        "operationId": "loginUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/user/me": {
+      "get": {
+        "tags": ["user"],
+        "summary": "Información de un usuario",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": ["user"],
+        "summary": "Lista de usuarios",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/review": {
+      "get": {
+        "tags": ["review"],
+        "summary": "Lista de Reviews",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["review"],
+        "summary": "Crear review",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/review/me": {
+      "get": {
+        "tags": ["review"],
+        "summary": "Informacion de mis reviews",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/review/user": {
+      "get": {
+        "tags": ["review"],
+        "summary": "Informacion de mis reviews como usuario",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/review/company": {
+      "get": {
+        "tags": ["review"],
+        "summary": "Informacion de mis reviews como compañia",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    },
+    "/review/{userId}": {
+      "put": {
+        "tags": ["review"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "summary": "Lista de usuarios",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ]
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { CompanyController } from "../company/company.controller";
 
+import { CompanyController } from "../company/company.controller";
 import { AuthController } from "./auth.controller";
 import { AuthValidator } from "./schemas/authValidator";
 

@@ -12,9 +12,11 @@ export class Review extends Uuid {
   rating!: number;
   @Column({ nullable: true, type: "varchar" })
   title?: string;
-  @ManyToOne(() => User, (user) => user.review, {onDelete:"CASCADE"})
+  @ManyToOne(() => User, (user) => user.review, { onDelete: "CASCADE" })
   user!: User;
-  @ManyToOne(() => Company, (company) => company.review, {onDelete:"CASCADE"})
+  @ManyToOne(() => Company, (company) => company.review, {
+    onDelete: "CASCADE",
+  })
   company!: Company;
   @CreateDateColumn()
   createdAt?: Date;
