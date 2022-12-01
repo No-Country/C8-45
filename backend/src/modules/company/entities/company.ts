@@ -26,7 +26,7 @@ export class Company extends Uuid {
   country?: string;
   @Column({ nullable: true, type: "varchar" })
   city?: string;
-  @Column({ nullable: false, type: "varchar" })
+  @Column({ nullable: false, type: "varchar",unique:true })
   website!: string;
   @Column({ nullable: false, type: "varchar" })
   workEmail!: string;
