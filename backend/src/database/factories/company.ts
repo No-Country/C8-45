@@ -1,8 +1,9 @@
 import { setSeederFactory } from "typeorm-extension";
+import { Encryptor } from "../../common/encriptor/encriptor";
 
 import { Company } from "../../modules/company/entities/company";
 
-export default setSeederFactory(Company, (faker) => {
+export default setSeederFactory(Company, async(faker) => {
   const entity = new Company();
   entity.email = faker.internet.email();
   entity.name = faker.company.bs();
@@ -19,6 +20,7 @@ export default setSeederFactory(Company, (faker) => {
   entity.workEmail = faker.internet.email(undefined, undefined, undefined, {
     allowSpecialCharacters: true,
   });
+  entity.password =await Encryptor.hash("company123")
   entity.ratingGeneral = parseInt(faker.random.numeric(1)) * 0.54;
 
   return entity;
