@@ -28,3 +28,24 @@ export interface IReview {
   createdAt: string,
   id: string,
 }
+
+export interface ICompany {
+  name: string;
+  email: string;
+  role: {
+    id: number;
+    name: string;
+  };
+  id: string;
+  address?: string;
+  avatar?: string;
+  banned: boolean;
+  phone?: string;
+  reviewsQuantity?: number;
+  description: string;
+  country?: string;
+  city?: string;
+  website: string;
+  workEmail: string;
+  ratingGeneral: number;
+}

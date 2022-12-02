@@ -1,6 +1,17 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../redux/store';
 import LogInBusinessForm from '../organisms/LogInBusinessForm';
 
 function LogInBusiness() {
+  const { user, token } = useAppSelector(state => state.auth);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user && token) {
+      navigate(`/me/reviews`);
+    }
+  }, [user, token]);
+
   return (
     <section className="w-full flex-col h-[84vh]  flex md:flex-row items-center justify-center my-auto">
       <div className="w-full md:w-6/12">
@@ -16,6 +27,6 @@ function LogInBusiness() {
       </div>
     </section>
   );
-}
+};
 
 export default LogInBusiness;

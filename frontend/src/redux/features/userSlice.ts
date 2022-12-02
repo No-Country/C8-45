@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser } from '../api/types';
+import { IUser, ICompany } from '../api/types';
 import { RootState } from '../store';
 
 interface IUserState {
-  user: IUser | null;
+  user: IUser | ICompany | null;
   token: string | null;
 }
 
@@ -31,11 +31,20 @@ export const userSlice = createSlice({
       state.user = user;
       state.token = token;
     },
+    setCompanyCredentials: (
+      state,
+      {
+        payload: { company, token },
+      }: PayloadAction<{ company: ICompany | null; token: string | null }>
+    ) => {
+      state.user = company;
+      state.token = token;
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setCredentials, logOut } = userSlice.actions;
+export const { setCredentials, logOut, setCompanyCredentials } = userSlice.actions;
 
 export const selectCurrentUser = (state: RootState) => state.auth.user;
