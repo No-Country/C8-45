@@ -2,7 +2,7 @@
 /* eslint-disable no-empty */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setCredentials } from '../features/userSlice';
-import { IGenericResponse, IUser } from './types';
+import { ICompany, IGenericResponse, IUser } from './types';
 
 const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 console.log(BASE_URL);
@@ -40,7 +40,25 @@ export const authApi = createApi({
         };
       },
     }),
+    registerCompany: builder.mutation<IGenericResponse, RegisterUser>({
+      query(data) {
+        return {
+          url: 'registerCompany',
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
+    loginCompany: builder.mutation<{ token: string; company: ICompany }, LoginInput>({
+      query(data) {
+        return {
+          url: 'loginCompany',
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
-export const { useLoginUserMutation, useRegisterUserMutation } = authApi;
+export const { useLoginUserMutation, useRegisterUserMutation, useLoginCompanyMutation, useRegisterCompanyMutation } = authApi;

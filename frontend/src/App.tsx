@@ -19,7 +19,7 @@ import BusinessSettings from './components/pages/Setting.business.page';
 
 function App() {
   const { user } = useAppSelector((state) => state.auth);
-  const isAdmin = user?.role.id === 2
+  const isCompany = user?.role.id === 3
 
   return (
     <div className="App">
@@ -34,10 +34,10 @@ function App() {
           <Route path="how-it-works" element={<Howitworks />} />
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<BusinessProfile />} />
-          <Route path="/me" element={isAdmin ? <BusinessProfile /> : <MyProfile />}>
-            <Route index element={isAdmin ? '' : <ReviewFormPage />} />
-            <Route path="reviews" element={isAdmin ? <MyBusinessReviews /> : <MyReviews />} />
-            <Route path="settings" element={isAdmin ? <BusinessSettings /> : <UserSettings />} />
+          <Route path="/me" element={isCompany ? <BusinessProfile /> : <MyProfile />}>
+            <Route index element={isCompany ? '' : <ReviewFormPage />} />
+            <Route path="reviews" element={isCompany ? <MyBusinessReviews /> : <MyReviews />} />
+            <Route path="settings" element={isCompany ? <BusinessSettings /> : <UserSettings />} />
           </Route>
         </Route>
       </Routes>
