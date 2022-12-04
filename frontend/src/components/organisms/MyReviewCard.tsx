@@ -2,9 +2,10 @@ import React from 'react';
 import { AiOutlineStar } from 'react-icons/ai';
 import { useAppSelector } from '../../redux/store';
 import Avatar from '../atoms/Avatar';
-const MyReviewCard = () => {
+const MyReviewCard = (props: Props) => {
   const user = useAppSelector((state) => state.auth.user);
-
+  const { description, rate, title, company } = props;
+  const formatedURl = company.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '');
   return (
     <div className="w-full border p-3 rounded-xl bg-zinc-50 mb-6 ">
       {/* Image profile and creation date */}
@@ -14,6 +15,10 @@ const MyReviewCard = () => {
           <span className="text-xl ml-3 font-title">{user?.name}</span>
         </div>
         <span className="text-gray-600">Nov/03/2022</span>
+      </div>
+      <div className="mt-2">
+        <span className="text-lg font-title">Message</span>
+        <p className="font-poppins text-gray-600">{title}</p>
       </div>
       <div className="mt-3 flex justify-between">
         <div>
@@ -27,17 +32,12 @@ const MyReviewCard = () => {
           </span>
         </div>
         <div className="p-3 border rounded-xl bg-indigo-50 text-blue-600 font-title">
-          <a href="">www.demo.com</a>
+          <a href="">{formatedURl}</a>
         </div>
       </div>
       <div className="mt-2">
         <span className="text-lg font-title">Message</span>
-        <p className="font-poppins text-gray-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sequi
-          beatae et enim, libero quia laudantium. Minima repudiandae unde
-          exercitationem nobis quae, quas ducimus consequatur? Eius velit sunt
-          laborum libero!
-        </p>
+        <p className="font-poppins text-gray-600">{description}</p>
       </div>
       <div className="mt-2">
         <span className="text-lg font-title">Experience Date</span>
@@ -55,4 +55,10 @@ const MyReviewCard = () => {
   );
 };
 
+type Props = {
+  description: string;
+  title: string;
+  company: string;
+  rate: number;
+};
 export default MyReviewCard;
