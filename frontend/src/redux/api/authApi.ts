@@ -5,7 +5,6 @@ import { setCredentials } from '../features/userSlice';
 import { ICompany, IGenericResponse, IUser } from './types';
 
 const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
-console.log(BASE_URL);
 type RegisterUser = {
   email: string;
   name: string;
@@ -49,7 +48,10 @@ export const authApi = createApi({
         };
       },
     }),
-    loginCompany: builder.mutation<{ token: string; company: ICompany }, LoginInput>({
+    loginCompany: builder.mutation<
+      { token: string; company: ICompany },
+      LoginInput
+    >({
       query(data) {
         return {
           url: 'loginCompany',
@@ -61,4 +63,9 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginUserMutation, useRegisterUserMutation, useLoginCompanyMutation, useRegisterCompanyMutation } = authApi;
+export const {
+  useLoginUserMutation,
+  useRegisterUserMutation,
+  useLoginCompanyMutation,
+  useRegisterCompanyMutation,
+} = authApi;

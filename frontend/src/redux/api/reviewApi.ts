@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
+import { IGenericResponse, IMyReviewCreated } from './types';
 
 const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 const reviewApi = createApi({
@@ -24,9 +25,18 @@ const reviewApi = createApi({
         };
       },
     }),
+    makeReview: builder.mutation<IGenericResponse, IMyReviewCreated>({
+      query(data) {
+        return {
+          url: '',
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
 export default reviewApi;
 
-export const { useGetReviewsQuery } = reviewApi;
+export const { useGetReviewsQuery, useMakeReviewMutation } = reviewApi;
