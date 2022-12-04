@@ -19,18 +19,28 @@ export interface IGenericResponse {
   message: string;
 }
 
-export interface IMyReview {
+export interface IMyReviewFetched {
   description: string;
-  rating: string;
+  rating: number;
   title: string;
-  createdAt: string;
-  id: string;
-  company: string;
+  createdAt?: string;
+  experienceDate: string;
+  companyURL: string;
+  companyId?: string;
+  companyName: string;
+  id?: string;
 }
-
+export interface IMyReviewCreated {
+  description: string;
+  rating: number;
+  title: string;
+  experienceDate: Date;
+  companyUrl: string;
+  companyName: string;
+}
 export interface IReview {
   description: string;
-  rating: string;
+  rating: number;
   title: string;
   createdAt: string;
   id: string;

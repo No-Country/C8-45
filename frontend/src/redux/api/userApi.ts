@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setCredentials } from '../features/userSlice';
 import { RootState } from '../store';
-import { IUser, IMyReview } from './types';
+import { IUser, IMyReviewFetched } from './types';
 
 const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 const userApi = createApi({
@@ -37,7 +37,7 @@ const userApi = createApi({
         } catch (error) {}
       },
     }),
-    getMyReviews: builder.query<IMyReview[], null>({
+    getMyReviews: builder.query<IMyReviewFetched[], null>({
       query() {
         return {
           url: 'review/user',
