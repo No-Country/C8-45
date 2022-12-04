@@ -50,21 +50,59 @@ export class ReviewController {
         user: user as User,
         title: review.title,
       } as Review);
-      user.reviewsQuantity = user.reviewsQuantity + 1;
-      company.reviewsQuantity = company.reviewsQuantity + 1;
-      company.ratingGeneral =
-        (company.ratingGeneral * company.reviewsQuantity + review.rating) /
-        (company.reviewsQuantity + 1);
-
-      await ReviewController.userService.getRepository().save(user as User);
+      const { companyM, userM } = ReviewController.service.upQuantity(
+        user,
+        company,
+        review
+      );
+      await ReviewController.userService.getRepository().save(userM as User);
       await ReviewController.companyService
         .getRepository()
-        .save(company as Company);
+        .save(companyM as Company);
       return res.status(201).send("review creada correctamente");
     } catch (error) {
       throw res.status(500).send("server error");
     }
   }
+  static async deleteReview(req: Request, res: Response) {
+    const { id } = req.body.user;
+    const reviewId = req.params.id;
+
+    const user = await ReviewController.userService.findOneById(id);
+    if (!user) {
+      return res.status(400).send("usuario no encontrado");
+    }
+    const review = await ReviewController.service.findOneById(reviewId);
+    if (!review) {
+      return res.status(400).send("Review wasn't found");
+    }
+    console.log(review);
+
+    const company = await ReviewController.companyService.findOneById(
+      review.company.id
+    );
+    if (!company) {
+      return res.status(400).send("company wasn't found");
+    }
+    const del = await ReviewController.service.deleteReview(id, reviewId);
+
+    if (del.affected === 0) {
+      return res
+        .status(400)
+        .send("Review wasn't found or isn't your property or wasn't found");
+    }
+    const { companyM, userM } = ReviewController.service.downQuantity(
+      user,
+      company,
+      review
+    );
+    await ReviewController.userService.getRepository().save(userM as User);
+    await ReviewController.companyService
+      .getRepository()
+      .save(companyM as Company);
+    return res.status(201).send("review was delete");
+  }
+
   static async updateReview(req: Request, res: Response) {
     const { id } = req.params;
     const userId = req.body.user.id;
