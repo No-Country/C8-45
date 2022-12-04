@@ -24,6 +24,7 @@ const MyReviews = () => {
             key={review.id}
             rate={parseInt(review.rating)}
             company={review.company}
+            creationDate={review.createdAt}
           />
         ))
       )}
