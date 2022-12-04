@@ -38,6 +38,12 @@ export class ReviewRouter {
       CommonValidator.owner,
       ReviewRouter.controller.updateReview
     );
+    ReviewRouter.router.delete(
+      "/:id",
+      CommonValidator.uuidValidator,
+      CommonValidator.owner,
+      ReviewRouter.controller.deleteReview
+    );
     return ReviewRouter.router;
   }
 }
