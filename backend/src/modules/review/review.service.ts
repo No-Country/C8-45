@@ -14,7 +14,7 @@ export class ReviewService extends RepositoryDB<Review> {
     });
   }
   async findByUserId(id: string) {
-    return await this.getRepository().findOne({
+    const entities=await this.getRepository().find({
       where: {
         user: {
           id,
@@ -24,6 +24,7 @@ export class ReviewService extends RepositoryDB<Review> {
         company: true,
       },
     });
+    return entities.map(entity=>({...entity,company:entity.company.website}))
   }
   async findByCompanyId(id: string) {
     return await this.getRepository().findBy({

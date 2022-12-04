@@ -20,7 +20,7 @@ export class ReviewController {
   static async getMeReviews(req: Request, res: Response) {
     const { id } = await req.body.user;
     const entity = await ReviewController.service.findByUserId(id);
-    res.status(200).send({ ...entity, company: entity?.company.website });
+    res.status(200).send(entity);
     return;
   }
   static async getMeReviewsCompany(req: Request, res: Response) {
