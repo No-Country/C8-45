@@ -12,6 +12,8 @@ export class Review extends Uuid {
   rating!: number;
   @Column({ nullable: true, type: "varchar" })
   title?: string;
+  @Column({nullable:true,type:"date"})
+  experienceDate!:Date
   @ManyToOne(() => User, (user) => user.review, { onDelete: "CASCADE" })
   user!: User;
   @ManyToOne(() => Company, (company) => company.review, {
