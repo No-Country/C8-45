@@ -31,6 +31,12 @@ export class ReviewRouter {
       CommonValidator.owner,
       ReviewRouter.controller.createReview
     );
+    ReviewRouter.router.post(
+      "/companyOrUser",
+      ReviewValidator.createReviewGeneral,
+      CommonValidator.owner,
+      ReviewRouter.controller.createReviewGeneral
+    );
     ReviewRouter.router.put(
       "/:id",
       CommonValidator.uuidValidator,

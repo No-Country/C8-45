@@ -30,12 +30,13 @@ export class ReviewService extends RepositoryDB<Review> {
       },
     });
   }
-  upQuantity(user: User, company: Company, review: createReview) {
+  upQuantity(user: User, company: Company, review: createReview | Review) {
     user.reviewsQuantity = user.reviewsQuantity + 1;
-    company.reviewsQuantity = company.reviewsQuantity + 1;
     company.ratingGeneral =
       (company.ratingGeneral * company.reviewsQuantity + review.rating) /
       (company.reviewsQuantity + 1);
+    company.reviewsQuantity = company.reviewsQuantity + 1;
+
     return {
       userM: user,
       companyM: company,
@@ -44,7 +45,6 @@ export class ReviewService extends RepositoryDB<Review> {
   downQuantity(user: User, company: Company, review: Review) {
     user.reviewsQuantity = user.reviewsQuantity - 1;
     company.reviewsQuantity = company.reviewsQuantity - 1;
-
     company.ratingGeneral =
       (company.ratingGeneral * company.reviewsQuantity - review.rating) /
       (company.reviewsQuantity - 1);
@@ -70,7 +70,7 @@ export class ReviewService extends RepositoryDB<Review> {
       companyName: entity.company.name,
       companyId: entity.company.id,
       companyURL: entity.company.website,
-      company:undefined
+      company: undefined,
     }));
   }
   async findByCompanyId(id: string) {
