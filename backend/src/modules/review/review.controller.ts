@@ -12,6 +12,47 @@ export class ReviewController {
   static service = new ReviewService();
   static companyService = new CompanyService();
   static userService = new userService();
+
+  static async createReviewGeneral(req: Request, res: Response) {
+    try {
+      const { id } = req.body.user;
+      const url = new URL(req.body.companyUrl);
+      const user = (await ReviewController.userService.findOneById(id)) as User;
+      let company = await ReviewController.companyService.findOneByHostname(
+        url.host
+      );
+      if (!company) {
+        company = await ReviewController.companyService.create({
+          ...req.body.company,
+          ratingGeneral: 0,
+          reviewsQuantity: 0,
+          name: req.body.companyName,
+          website: url.host,
+          review: null,
+          role: 3,
+        });
+      }
+      const Review = await ReviewController.service.create({
+        company: company as Company,
+        description: req.body.description,
+        rating: req.body.rating,
+        user: user as User,
+        title: req.body.title,
+      } as Review);
+      const { companyM, userM } = ReviewController.service.upQuantity(
+        user,
+        company,
+        Review
+      );
+      await ReviewController.userService.getRepository().save(userM as User);
+      await ReviewController.companyService
+        .getRepository()
+        .save(companyM as Company);
+      return res.status(201).send("review creada correctamente");
+    } catch (error) {
+      return res.status(400).send("review creada correctamente");
+    }
+  }
   static async getReviews(req: Request, res: Response) {
     const entity = await ReviewController.service.findAll();
     res.send(entity);

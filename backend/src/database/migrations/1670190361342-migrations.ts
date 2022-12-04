@@ -1,14 +1,11 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class migrations1670181576999 implements MigrationInterface {
-  name = "migrations1670181576999";
+export class migrations1670190361342 implements MigrationInterface {
+  name = "migrations1670190361342";
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `ALTER TABLE \`companies\` DROP FOREIGN KEY \`FK_5d841d757dd7d85f84ed67377ab\``
-    );
-    await queryRunner.query(
-      `ALTER TABLE \`reviews\` ADD \`experienceDate\` date NULL`
+      `DROP INDEX \`IDX_d0af6f5866201d5cb424767744\` ON \`companies\``
     );
     await queryRunner.query(
       `ALTER TABLE \`users\` CHANGE \`avatar\` \`avatar\` varchar(255) NULL`
@@ -41,6 +38,9 @@ export class migrations1670181576999 implements MigrationInterface {
       `ALTER TABLE \`reviews\` CHANGE \`title\` \`title\` varchar(255) NULL`
     );
     await queryRunner.query(
+      `ALTER TABLE \`reviews\` CHANGE \`experienceDate\` \`experienceDate\` date NULL`
+    );
+    await queryRunner.query(
       `ALTER TABLE \`reviews\` CHANGE \`userId\` \`userId\` varchar(36) NULL`
     );
     await queryRunner.query(
@@ -70,15 +70,9 @@ export class migrations1670181576999 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE \`reviews\` ADD CONSTRAINT \`FK_e2769e29b8dd0ac1b578fa02679\` FOREIGN KEY (\`companyId\`) REFERENCES \`companies\`(\`id\`) ON DELETE CASCADE ON UPDATE NO ACTION`
     );
-    await queryRunner.query(
-      `ALTER TABLE \`companies\` ADD CONSTRAINT \`FK_5d841d757dd7d85f84ed67377ab\` FOREIGN KEY (\`roleId\`) REFERENCES \`roles\`(\`id\`) ON DELETE CASCADE ON UPDATE NO ACTION`
-    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
-      `ALTER TABLE \`companies\` DROP FOREIGN KEY \`FK_5d841d757dd7d85f84ed67377ab\``
-    );
     await queryRunner.query(
       `ALTER TABLE \`reviews\` DROP FOREIGN KEY \`FK_e2769e29b8dd0ac1b578fa02679\``
     );
@@ -108,6 +102,9 @@ export class migrations1670181576999 implements MigrationInterface {
     );
     await queryRunner.query(
       `ALTER TABLE \`reviews\` CHANGE \`userId\` \`userId\` varchar(36) NULL DEFAULT 'NULL'`
+    );
+    await queryRunner.query(
+      `ALTER TABLE \`reviews\` CHANGE \`experienceDate\` \`experienceDate\` date NULL DEFAULT 'NULL'`
     );
     await queryRunner.query(
       `ALTER TABLE \`reviews\` CHANGE \`title\` \`title\` varchar(255) NULL DEFAULT 'NULL'`
@@ -140,10 +137,7 @@ export class migrations1670181576999 implements MigrationInterface {
       `ALTER TABLE \`users\` CHANGE \`avatar\` \`avatar\` varchar(255) NULL DEFAULT 'NULL'`
     );
     await queryRunner.query(
-      `ALTER TABLE \`reviews\` DROP COLUMN \`experienceDate\``
-    );
-    await queryRunner.query(
-      `ALTER TABLE \`companies\` ADD CONSTRAINT \`FK_5d841d757dd7d85f84ed67377ab\` FOREIGN KEY (\`roleId\`) REFERENCES \`roles\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`
+      `CREATE UNIQUE INDEX \`IDX_d0af6f5866201d5cb424767744\` ON \`companies\` (\`email\`)`
     );
   }
 }

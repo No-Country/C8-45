@@ -19,6 +19,8 @@ export abstract class RepositoryDB<T extends Uuid | NumberId> {
     try {
       return await this.getRepository().save(entity);
     } catch (error) {
+      console.log(error);
+
       if (error instanceof QueryFailedError) {
         if (error.driverError.errno === 1062) {
           throw new ErrorService(
