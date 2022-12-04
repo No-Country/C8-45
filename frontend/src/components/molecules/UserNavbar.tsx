@@ -12,15 +12,15 @@ const UserNavbar = () => {
   const navigate = useNavigate();
   const auth_token = localStorage.getItem('auth_token');
   const dispatch = useDispatch();
-  const user=useAppSelector((state)=>state.auth)
-  dispatch(setCredentials({...user,token:auth_token}));
+  const user = useAppSelector((state) => state.auth);
+  dispatch(setCredentials({ ...user, token: auth_token }));
   const { isLoading, isFetching } = userApi.endpoints.getCurrentUser.useQuery(
     null,
     { skip: false, refetchOnMountOrArgChange: true }
   );
-    const { data } = userApi.endpoints.getCurrentUser.useQueryState(null, {
-      selectFromResult: (data) => data,
-    });
+  const { data } = userApi.endpoints.getCurrentUser.useQueryState(null, {
+    selectFromResult: (data) => data,
+  });
   const loading = isLoading || isFetching;
 
   if (loading) {
@@ -32,7 +32,11 @@ const UserNavbar = () => {
   }
   if (user.user && user.token) {
     return (
-      <UserNavButton name={user?.user.name} id={user?.user.id} avatar={user.user.avatar} />
+      <UserNavButton
+        name={user?.user.name}
+        id={user?.user.id}
+        avatar={user.user.avatar}
+      />
     );
   } else {
     return (

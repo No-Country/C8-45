@@ -19,14 +19,21 @@ export interface IGenericResponse {
   message: string;
 }
 
-export interface IMyReview { }
+export interface IMyReview {
+  description: string;
+  rating: string;
+  title: string;
+  createdAt: string;
+  id: string;
+  company: string;
+}
 
 export interface IReview {
-  description: string,
-  rating: string,
-  title: string,
-  createdAt: string,
-  id: string,
+  description: string;
+  rating: string;
+  title: string;
+  createdAt: string;
+  id: string;
 }
 
 export interface ICompany {

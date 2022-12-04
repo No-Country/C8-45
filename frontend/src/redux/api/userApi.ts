@@ -37,12 +37,11 @@ const userApi = createApi({
         } catch (error) {}
       },
     }),
-    getMyReviews: builder.query<IMyReview, null>({
-      query(data) {
+    getMyReviews: builder.query<IMyReview[], null>({
+      query() {
         return {
-          url: 'review/me',
+          url: 'review/user',
           method: 'GET',
-          body: data,
         };
       },
     }),
