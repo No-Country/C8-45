@@ -67,7 +67,10 @@ export class ReviewService extends RepositoryDB<Review> {
     });
     return entities.map((entity) => ({
       ...entity,
-      company: entity.company.website,
+      companyName: entity.company.name,
+      companyId: entity.company.id,
+      companyURL: entity.company.website,
+      company:undefined
     }));
   }
   async findByCompanyId(id: string) {

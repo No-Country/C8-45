@@ -76,7 +76,6 @@ export class ReviewController {
     if (!review) {
       return res.status(400).send("Review wasn't found");
     }
-    console.log(review);
 
     const company = await ReviewController.companyService.findOneById(
       review.company.id
