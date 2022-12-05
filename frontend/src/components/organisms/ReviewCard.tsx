@@ -25,9 +25,9 @@ const ReviewCard = (props: Props) => {
             <Rating rating={Number(rating)} />
           </span>
         </div>
-        <div className="p-3 border rounded-xl bg-indigo-50 text-blue-600 font-title">
+        {/* <div className="p-3 border rounded-xl bg-indigo-50 text-blue-600 font-title">
           <a href="">{url || "www.ejemplp.com"}</a>
-        </div>
+        </div> */}
       </div>
       <div className="mt-2">
         <span className="text-lg font-title">{title}</span>
