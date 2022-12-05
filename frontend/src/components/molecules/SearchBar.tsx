@@ -4,7 +4,7 @@ function SearchBar() {
   const [url, setUrl] = useState('');
   return (
     <div className="border rounded-full p-2 flex justify-between bg-white">
-      <form action="post" className="flex w-full">
+      <form action={`/search/${url}`} className="flex w-full">
         <input
           type="text"
           className="p-3 rounded-full font-poppins text-lg text-blue-600 w-8/12"
@@ -12,6 +12,7 @@ function SearchBar() {
             setUrl(e.target.value);
           }}
           placeholder="Insert the URL here"
+          required
         />
         <button
           type="submit"

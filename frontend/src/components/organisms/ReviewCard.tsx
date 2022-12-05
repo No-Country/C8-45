@@ -4,7 +4,7 @@ import Avatar from '../atoms/Avatar';
 import Rating from '../atoms/Rating';
 const ReviewCard = (props: Props) => {
   const user = useAppSelector((state) => state.auth.user);
-  const { description, rating, title, createdAt, id } = props;
+  const { description, rating, title, createdAt, id , url} = props;
 
   const formatDate = (date: Date) => date.toLocaleDateString('en-us', { dateStyle: 'medium' });
 
@@ -26,7 +26,7 @@ const ReviewCard = (props: Props) => {
           </span>
         </div>
         <div className="p-3 border rounded-xl bg-indigo-50 text-blue-600 font-title">
-          <a href="">www.demo.com</a>
+          <a href="">{url || "www.ejemplp.com"}</a>
         </div>
       </div>
       <div className="mt-2">
@@ -47,8 +47,9 @@ type Props = {
   description: string,
   rating: string,
   title: string,
-  createdAt: string,
+  createdAt: Date,
   id: string,
+  url?: string,
 }
 
 export default ReviewCard;
