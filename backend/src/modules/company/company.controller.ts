@@ -33,15 +33,27 @@ export class CompanyController {
   }
   static async updateCompany(req: Request, res: Response) {
     try {
+      console.log(req.body);
+
+      const { id } = req.body.user;
+      delete req.body.user;
+
+      if (!req.body.password) {
+        await CompanyController.service.updateById({ ...req.body }, id);
+        return res.status(200).json("company update");
+      }
       await CompanyController.service.updateById(
         { ...req.body, password: await Encryptor.hash(req.body.password) },
-        req.body.user.id
+        id
       );
       res.status(200).json("company update");
     } catch (error) {
+      console.log(error);
+
       if (error instanceof ErrorService) {
         res.status(error.status).send(error.message);
       }
+      res.status(500).send("error en el servidor");
     }
   }
   static async updateCompanyAdmin(req: Request, res: Response) {
