@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { CommonValidator } from "../../common/validator/common";
 import { CompanyController } from "./company.controller";
+import { CompanyValidator } from "./schemas/companyValidator";
 
 const routerCompany = Router();
 
@@ -16,6 +17,7 @@ export class CompanyRouter {
     );
     CompanyRouter.router.put(
       "/",
+      CompanyValidator.emptyCompany,
       CommonValidator.isCompany,
       CompanyRouter.controller.updateCompany
     );
@@ -27,11 +29,13 @@ export class CompanyRouter {
     CompanyRouter.router.delete(
       "/admin/:id",
       CommonValidator.isAdmin,
+      CommonValidator.uuidValidator,
       CompanyRouter.controller.deleteCompanyAdmin
     );
     CompanyRouter.router.put(
       "/admin/:id",
       CommonValidator.isAdmin,
+      CommonValidator.uuidValidator,
       CompanyRouter.controller.updateCompanyAdmin
     );
     return CompanyRouter.router;

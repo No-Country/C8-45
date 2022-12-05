@@ -67,7 +67,7 @@ export class ReviewController {
   static async getMeReviewsCompany(req: Request, res: Response) {
     const { id } = await req.body.user;
     const entity = await ReviewController.service.findByCompanyId(id);
-    delete entity?.user.password
+    delete entity?.user.password;
     res.status(200).send(entity);
     return;
   }
