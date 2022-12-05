@@ -60,10 +60,10 @@ function Star(props: any) {
       </svg>
       <input
         type="radio"
-        name="RATING"
+        name="rating"
         id={index}
         value={index}
-        className="relative opacity-0"
+        className="relative hidden"
         onClick={changeRating}
       />
     </label>

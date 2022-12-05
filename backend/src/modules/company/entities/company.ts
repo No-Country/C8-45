@@ -6,7 +6,7 @@ import { Role } from "../../role/entities/role";
 
 @Entity({ name: "companies" })
 export class Company extends Uuid {
-  @Column({ nullable: false, type: "varchar", unique: true })
+  @Column({ nullable: false, type: "varchar" })
   email!: string;
   @Column({ nullable: false, type: "varchar" })
   name!: string;
