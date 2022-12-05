@@ -38,6 +38,7 @@ function App() {
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<BusinessProfile />} />
           <Route path="search/:search" element={<SearchPage />} />
+          <Route path="*" element={<NoFound />} />
           <Route
             path="/me"
             element={isAdmin ? <BusinessProfile /> : <MyProfile />}
@@ -66,7 +67,6 @@ function App() {
                 element={isCompany ? <BusinessSettings /> : <UserSettings />}
               />
             </Route> */}
-            <Route path="*" element={<NoFound />} />
           </Route>
         </Route>
       </Routes>

@@ -26,7 +26,6 @@ const SearchPage = () => {
                 ))
 
             )}
-            <ReviewCard id="1" title='Ejejmplo' description='test' rating="4" url='www.ejemplo.com' createdAt={new Date}   />
         </div>
     );
 };
