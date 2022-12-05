@@ -74,16 +74,15 @@ export class ReviewService extends RepositoryDB<Review> {
     }));
   }
   async findByCompanyId(id: string) {
-    return await this.getRepository().findOne(
-      {where:{
+    return await this.getRepository().findOne({
+      where: {
         company: {
           id,
         },
-        
-      },relations:{
-        user:true
-      }
-      }
-      );
+      },
+      relations: {
+        user: true,
+      },
+    });
   }
 }
