@@ -48,10 +48,7 @@ export const authApi = createApi({
         };
       },
     }),
-    loginCompany: builder.mutation<
-      { token: string; company: ICompany },
-      LoginInput
-    >({
+    loginCompany: builder.mutation<{ token: string; company: ICompany }, LoginInput>({
       query(data) {
         return {
           url: 'loginCompany',

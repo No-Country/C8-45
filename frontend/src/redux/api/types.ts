@@ -66,3 +66,14 @@ export interface ICompany {
   workEmail: string;
   ratingGeneral: number;
 }
+
+export interface ICompanyUpdate{
+  name?: string,
+  avatar?: string,
+  description?: string,
+  address?: string,
+  phone?: string,
+  country?: string,
+  city?: string,
+  password?: string,
+}
