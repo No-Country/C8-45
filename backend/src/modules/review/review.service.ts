@@ -74,7 +74,7 @@ export class ReviewService extends RepositoryDB<Review> {
     }));
   }
   async findByCompanyId(id: string) {
-    return await this.getRepository().findOne({
+    return await this.getRepository().find({
       where: {
         company: {
           id,
