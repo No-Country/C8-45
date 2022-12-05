@@ -2,6 +2,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { authApi } from './api/authApi';
+import companyApi from './api/companyApi';
 import reviewApi from './api/reviewApi';
 import userApi from './api/userApi';
 import authReducer from './features/userSlice';
@@ -10,11 +11,12 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [reviewApi.reducerPath]: reviewApi.reducer,
+    [companyApi.reducerPath]: companyApi.reducer,
     auth: authReducer,
   },
   devTools: import.meta.env.MODE === 'development',
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({}).concat([authApi.middleware, userApi.middleware, reviewApi.middleware]),
+    getDefaultMiddleware({}).concat([authApi.middleware, userApi.middleware, reviewApi.middleware, companyApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
