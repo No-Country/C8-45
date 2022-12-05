@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { useAppSelector } from './redux/store';
 import ForBusiness from './components/pages/ForBusiness.page';
 import CreateReview from './components/pages/CreateReview.page';
 import Howitworks from './components/pages/How-it-works.page';
@@ -23,30 +22,33 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Layout />} />
-        <Route index element={<Landing />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="login-business" element={<LogInBusiness />} />
-        <Route path="signup-business" element={<SignupBusiness />} />
-        <Route path="createReview" element={<CreateReview />} />
-        <Route path="how-it-works" element={<Howitworks />} />
-        <Route path="for-business" element={<ForBusiness />} />
-        <Route path="business/:id" element={<BusinessProfile />} />
-        <Route path="search/:search" element={<SearchPage />} />
-        <Route path="/me" element={<MyProfile />}>
-          <Route index element={<ReviewFormPage />} />
-          <Route path="reviews" element={<MyReviews />} />
-          <Route path="settings" element={<UserSettings />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Landing />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="login-business" element={<LogInBusiness />} />
+          <Route path="signup-business" element={<SignupBusiness />} />
+          <Route path="createReview" element={<CreateReview />} />
+          <Route path="how-it-works" element={<Howitworks />} />
+          <Route path="for-business" element={<ForBusiness />} />
+          <Route path="business/:id" element={<BusinessProfile />} />
+          <Route path="search/:search" element={<SearchPage />} />
+          <Route path="/me" element={<MyProfile />}>
+            <Route index element={<ReviewFormPage />} />
+            <Route path="reviews" element={<MyReviews />} />
+            <Route path="settings" element={<UserSettings />} />
+            <Route path="*" element={<NoFound />} />
+          </Route>
+          <Route path="/my-company" element={<BusinessProfile />}>
+            <Route path="reviews" element={<MyBusinessReviews />} />
+            <Route path="settings" element={<BusinessSettings />} />
+            <Route path="*" element={<NoFound />} />
+          </Route>
+          <Route path="*" element={<NoFound />} />
         </Route>
-        <Route path="/my-company" element={<BusinessProfile />}>
-          <Route path="reviews" element={<MyBusinessReviews />} />
-          <Route path="settings" element={<BusinessSettings />} />
-        </Route>
-        <Route path="*" element={<NoFound />} />
       </Routes>
-    </div>
+    </div >
   );
-}
+};
 
 export default App;
