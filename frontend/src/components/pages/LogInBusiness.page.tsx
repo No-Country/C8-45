@@ -8,7 +8,7 @@ function LogInBusiness() {
   const navigate = useNavigate();
   useEffect(() => {
     if (user && token) {
-      navigate(`/me/reviews`);
+      navigate(`/my-company/reviews`);
     }
   }, [user, token]);
 
