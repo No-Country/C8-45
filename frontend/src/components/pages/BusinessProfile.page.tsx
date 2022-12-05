@@ -11,9 +11,11 @@ const BusinessProfile = () => {
   dispatch(getCompany(null));
   return (
     <section className="lg:w-9/12 mx-auto">
-      <BusinessStats name={data?.name} reviewsQuantity={data?.reviewsQuantity} ratingGeneral={data?.ratingGeneral} website={data?.website}  />
+      <BusinessStats name={data?.name} reviewsQuantity={data?.reviewsQuantity} ratingGeneral={data?.ratingGeneral} website={data?.website} />
       <div className="flex flex-col md:flex-row mx-auto my-10 divide-x-2 ">
-        <aside className="hidden md:block md:w-3/12 lg:w-3/12 "></aside>
+        <aside className="hidden md:block md:w-3/12 lg:w-3/12 ">
+          <UserSidebar />
+        </aside>
         <main className="md:w-9/12 md:p-4">
           <Outlet />
         </main>

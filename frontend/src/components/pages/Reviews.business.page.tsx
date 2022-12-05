@@ -1,13 +1,12 @@
-import { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useGetReviewsQuery } from '../../redux/api/reviewApi';
-import { getReviews } from '../../redux/features/reviewSlice';
+import { useGetCompanyReviewsQuery } from '../../redux/api/companyApi';
+import { getCompanyReviews } from '../../redux/features/reviewSlice';
 import ReviewCard from '../organisms/ReviewCard';
 
 const MyBusinessReviews = () => {
-  const { data, error, isLoading } = useGetReviewsQuery(null);
+  const { data, error, isLoading } = useGetCompanyReviewsQuery(null);
   const dispatch = useDispatch();
-  dispatch(getReviews(null));
+  dispatch(getCompanyReviews(null));
 
   interface Review {
     id: string,
@@ -15,6 +14,7 @@ const MyBusinessReviews = () => {
     rating: string,
     title: string,
     createdAt: string,
+    experienceDate: string,
   };
 
   return (
@@ -27,7 +27,9 @@ const MyBusinessReviews = () => {
               description={review.description}
               rating={review.rating}
               title={review.title}
-              createdAt={review.createdAt} />
+              createdAt={review.createdAt}
+              experienceDate={review.experienceDate}
+            />
           </li>
         ))}
       </ul>

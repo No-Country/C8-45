@@ -11,10 +11,14 @@ export const reviewSlice = createSlice({
     getReviews: (state, params) => {
       const { payload } = params;
       state = payload;
-    }
+    },
+    getCompanyReviews: (state, params) => {
+      const { payload } = params;
+      state = payload;
+    },
   },
 });
 
 export default reviewSlice.reducer;
 
-export const { getReviews } = reviewSlice.actions;
+export const { getReviews, getCompanyReviews } = reviewSlice.actions;
