@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { useAppSelector } from './redux/store';
 import ForBusiness from './components/pages/ForBusiness.page';
 import CreateReview from './components/pages/CreateReview.page';
 import Howitworks from './components/pages/How-it-works.page';
@@ -20,10 +19,6 @@ import SearchPage from './components/pages/Search.page';
 import NoFound from './components/organisms/NoFound';
 
 function App() {
-  const { user } = useAppSelector((state) => state.auth);
-  const isCompany = user?.role.id === 3;
-  const isAdmin = user?.role.id === 2;
-
   return (
     <div className="App">
       <Routes>
@@ -44,9 +39,10 @@ function App() {
             <Route path="settings" element={<UserSettings />} />
             <Route path="*" element={<NoFound />} />
           </Route>
-          <Route path="myBusiness" element={<BusinessProfile />}>
+          <Route path="/my-company" element={<BusinessProfile />}>
             <Route path="reviews" element={<MyBusinessReviews />} />
             <Route path="settings" element={<BusinessSettings />} />
+            <Route path="*" element={<NoFound />} />
           </Route>
         </Route>
       </Routes>

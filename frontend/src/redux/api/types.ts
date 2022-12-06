@@ -39,11 +39,13 @@ export interface IMyReviewCreated {
   companyName: string;
 }
 export interface IReview {
-  description: string;
-  rating: number;
-  title: string;
-  createdAt: string;
-  id: string;
+  id: string,
+  description: string,
+  rating: string,
+  title: string,
+  createdAt: string,
+  experienceDate: string,
+  user: IUser
 }
 
 export interface ICompany {
@@ -65,4 +67,15 @@ export interface ICompany {
   website: string;
   workEmail: string;
   ratingGeneral: number;
+}
+
+export interface ICompanyUpdate {
+  name?: string,
+  avatar?: string,
+  description?: string,
+  address?: string,
+  phone?: string,
+  country?: string,
+  city?: string,
+  password?: string,
 }

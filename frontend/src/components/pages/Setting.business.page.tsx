@@ -1,21 +1,29 @@
 import { useState } from 'react';
-import { useAppSelector } from '../../redux/store';
+import { CgSpinner } from 'react-icons/cg';
+import { useDeleteCompanyMutation, useUpdateCompanyMutation } from '../../redux/api/companyApi';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 
 const BusinessSettings = () => {
-  const { user } = useAppSelector((state) => state.auth);
-
   const [inputs, setInputs] = useState({});
+
+  const [updateCompany, { isLoading, isSuccess, error, isError, data }] = useUpdateCompanyMutation();
+  const [deleteCompany] = useDeleteCompanyMutation();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    updateCompany(inputs);
   };
 
   const handleChange = (event: any) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs(values => ({ ...values, [name]: value }))
-  }
+  };
+
+  const handleDelete = () => {
+    deleteCompany(null);
+  };
 
   return (
     <div>
@@ -34,14 +42,27 @@ const BusinessSettings = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col max-w-sm">
-        <Input type="text" name="email" placeholder="Email" callback={handleChange} />
-        <Input type="text" name="name" placeholder="Name" callback={handleChange} />
-        <Input type="text" name="website" placeholder="Website" callback={handleChange} />
-        <Input type="text" name="country" placeholder="Country" callback={handleChange} />
-        <Input type="text" name="language" placeholder="Language" callback={handleChange} />
-      </div>
-      <Button callback={() => { }} type="Secondary" value="Save Changes" />
+      <form method="post" onSubmit={handleSubmit}>
+        <div className="flex flex-col max-w-sm">
+          <Input type="text" name="name" placeholder="Name" callback={handleChange} />
+          <Input type="text" name="descriptioni" placeholder="Description" callback={handleChange} />
+          <Input type="text" name="address" placeholder="Address" callback={handleChange} />
+          <Input type="text" name="country" placeholder="Country" callback={handleChange} />
+          <Input type="text" name="city" placeholder="City" callback={handleChange} />
+        </div>
+        <button
+          type="submit"
+          className="my-2 bg-black text-white text-lg px-10 p-3 rounded-full hover:bg-gray-800"
+        >
+          {isLoading ? (
+            <span className="text-center text-3xl animate-spin">
+              <CgSpinner />
+            </span>
+          ) : (
+            <span>Save changes</span>
+          )}
+        </button>
+      </form>
       <div className="py-8">
         <div className="font-bold font-title text-xl my-4">Delete Account</div>
         <div className="pb-4 font-poppins">
@@ -50,7 +71,7 @@ const BusinessSettings = () => {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </div>
-        <Button callback={() => { }} type="Secondary" value="Delete Account" />
+        <Button callback={handleDelete} type="Secondary" value="Delete Account" />
       </div>
     </div>
   );

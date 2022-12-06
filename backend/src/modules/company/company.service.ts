@@ -13,6 +13,16 @@ export class CompanyService extends RepositoryDB<Company> {
       id: id,
     });
   }
+  async findOne(id: string) {
+    return await this.getRepository().findOne({
+      where: {
+        id,
+      },
+      relations: {
+        review: true,
+      },
+    });
+  }
   async findOneByHostname(host: string) {
     return await this.getRepository().findOneBy({
       website: host,

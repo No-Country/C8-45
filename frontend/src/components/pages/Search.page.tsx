@@ -2,6 +2,7 @@ import SearchBar from '../molecules/SearchBar';
 import ReviewCard from '../organisms/ReviewCard';
 import { useState } from 'react';
 import NoFoundReview from '../organisms/NoFoundReview';
+import { IReview } from '../../redux/api/types';
 
 const SearchPage = () => {
     const [reviews, setReviews] = useState([]);
@@ -13,20 +14,21 @@ const SearchPage = () => {
             {reviews.length === 0 ? (
                 <NoFoundReview />
             ) : (
-                reviews.map((review) => (
+                reviews.map((review: IReview) => (
                     <ReviewCard
                         key={review.id}
-                        id={review.id}
                         title={review.title}
                         description={review.description}
                         rating={review.rating}
-                        url={review.url}
+                        //url={review.url}
                         createdAt={review.createdAt}
+                        experienceDate={review.experienceDate}
+                        name={review.user.name + ' ' + review.user.lastName}
+                        avatar={review.user.avatar}
                     />
                 ))
 
             )}
-            <ReviewCard id="1" title='Ejejmplo' description='test' rating="4" url='www.ejemplo.com' createdAt={new Date}   />
         </div>
     );
 };
