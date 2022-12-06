@@ -34,18 +34,18 @@ export interface IMyReviewCreated {
   description: string;
   rating: number;
   title: string;
-  experienceDate: Date;
+  experienceDate: string;
   companyUrl: string;
   companyName: string;
 }
 export interface IReview {
-  id: string,
-  description: string,
-  rating: string,
-  title: string,
-  createdAt: string,
-  experienceDate: string,
-  user: IUser
+  id: string;
+  description: string;
+  rating: string;
+  title: string;
+  createdAt: string;
+  experienceDate: string;
+  user: IUser;
 }
 
 export interface ICompany {
@@ -70,12 +70,12 @@ export interface ICompany {
 }
 
 export interface ICompanyUpdate {
-  name?: string,
-  avatar?: string,
-  description?: string,
-  address?: string,
-  phone?: string,
-  country?: string,
-  city?: string,
-  password?: string,
+  name?: string;
+  avatar?: string;
+  description?: string;
+  address?: string;
+  phone?: string;
+  country?: string;
+  city?: string;
+  password?: string;
 }

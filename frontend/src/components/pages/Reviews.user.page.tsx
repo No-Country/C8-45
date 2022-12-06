@@ -20,6 +20,7 @@ const MyReviews = () => {
             title={review.title}
             key={review.id}
             rate={review.rating}
+            reviewId={review.id}
             companyUrl={review.companyURL}
             createdAt={review.createdAt}
             companyId={review.companyId}

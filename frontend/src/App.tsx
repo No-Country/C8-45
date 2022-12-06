@@ -44,11 +44,10 @@ function App() {
             <Route path="settings" element={<BusinessSettings />} />
             <Route path="*" element={<NoFound />} />
           </Route>
-          <Route path="*" element={<NoFound />} />
         </Route>
       </Routes>
-    </div >
+    </div>
   );
-};
+}
 
 export default App;
