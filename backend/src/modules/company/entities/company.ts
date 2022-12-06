@@ -40,6 +40,6 @@ export class Company extends Uuid {
     eager: true,
   })
   role!: Role | number;
-  @OneToMany(() => Review, (review) => review.user)
+  @OneToMany(() => Review, (review) => review.company)
   review!: Review[];
 }

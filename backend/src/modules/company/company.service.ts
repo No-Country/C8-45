@@ -18,9 +18,9 @@ export class CompanyService extends RepositoryDB<Company> {
       where: {
         id,
       },
-      relations: {
-        review: true,
-      },
+      relations:{
+        review:true
+      }
     });
   }
   async findOneByHostname(host: string) {

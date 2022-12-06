@@ -14,12 +14,13 @@ export class Review extends Uuid {
   title?: string;
   @Column({ nullable: true, type: "date" })
   experienceDate!: Date;
-  @ManyToOne(() => User, (user) => user.review, { onDelete: "CASCADE" })
+  @ManyToOne(() => User, (user) => user.review, { onDelete: "CASCADE",eager:true })
   user!: User;
   @ManyToOne(() => Company, (company) => company.review, {
     onDelete: "CASCADE",
+    eager:true,
   })
   company!: Company;
-  @CreateDateColumn()
-  createdAt?: Date;
+  @Column({type:"timestamp"})
+  createdAt!:Date
 }
