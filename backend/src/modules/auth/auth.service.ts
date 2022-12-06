@@ -27,6 +27,8 @@ export class AuthService {
       password?.at(4);
       return { ...Jwt.encoder(data), user: { ...data } };
     } catch (error) {
+      console.log(error);
+      
       throw new ErrorService(500, "error en el servidor");
     }
     
