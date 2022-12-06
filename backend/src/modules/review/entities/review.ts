@@ -21,6 +21,6 @@ export class Review extends Uuid {
     eager:true,
   })
   company!: Company;
-  @CreateDateColumn()
-  createdAt?: Date;
+  @Column({type:"timestamp"})
+  createdAt!:Date
 }
