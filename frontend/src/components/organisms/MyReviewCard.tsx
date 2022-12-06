@@ -1,42 +1,27 @@
 import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import reviewApi, { useDeleteReviewMutation } from '../../redux/api/reviewApi';
+import { IMyReviewFetched } from '../../redux/api/types';
 import { useAppSelector } from '../../redux/store';
 import Avatar from '../atoms/Avatar';
 import Rating from '../atoms/Rating';
 const MyReviewCard = (props: Props) => {
+  const [edit, setEdit] = useState(false);
+  const [reviewData, setReviewData] = useState({});
   const user = useAppSelector((state) => state.auth.user);
-  const {
-    description,
-    companyName,
-    rate,
-    companyId,
-    title,
-    companyUrl,
-    createdAt,
-    reviewId,
-  } = props;
-  const formatedURl = companyUrl.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '');
-  const formatedData = moment(createdAt).fromNow();
+  const { review } = props;
+  const formatedURl = review.companyURL.replace(
+    /^(?:https?:\/\/)?(?:www\.)?/i,
+    ''
+  );
+  const formatedData = moment(review.createdAt).fromNow();
 
-  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = await loginUser(inputs).unwrap();
-  //   localStorage.setItem('auth_token', data.token);
-  //   dispatch(setCredentials(data));
-  //   if (isSuccess) {
-  //     console.log('WOrks');
-  //   }
-  // };
-  // const [loginUser, { isLoading, isSuccess, error, isError, data }] =
-  // useLoginUserMutation();
   const [deleteReview, { isLoading, isSuccess, isError, data }] =
     useDeleteReviewMutation();
   const handleClickDelete = async (e: any) => {
-    if (reviewId) {
-      const data = await deleteReview(reviewId).unwrap();
-      console.log(data);
+    if (review.id) {
+      const data = await deleteReview(review.id).unwrap();
     }
   };
 
@@ -54,26 +39,30 @@ const MyReviewCard = (props: Props) => {
       <div className="mt-3 flex bg-indigo-100 rounded-xl p-2  items-center justify-between">
         <div>
           <span className="text-lg font-title">Company</span>
-          <p className="font-poppins text-blue-600">{companyName}</p>
+          <p className="font-poppins text-blue-600">{review.companyName}</p>
         </div>
         <div className="p-3  flex border rounded-xl bg-indigo-50 text-blue-600 font-title">
-          <Link to={`/business/${companyId}`}>{formatedURl}</Link>
+          <Link to={`/business/${review.companyId}`}>{formatedURl}</Link>
         </div>
       </div>
       {/* title */}
       <div className="mt-2">
         <span className="text-lg font-title">Title</span>
-        <p className="font-poppins text-gray-600">{title}</p>
+        <p className="font-poppins text-gray-600">{review.title}</p>
       </div>
       {/* Rating */}
       <div className="mt-2">
         <span className="text-lg font-title">Your rating</span>
-        <Rating rating={rate} />
+        <Rating rating={review.rating} />
       </div>
       {/* Descriptio */}
       <div className="mt-2">
         <span className="text-lg font-title">Message</span>
-        <p className="font-poppins text-gray-600">{description}</p>
+        <p className="font-poppins text-gray-600">{review.description}</p>
+        <textarea
+          defaultValue={review.description}
+          className="w-full font-poppins text-gray-600 resize-none"
+        />
       </div>
       {/* Experiece date */}
       <div className="mt-2">
@@ -85,7 +74,7 @@ const MyReviewCard = (props: Props) => {
           Edit
         </button>
         <button
-          onClick={() => handleClickDelete(reviewId)}
+          onClick={() => handleClickDelete(review.id)}
           className="bg-red-50 w-32 p-2 rounded-xl text-red-600 hover:bg-red-100"
         >
           Delete
@@ -96,13 +85,6 @@ const MyReviewCard = (props: Props) => {
 };
 
 type Props = {
-  description: string;
-  title: string;
-  companyUrl: string;
-  companyId: string | undefined;
-  reviewId: string | undefined;
-  companyName: string;
-  rate: number;
-  createdAt: string | undefined;
+  review: IMyReviewFetched;
 };
 export default MyReviewCard;

@@ -2,6 +2,7 @@ import { p } from 'vitest/dist/index-2f5b6168';
 import userApi from '../../redux/api/userApi';
 import Loading from '../molecules/Loading';
 import MyReviewCard from '../organisms/MyReviewCard';
+import UserReviewList from '../organisms/UserReviewList';
 
 const MyReviews = () => {
   const { isLoading, isFetching, isSuccess, data } =
@@ -13,20 +14,7 @@ const MyReviews = () => {
       {isLoading || isFetching ? (
         <Loading />
       ) : (
-        isSuccess &&
-        data.map((review) => (
-          <MyReviewCard
-            description={review.description}
-            title={review.title}
-            key={review.id}
-            rate={review.rating}
-            reviewId={review.id}
-            companyUrl={review.companyURL}
-            createdAt={review.createdAt}
-            companyId={review.companyId}
-            companyName={review.companyName}
-          />
-        ))
+        isSuccess && <UserReviewList reviews={data} />
       )}
     </div>
   );
