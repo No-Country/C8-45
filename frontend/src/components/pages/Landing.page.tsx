@@ -63,9 +63,8 @@ function Landing() {
         </div>
         <div className="md:w-6/12 mx-auto text-center font-poppins my-10 text-lg text-gray-800 flex flex-col">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
-            consequatur, aliquid sit iure voluptatem culpa eos commodi similique
-            dolorum quidem.
+            We've created a new reviews app that makes it easy for you to read
+            and write business reviews. We think you're going to love it!
           </p>
           <div className=" md:w-7/12 lg:w-5/12 mx-auto">
             <Button
