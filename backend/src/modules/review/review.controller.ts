@@ -67,10 +67,10 @@ export class ReviewController {
   static async getMeReviewsCompany(req: Request, res: Response) {
     const { id } = await req.body.user;
     const entity = await ReviewController.service.findByCompanyId(id);
-    entity.map(ent=>{
-      delete ent.user.password
-      return ent
-    })
+    entity.map((ent) => {
+      delete ent.user.password;
+      return ent;
+    });
     res.status(200).send(entity);
     return;
   }
