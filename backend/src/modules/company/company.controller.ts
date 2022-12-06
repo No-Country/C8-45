@@ -19,7 +19,12 @@ export class CompanyController {
     const { id } = req.params;
     const entity = await CompanyController.service.findOne(id);
     const { password, ...data } = entity as Company;
-    res.status(200).json(data);
+    const format =data.review.map(x=>{
+      x.company.password=""
+      x.user.password=""
+      return x
+    })
+    res.status(200).json(format);
     return;
   }
 
