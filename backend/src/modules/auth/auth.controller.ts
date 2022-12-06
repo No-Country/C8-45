@@ -13,8 +13,6 @@ export class AuthController {
       );
       res.status(200).json(entity);
     } catch (error) {
-      console.log(error);
-      
       const errorI = new ErrorBase(error);
       res.status(errorI.status).send(errorI.message);
     }
