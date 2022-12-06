@@ -27,10 +27,19 @@ const reviewApi = createApi({
     }),
     makeReview: builder.mutation<IGenericResponse, IMyReviewCreated>({
       query(data) {
+        console.log(data);
         return {
-          url: '',
+          url: '/companyOrUser',
           method: 'POST',
           body: data,
+        };
+      },
+    }),
+    deleteReview: builder.mutation<IGenericResponse, String>({
+      query(data) {
+        return {
+          url: `/${data}`,
+          method: 'DELETE',
         };
       },
     }),
@@ -39,4 +48,8 @@ const reviewApi = createApi({
 
 export default reviewApi;
 
-export const { useGetReviewsQuery, useMakeReviewMutation } = reviewApi;
+export const {
+  useGetReviewsQuery,
+  useMakeReviewMutation,
+  useDeleteReviewMutation,
+} = reviewApi;
