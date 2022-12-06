@@ -33,6 +33,14 @@ const companyApi = createApi({
         };
       },
     }),
+    getCompanyByID: builder.query({
+      query(id) {
+        return {
+          url: `/company/${id}`,
+          method: 'GET',
+        }
+      }
+    }),
     updateCompany: builder.mutation<IGenericResponse, ICompanyUpdate>({
       query(data) {
         return {
@@ -55,4 +63,4 @@ const companyApi = createApi({
 
 export default companyApi;
 
-export const { useGetCompanyQuery, useGetCompanyReviewsQuery, useUpdateCompanyMutation, useDeleteCompanyMutation } = companyApi;
+export const { useGetCompanyQuery, useGetCompanyReviewsQuery, useGetCompanyByIDQuery, useUpdateCompanyMutation, useDeleteCompanyMutation } = companyApi;

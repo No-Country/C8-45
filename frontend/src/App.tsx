@@ -17,6 +17,7 @@ import MyBusinessReviews from './components/pages/Reviews.business.page';
 import BusinessSettings from './components/pages/Setting.business.page';
 import SearchPage from './components/pages/Search.page';
 import NoFound from './components/organisms/NoFound';
+import ReviewsCompanyID from './components/pages/Reviews.companyID.page';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
           <Route path="createReview" element={<CreateReview />} />
           <Route path="how-it-works" element={<Howitworks />} />
           <Route path="for-business" element={<ForBusiness />} />
-          <Route path="business/:id" element={<BusinessProfile />} />
+          <Route path="business/:id" element={<ReviewsCompanyID />} />
           <Route path="search/:search" element={<SearchPage />} />
           <Route path="/me" element={<MyProfile />}>
             <Route index element={<ReviewFormPage />} />
