@@ -20,8 +20,7 @@ export class AuthService {
         entity.password as string
       );
     } catch (error) {
-      console.log(error,"asdasd");
-      throw new ErrorService(500, error as string);
+      throw new ErrorService(500, "error en el servidor");
     }
     if (!validate) {
       throw new ErrorService(401, "Credenciales inválidas");
@@ -40,15 +39,12 @@ export class AuthService {
         entity.password as string
       );
     } catch (error) {
-      console.log(error);
-      
       throw new ErrorService(500, "En el servidor");
     }
     if (!validate) {
       throw new ErrorService(401, "Credenciales inválidas");
     }
     const { password, ...data } = entity;
-    password?.at(4);
     return { ...Jwt.encoder(data), company: { ...data } };
   }
   async register(data: User) {

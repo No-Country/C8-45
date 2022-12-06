@@ -42,8 +42,6 @@ export class CompanyController {
   }
   static async updateCompany(req: Request, res: Response) {
     try {
-      console.log(req.body);
-
       const { id } = req.body.user;
       delete req.body.user;
 
@@ -57,8 +55,6 @@ export class CompanyController {
       );
       res.status(200).json("company update");
     } catch (error) {
-      console.log(error);
-
       if (error instanceof ErrorService) {
         res.status(error.status).send(error.message);
       }
