@@ -7,9 +7,9 @@ function ForBusiness() {
       <div className="w-10/12 mx-auto">
         <div className="w-6/12">
           <h2 className="text-3xl font-title">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa,
-            neque ab consequatur corrupti error nesciunt quis quo temporibus
-            similique asperiores.
+            Are you looking for a way to get more customers and increase your
+            online presence? Look no further! Our reviews app is the perfect
+            solution for you.
           </h2>
           <div className="my-5">
             <Link
