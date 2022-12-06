@@ -20,8 +20,8 @@ export class AuthService {
         entity.password as string
       );
     } catch (error) {
-      console.log(error);
-      throw new ErrorService(500, "En el servidor");
+      console.log(error,"asdasd");
+      throw new ErrorService(500, error as string);
     }
     if (!validate) {
       throw new ErrorService(401, "Credenciales inválidas");
