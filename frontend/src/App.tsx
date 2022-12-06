@@ -38,35 +38,15 @@ function App() {
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<BusinessProfile />} />
           <Route path="search/:search" element={<SearchPage />} />
-          <Route
-            path="/me"
-            element={isAdmin ? <BusinessProfile /> : <MyProfile />}
-          >
-            <Route index element={isAdmin ? '' : <ReviewFormPage />} />
-            <Route
-              path="reviews"
-              element={isAdmin ? <MyBusinessReviews /> : <MyReviews />}
-            />
-            <Route
-              path="settings"
-              element={isAdmin ? <BusinessSettings /> : <UserSettings />}
-            />
-            {/* Todo Revisar este rol? */}
-            {/* <Route
-              path="/me"
-              element={isCompany ? <BusinessProfile /> : <MyProfile />}
-            >
-              <Route index element={isCompany ? '' : <ReviewFormPage />} />
-              <Route
-                path="reviews"
-                element={isCompany ? <MyBusinessReviews /> : <MyReviews />}
-              />
-              <Route
-                path="settings"
-                element={isCompany ? <BusinessSettings /> : <UserSettings />}
-              />
-            </Route> */}
+          <Route path="/me" element={<MyProfile />}>
+            <Route index element={<ReviewFormPage />} />
+            <Route path="reviews" element={<MyReviews />} />
+            <Route path="settings" element={<UserSettings />} />
             <Route path="*" element={<NoFound />} />
+          </Route>
+          <Route path="myBusiness" element={<BusinessProfile />}>
+            <Route path="reviews" element={<MyBusinessReviews />} />
+            <Route path="settings" element={<BusinessSettings />} />
           </Route>
         </Route>
       </Routes>
