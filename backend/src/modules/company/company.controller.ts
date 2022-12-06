@@ -16,11 +16,9 @@ export class CompanyController {
   }
 
   static async getMyCompanyId(req: Request, res: Response) {
-    const {id}=req.params
-    const entity = await CompanyController.service.findOne(
-      id
-    );
-    const {password,...data} = entity as Company
+    const { id } = req.params;
+    const entity = await CompanyController.service.findOne(id);
+    const { password, ...data } = entity as Company;
     res.status(200).json(data);
     return;
   }

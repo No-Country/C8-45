@@ -15,10 +15,7 @@ export class CompanyRouter {
       CommonValidator.isCompany,
       CompanyRouter.controller.getMyCompany
     );
-    CompanyRouter.router.get(
-      "/:id",
-      CompanyRouter.controller.getMyCompanyId
-    );
+    CompanyRouter.router.get("/:id", CompanyRouter.controller.getMyCompanyId);
     CompanyRouter.router.put(
       "/",
       CompanyValidator.emptyCompany,
