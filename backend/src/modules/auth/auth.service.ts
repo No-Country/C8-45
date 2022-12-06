@@ -11,23 +11,25 @@ export class AuthService {
   companyService = new CompanyService();
 
   async login(email: string, passwordRequest: string) {
-    const entity = await this.userService.findOneByEmail(email);
+    
+    try {
+      const entity = await this.userService.findOneByEmail(email);
     if (!entity) throw new ErrorService(404, "Usuario no encontrado");
     let validate: boolean;
-    try {
       validate = await Encryptor.compare(
         passwordRequest,
         entity.password as string
       );
+      if (!validate) {
+        throw new ErrorService(401, "Credenciales inválidas");
+      }
+      const { password, ...data } = entity;
+      password?.at(4);
+      return { ...Jwt.encoder(data), user: { ...data } };
     } catch (error) {
       throw new ErrorService(500, "error en el servidor");
     }
-    if (!validate) {
-      throw new ErrorService(401, "Credenciales inválidas");
-    }
-    const { password, ...data } = entity;
-    password?.at(4);
-    return { ...Jwt.encoder(data), user: { ...data } };
+    
   }
   async loginCompany(email: string, passwordRequest: string) {
     const entity = await this.companyService.findOneByEmail(email);
