@@ -24,7 +24,6 @@ export class AuthService {
         throw new ErrorService(401, "Credenciales inválidas");
       }
       const { password, ...data } = entity;
-      password?.at(4);
       return { ...Jwt.encoder(data), user: { ...data } };
     } catch (error) {
       console.log(error);
