@@ -24,7 +24,7 @@ function ResponsiveNavbar() {
               <NavigationLink path="how-it-works" value="How it works?" />
             </li>
             <li className="my-2">
-              <NavigationLink path="business" value="For business" />
+              <NavigationLink path="for-business" value="For business" />
             </li>
             <li className="my-3">
               <NavigationLink path="login" value="Log In" />
