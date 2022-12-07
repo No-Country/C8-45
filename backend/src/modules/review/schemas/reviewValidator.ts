@@ -24,6 +24,7 @@ export class ReviewValidator {
   ) {
     const schema = yup.object().shape({
       description: yup.string().notRequired(),
+      experienceDate: yup.date().notRequired(),
       rating: yup.number().required(),
       title: yup.string().notRequired(),
       companyName: yup.string().required(),
