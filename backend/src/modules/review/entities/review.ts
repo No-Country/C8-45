@@ -21,6 +21,6 @@ export class Review extends Uuid {
     eager:true,
   })
   company!: Company;
-  @Column({type:"timestamp"})
+  @Column({nullable:true,type:"timestamp",default:new Date().toISOString().slice(0, 19).replace('T', ' ')})
   createdAt!:Date
 }

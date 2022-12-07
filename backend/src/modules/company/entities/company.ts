@@ -6,7 +6,7 @@ import { Role } from "../../role/entities/role";
 
 @Entity({ name: "companies" })
 export class Company extends Uuid {
-  @Column({ nullable: false, type: "varchar" })
+  @Column({ nullable: true, type: "varchar" })
   email!: string;
   @Column({ nullable: false, type: "varchar" })
   name!: string;
@@ -28,11 +28,11 @@ export class Company extends Uuid {
   city?: string;
   @Column({ nullable: false, type: "varchar", unique: true })
   website!: string;
-  @Column({ nullable: false, type: "varchar" })
+  @Column({ nullable: true, type: "varchar" })
   workEmail!: string;
-  @Column({ nullable: false, type: "float" })
+  @Column({ nullable: false, type: "float",default:0 })
   ratingGeneral!: number;
-  @Column({ nullable: false, type: "varchar" })
+  @Column({ nullable: true, type: "varchar" })
   password!: string;
   @ManyToOne(() => Role, (role) => role.user, {
     nullable: false,
