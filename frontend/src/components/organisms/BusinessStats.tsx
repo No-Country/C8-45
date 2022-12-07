@@ -1,9 +1,6 @@
-import React from 'react';
 import VerifyBadge from '../atoms/VerifyBadge';
-import { AiOutlineStar } from 'react-icons/ai';
 import VisitWebsite from '../molecules/VisitWebsite';
 import { Link } from 'react-router-dom';
-import { BsFillPencilFill } from 'react-icons/bs';
 import Rating from '../atoms/Rating';
 import defaultAvatar from '../../assets/defaultAvatar.png';
 import { useAppSelector } from '../../redux/store';
@@ -11,6 +8,8 @@ import { useAppSelector } from '../../redux/store';
 const BusinessStats = (props: Props) => {
   const { name, reviewsQuantity, ratingGeneral, website, description, avatar } = props;
   const { user } = useAppSelector((state) => state.auth);
+
+  const ratingString = ['Terrible', 'Bad', 'Average', 'Good', 'Excellent'];
 
   return (
     <div className="bg-indigo-50 p-5 rounded-xl flex flex-col md:flex-row justify-between items-center">
@@ -27,7 +26,7 @@ const BusinessStats = (props: Props) => {
             <span>{reviewsQuantity}</span>
           </div>
           <div className="flex-col flex my-1">
-            <span className="text-sm font-title">RATING</span>
+            <span className="text-sm font-title">RATING: {ratingString[Math.floor(ratingGeneral)]}</span>
             <span className="flex justify-center md:justify-start gap-1 text-3xl">
               <Rating rating={ratingGeneral} />
             </span>
@@ -42,7 +41,7 @@ const BusinessStats = (props: Props) => {
             'p-3 bg-blue-600 text-center flex justify-center items-center rounded-lg text-white my-5 block hover:bg-blue-700'
           }
         >
-          Make a review
+          Create a review
         </Link>}
       </div>
     </div>
