@@ -28,7 +28,7 @@ const BusinessStats = (props: Props) => {
           </div>
           <div className="flex-col flex my-1">
             <span className="text-sm font-title">RATING</span>
-            <span className="flex gap-1 text-3xl">
+            <span className="flex justify-center md:justify-start gap-1 text-3xl">
               <Rating rating={ratingGeneral} />
             </span>
           </div>
