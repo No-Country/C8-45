@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useGetCompanyByIDQuery } from '../../redux/api/companyApi';
 import { IReview } from '../../redux/api/types';
@@ -11,13 +12,13 @@ const ReviewsCompanyID = () => {
 
   return (
     <section className="lg:w-9/12 mx-auto">
-      {data?.length > 0 && <BusinessStats
-        name={data[0].company.name}
-        reviewsQuantity={data[0].company.reviewsQuantity}
-        ratingGeneral={data[0].company.ratingGeneral}
-        website={data[0].company.website}
-        description={data[0].company.description}
-        avatar={data[0].company.avatar}
+      {data && <BusinessStats
+        name={data.name}
+        reviewsQuantity={data.reviewsQuantity}
+        ratingGeneral={data.ratingGeneral}
+        website={data.website}
+        description={data.description}
+        avatar={data.avatar}
       />}
       <div className="flex flex-col justify-center md:flex-row mx-auto my-10 divide-x-2 ">
         <main className="md:w-9/12 md:p-4">
@@ -26,7 +27,7 @@ const ReviewsCompanyID = () => {
               <Loading />
             ) : (
               isSuccess &&
-              data?.map((review: IReview) => (
+              data?.review?.map((review: IReview) => (
                 <ReviewCard
                   name={review.user.name + ' ' + review.user.lastName}
                   avatar={review.user.avatar}
@@ -38,6 +39,17 @@ const ReviewsCompanyID = () => {
                   experienceDate={review.experienceDate}
                 />)))}
           </div>
+          {data?.review?.length < 1 ? <div className="border text-center py-16 rounded-xl bg-blue-50 items-center flex flex-col">
+            <span className="text-3xl font-title text-blue-600 ">
+              There are not reviews about this company yet, help us know more by being the first customer to create one! 🤓
+            </span>
+            <Link
+              to="/createReview"
+              className=" bg-blue-600 flex p-3 rounded-full text-white mt-4 "
+            >
+              Create a review
+            </Link>
+          </div> : null}
         </main>
       </div>
     </section>
