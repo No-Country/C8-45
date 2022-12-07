@@ -29,7 +29,7 @@ export default function LogInBusinessForm() {
       <form className='flex flex-col' onSubmit={handleSubmit}>
         <Input type="text" name='email' placeholder="Email" callback={handleChange} />
         <InputPassword callback={handleChange} />
-        <input type='submit' placeholder='Login' className='p-3 bg-blue-600 my-2 text-white font-poppins rounded-full cursor-pointer hover:bg-blue-700' />
+        <input type='submit' value='Log In' className='p-3 bg-blue-600 my-2 text-white font-poppins rounded-full cursor-pointer hover:bg-blue-700' />
       </form>
     </div>
   );

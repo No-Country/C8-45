@@ -28,10 +28,18 @@ export class ReviewController {
           reviewsQuantity: 0,
           name: req.body.companyName,
           website: url.host,
-          review: null,
           role: 3,
         });
       }
+      const { companyM, userM } = ReviewController.service.upQuantityR(
+        user,
+        company,
+        req.body.rating
+      );
+      await ReviewController.userService.getRepository().save(userM as User);
+      await ReviewController.companyService
+        .getRepository()
+        .save(companyM as Company);
       const Review = await ReviewController.service.create({
         company: company as Company,
         description: req.body.description,
@@ -39,15 +47,6 @@ export class ReviewController {
         user: user as User,
         title: req.body.title,
       } as Review);
-      const { companyM, userM } = ReviewController.service.upQuantity(
-        user,
-        company,
-        Review
-      );
-      await ReviewController.userService.getRepository().save(userM as User);
-      await ReviewController.companyService
-        .getRepository()
-        .save(companyM as Company);
       return res.status(201).send("review creada correctamente");
     } catch (error) {
       return res.status(400).send("review creada correctamente");
