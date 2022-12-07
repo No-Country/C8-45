@@ -47,16 +47,11 @@ export default function LogInForm() {
               <CgSpinner />
             </span>
           ) : (
-            <span>Sign Up</span>
+            <span>Log In</span>
           )}
         </button>
-        <Link
-          to="password-recovery"
-          className="my-3 text-black flex justify-center"
-        >
-          Forgot password?
-        </Link>
       </form>
+      Don't have an account? <Link to='/signup' className='text-blue-600 hover:underline'>Sign up for free now.</Link>
     </div>
   );
 }

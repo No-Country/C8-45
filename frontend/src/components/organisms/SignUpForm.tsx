@@ -39,6 +39,7 @@ export default function SignUpForm(props: Props) {
         <InputPassword callback={handleChange} />
         <input
           type="submit"
+          value='Sign Up'
           className="p-3 bg-blue-600 my-2 text-white font-poppins rounded-full cursor-pointer hover:bg-blue-700"
         />
       </form>
