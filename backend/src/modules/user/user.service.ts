@@ -16,7 +16,6 @@ export class userService extends RepositoryDB<User> {
     });
     return user; 
     } catch (error) {
-      console.log(error);
       throw error
       
     }

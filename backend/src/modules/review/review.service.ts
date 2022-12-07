@@ -75,8 +75,6 @@ export class ReviewService extends RepositoryDB<Review> {
       },
       relations:["company"],
     });
-    console.log(entities);
-    
     return entities.map((entity) => ({
       ...entity,
       companyName: entity.company.name,
