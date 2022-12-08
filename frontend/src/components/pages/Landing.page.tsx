@@ -25,16 +25,28 @@ function Landing() {
   const Categories = [
     { name: 'Finance', path: 'category/finance', icon: <AiOutlineBank /> },
     { name: 'Travel', path: 'category/travel', icon: <SlPlane /> },
-    { name: 'Health', path: 'category/health', icon: <MdOutlineHealthAndSafety /> },
+    {
+      name: 'Health',
+      path: 'category/health',
+      icon: <MdOutlineHealthAndSafety />,
+    },
     {
       name: 'Education',
       path: 'category/education',
       icon: <TbBooks />,
     },
     { name: 'Food', path: 'category/food', icon: <IoFastFoodOutline /> },
-    { name: 'Sports', path: 'category/health', icon: <MdOutlineSportsVolleyball /> },
+    {
+      name: 'Sports',
+      path: 'category/health',
+      icon: <MdOutlineSportsVolleyball />,
+    },
     { name: 'TV', path: 'category/tv', icon: <CgScreen /> },
-    { name: 'Technology', path: 'category/technology', icon: <VscCircuitBoard /> },
+    {
+      name: 'Technology',
+      path: 'category/technology',
+      icon: <VscCircuitBoard />,
+    },
   ];
   const makeReviewHandler = () => {
     if (user && token) {
@@ -86,11 +98,6 @@ function Landing() {
       <section className="py-20">
         <div className="mx-auto w-full text-center py-10">
           <h2 className="text-3xl font-title  ">Categories</h2>
-        </div>
-        <div className="py-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-10/12 mx-auto grid-flow-row">
-          {Categories.map(({ name, path, icon }) => (
-            <CategoryCard title={name} path={path} icon={icon} key={name} />
-          ))}
         </div>
       </section>
     </>

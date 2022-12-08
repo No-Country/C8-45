@@ -1,6 +1,4 @@
-import React from 'react';
 import { IMyReviewFetched } from '../../redux/api/types';
-import ReviewCard from '../atoms/ReviewCard';
 import NoRevies from '../molecules/NoRevies';
 import MyReviewCard from './MyReviewCard';
 
