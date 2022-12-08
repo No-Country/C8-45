@@ -15,7 +15,11 @@ export class CompanyRouter {
       CommonValidator.isCompany,
       CompanyRouter.controller.getMyCompany
     );
-    CompanyRouter.router.get("/:id",CommonValidator.uuidValidator ,CompanyRouter.controller.getMyCompanyId);
+    CompanyRouter.router.get(
+      "/:id",
+      CommonValidator.uuidValidator,
+      CompanyRouter.controller.getMyCompanyId
+    );
     CompanyRouter.router.put(
       "/",
       CompanyValidator.emptyCompany,
@@ -35,8 +39,8 @@ export class CompanyRouter {
     );
     CompanyRouter.router.put(
       "/admin/:id",
+      CompanyValidator.emptyCompany,
       CommonValidator.isAdmin,
-      CommonValidator.uuidValidator,
       CompanyRouter.controller.updateCompanyAdmin
     );
     return CompanyRouter.router;

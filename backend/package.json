@@ -1,7 +1,8 @@
 {
   "name": "c8-45-backend",
   "version": "1.0.0",
-  "description": "","engines": {
+  "description": "",
+  "engines": {
     "node": "16.16.0"
   },
   "scripts": {
@@ -16,7 +17,9 @@
     "db:generate": "npm run typeorm migration:generate ./src/database/migrations/migrations",
     "db:revert": "npm run typeorm migration:revert",
     "db:reset": "npm run db:revert && npm run db:migration && npm run db:seed",
-    "db:seed": "ts-node src/database/seed.ts"
+    "db:seed": "ts-node src/database/seed.ts",
+    "testAlg": "ts-node src/common/algolia/algolia.ts"
+
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/algoliasearch": "^4.0.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
@@ -53,6 +57,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "algoliasearch": "^4.14.2",
     "bcrypt": "^5.1.0",
     "class-validator": "^0.13.2",
     "cors": "^2.8.5",

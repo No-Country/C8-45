@@ -30,7 +30,7 @@ export class Company extends Uuid {
   website!: string;
   @Column({ nullable: true, type: "varchar" })
   workEmail!: string;
-  @Column({ nullable: false, type: "float",default:0 })
+  @Column({ nullable: false, type: "float", default: 0 })
   ratingGeneral!: number;
   @Column({ nullable: true, type: "varchar" })
   password!: string;

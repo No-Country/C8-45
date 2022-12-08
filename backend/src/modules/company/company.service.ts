@@ -1,5 +1,6 @@
 import { Repository } from "typeorm";
 
+import { ErrorService } from "../../common/error/errorModel";
 import { RepositoryDB } from "../../common/repository";
 import AppDataSource from "../../database/datasource";
 import { Company } from "./entities/company";
@@ -7,6 +8,9 @@ import { Company } from "./entities/company";
 export class CompanyService extends RepositoryDB<Company> {
   getRepository(): Repository<Company> {
     return AppDataSource.getRepository(Company);
+  }
+  async getCompanies() {
+    return await this.getRepository().find();
   }
   async findOneById(id: string) {
     return await this.getRepository().findOneBy({
@@ -18,9 +22,9 @@ export class CompanyService extends RepositoryDB<Company> {
       where: {
         id,
       },
-      relations:{
-        review:true
-      }
+      relations: {
+        review: true,
+      },
     });
   }
   async findOneByHostname(host: string) {
@@ -34,7 +38,11 @@ export class CompanyService extends RepositoryDB<Company> {
     });
   }
   async updateById(data: Partial<Company>, id: string) {
-    return await this.getRepository().update(id, data);
+    try {
+      return await this.getRepository().update(id, data);
+    } catch (error) {
+      throw new ErrorService(500, "error en el servidor");
+    }
   }
   async deleteById(id: string) {
     this.getRepository().delete(id);
