@@ -20,23 +20,30 @@ npm install
 npm start
 ```
 <h3>Diseño UX - UI</h3>
-- Figma
+
+- [Figma]
 
 
 <h3>Tecnologías</h3>
+
 <h4>Frontend</h4>
+
 En este proyecto usamos las siguientes tecnologías:
+
 - [ReactJS](https://es.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 
 <h4>Backend</h4>
+
 En este proyecto usamos las siguientes tecnologías:
+
 - [MySQL](https://www.mysql.com/)
 
-<h3>Contribuidores</h3>
+<h3>Equipo</h3>
+
 - [Pierre]
 - [Alvaro]
-- [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/).
-- [Rony Puche]
-- [Rony Puche]
+- [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/)
+- [Ramiro]
+- [Jerry]
