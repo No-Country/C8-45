@@ -11,23 +11,20 @@ function Signup() {
     if (isSuccess) {
       navigate('/login');
     }
-    if (isError && error) {
-      console.log(error.data);
-    }
   }, [isSuccess, isError]);
 
   return (
     <section className="w-full flex-col h-[84vh]  flex md:flex-row items-center justify-center my-auto">
       <div className="w-full md:w-6/12">
         <div className="w-10/12 sm:w-7/12 sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto">
-        <h2 className="text-center text-3xl font-title my-4">
-          Sign up as a user.
-        </h2>
+          <h2 className="text-center text-3xl font-title my-4">
+            Sign up as a user.
+          </h2>
           <SignUpForm callback={registerUser} />
           <div className="mx-auto">
             {isError && error && (
               <div className="text-center bg-red-200 rounded-lg p-3 text-red-600">
-                {error.data}
+                Ha ocurrido un error
               </div>
             )}
           </div>

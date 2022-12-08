@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 export interface IUser {
   name: string;
-  lastName: string;
+  lastName?: string;
   email: string;
   role: {
     id: number;
@@ -56,6 +56,7 @@ export interface ICompany {
     name: string;
   };
   id: string;
+  lastName?: string;
   address?: string;
   avatar?: string;
   banned: boolean;
