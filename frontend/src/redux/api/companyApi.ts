@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { setCompanyCredentials } from '../features/userSlice';
 import { RootState } from '../store';
 import { ICompanyUpdate, IGenericResponse } from './types';
 
@@ -23,6 +24,17 @@ const companyApi = createApi({
           url: '/company',
           method: 'GET',
         };
+      },
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(
+            setCompanyCredentials({
+              company: data,
+              token: localStorage.getItem('auth_token'),
+            })
+          );
+        } catch (error) { }
       },
     }),
     getCompanyReviews: builder.query({

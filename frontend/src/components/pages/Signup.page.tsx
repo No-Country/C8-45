@@ -24,7 +24,7 @@ function Signup() {
           <div className="mx-auto">
             {isError && error && (
               <div className="text-center bg-red-200 rounded-lg p-3 text-red-600">
-                Ha ocurrido un error
+                An error has occurred...
               </div>
             )}
           </div>
@@ -32,11 +32,8 @@ function Signup() {
       </div>
       <div className="hidden md:block md:w-4/12">
         <h2 className="font-title text-3xl">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur
-          tempora nam labore laborum fugit{' '}
-          <span className="text-blue-600">
-            quaerat eligendi esse perferendis libero voluptate!
-          </span>
+          Our main goal is to bring consumers and companies together, so that users can enjoy their services
+          with ease, knowing that they can trust in them!
           {isLoading && <span>Loading</span>}
         </h2>
       </div>

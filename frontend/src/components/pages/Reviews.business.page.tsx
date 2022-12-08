@@ -28,6 +28,11 @@ const MyBusinessReviews = () => {
             experienceDate={review.experienceDate}
           />
         )))}
+        {data?.length < 1 ? <div className="border text-center py-16 rounded-xl bg-blue-50 items-center flex flex-col">
+            <span className="text-3xl font-title text-blue-600 ">
+              There are not reviews about your company yet.
+            </span>
+          </div> : null}
     </div>
   );
 };
