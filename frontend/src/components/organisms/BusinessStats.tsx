@@ -10,7 +10,7 @@ const BusinessStats = (props: Props) => {
     props;
   const { user } = useAppSelector((state) => state.auth);
 
-  const ratingString = ['Terrible', 'Bad', 'Average', 'Good', 'Excellent'];
+  const ratingString = ['Awful', 'Bad', 'Average', 'Good', 'Excellent'];
 
   return (
     <div className="bg-indigo-50 p-5 rounded-xl flex flex-col md:flex-row justify-between items-center">
@@ -32,7 +32,10 @@ const BusinessStats = (props: Props) => {
           </div>
           <div className="flex-col flex my-1">
             <span className="text-sm font-title">
-              RATING: {ratingString[Math.floor(ratingGeneral)]}
+              RATING:{' '}
+              {reviewsQuantity < 1
+                ? 'Not rated'
+                : ratingString[Math.floor(ratingGeneral)]}
             </span>
             <span className="flex justify-center md:justify-start gap-1 text-3xl">
               <Rating rating={ratingGeneral} />

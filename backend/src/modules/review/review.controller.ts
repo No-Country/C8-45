@@ -179,13 +179,15 @@ formatDate = formatDate.join("");
       if(rating){
         
         const rv = await ReviewController.service.findOneById(id)
-        console.log("asdasd",rating,rv?.rating);
 
         if(rv){
           const company=rv.company
+          console.log(company);
+          console.log(rv);
+          
           console.log(((company.ratingGeneral*company.reviewsQuantity)-rv.rating+rating),company.reviewsQuantity,((company.ratingGeneral*company.reviewsQuantity)-rv.rating+rating)/company.reviewsQuantity);
           
-          company.ratingGeneral=((company.ratingGeneral*company.reviewsQuantity)-rv.rating+rating)/company.reviewsQuantity
+          company.ratingGeneral=((company.ratingGeneral*company.reviewsQuantity)-(+rv.rating)+rating)/company.reviewsQuantity
           console.log(company);
           
           await ReviewController.companyService.getRepository().save(company)
