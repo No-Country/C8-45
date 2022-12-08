@@ -18,7 +18,7 @@ function Layout() {
     <>
       <InstantSearch searchClient={searchClient} indexName={'companiesSearch'}>
         <Navbar />
-        <main className="py-20 md:my-0 md:py-0 min-h-screen">
+        <main className="py-20 md:my-0 md:py-0 min-h-[84vh]">
           <Outlet />
         </main>
         <Footer />
