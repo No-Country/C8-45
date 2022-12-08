@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import ForBusiness from './components/pages/ForBusiness.page';
 import CreateReview from './components/pages/CreateReview.page';
-import Howitworks from './components/pages/How-it-works.page';
 import Landing from './components/pages/Landing.page';
 import Login from './components/pages/Login.page';
 import Signup from './components/pages/Signup.page';
@@ -15,7 +14,6 @@ import BusinessProfile from './components/pages/BusinessProfile.page';
 import ReviewFormPage from './components/pages/MakeReview.user.page';
 import MyBusinessReviews from './components/pages/Reviews.business.page';
 import BusinessSettings from './components/pages/Setting.business.page';
-import SearchPage from './components/pages/Search.page';
 import NoFound from './components/organisms/NoFound';
 import ReviewsCompanyID from './components/pages/Reviews.companyID.page';
 
@@ -30,10 +28,8 @@ function App() {
           <Route path="login-business" element={<LogInBusiness />} />
           <Route path="signup-business" element={<SignupBusiness />} />
           <Route path="createReview" element={<CreateReview />} />
-          <Route path="how-it-works" element={<Howitworks />} />
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<ReviewsCompanyID />} />
-          <Route path="search/:search" element={<SearchPage />} />
           <Route path="/me" element={<MyProfile />}>
             <Route index element={<ReviewFormPage />} />
             <Route path="reviews" element={<MyReviews />} />
