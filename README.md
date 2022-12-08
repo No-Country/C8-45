@@ -1,7 +1,7 @@
 <h1 align="center">CHECKSITE</h1>
-<h3> ⭐ Acerca del Proyecto</h3>
+
 <p align="justify">
-  Consiste en un sitio web de reseñas de compañias, donde los usuarios pueden calificar y comentar acerca de sus experiencias con distintas compañias. Este producto buscar acercar a los consumidores con las empresas, así estas puedan obtener feedback transparente para poder mejorar los servicios que ofrecen. Y así los consumidores puedan utilizar sus servicios con tranquilidad, sabiendo que pueden confiar en ellas.
+  Este proyecto consiste en un sitio web de reseñas de compañias, donde los usuarios pueden calificar y comentar acerca de sus experiencias con distintas compañias. Este producto buscar acercar a los consumidores con las empresas, así estas puedan obtener feedback transparente para poder mejorar los servicios que ofrecen. Y así los consumidores puedan utilizar sus servicios con tranquilidad, sabiendo que pueden confiar en ellas.
 </p>
 <img src="./frontend/src/assets/Portada.jpg"/>
 
@@ -11,13 +11,13 @@
 ```sh
 git clone https://github.com/No-Country/C8-45.git
 ```
-2. Instalar NPM packages
+2. Instalar las dependencias (en las carpetas backend y frontend)
 ```sh
 npm install
 ```
-3. Iniciar el proyecto
+3. Iniciar el proyecto (en las carpetas backend y frontend)
 ```sh
-npm start
+npm run dev
 ```
 <h3> ⭐ Diseño UX - UI</h3>
 
