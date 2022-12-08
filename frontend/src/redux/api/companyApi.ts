@@ -34,7 +34,7 @@ const companyApi = createApi({
               token: localStorage.getItem('auth_token'),
             })
           );
-        } catch (error) { }
+        } catch (error) {}
       },
     }),
     getCompanyReviews: builder.query({

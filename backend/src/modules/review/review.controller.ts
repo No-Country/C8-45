@@ -62,6 +62,8 @@ export class ReviewController {
       } as Review);
       return res.status(201).send("review creada correctamente");
     } catch (error) {
+      console.log(error);
+      
       return res.status(400).send("Error al crear la review");
     }
   }
@@ -162,8 +164,34 @@ export class ReviewController {
   static async updateReview(req: Request, res: Response) {
     const { id } = req.params;
     const userId = req.body.user.id;
-    const { title, rating, description } = req.body;
+    const { title, rating, description,experienceDate } = req.body;
+    console.log(req.body);
+    
+    let formatDate
+    if(experienceDate){
+formatDate= experienceDate.split("");
+formatDate.pop();
+formatDate = formatDate.join("");
+    }
+
+
     try {
+      if(rating){
+        
+        const rv = await ReviewController.service.findOneById(id)
+        console.log("asdasd",rating,rv?.rating);
+
+        if(rv){
+          const company=rv.company
+          console.log(((company.ratingGeneral*company.reviewsQuantity)-rv.rating+rating),company.reviewsQuantity,((company.ratingGeneral*company.reviewsQuantity)-rv.rating+rating)/company.reviewsQuantity);
+          
+          company.ratingGeneral=((company.ratingGeneral*company.reviewsQuantity)-rv.rating+rating)/company.reviewsQuantity
+          console.log(company);
+          
+          await ReviewController.companyService.getRepository().save(company)
+        }
+        
+      }
       const review = await ReviewController.service.getRepository().update(
         {
           id,
@@ -175,6 +203,7 @@ export class ReviewController {
           title,
           rating,
           description,
+          experienceDate:formatDate
         }
       );
       if (review.affected === 0) {

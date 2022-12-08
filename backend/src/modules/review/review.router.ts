@@ -40,6 +40,7 @@ export class ReviewRouter {
     ReviewRouter.router.put(
       "/:id",
       CommonValidator.uuidValidator,
+      ReviewValidator.fieldsReview,
       ReviewValidator.updateReview,
       CommonValidator.owner,
       ReviewRouter.controller.updateReview
