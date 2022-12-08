@@ -40,16 +40,20 @@ export class ReviewController {
       await ReviewController.companyService
         .getRepository()
         .save(companyM as Company);
+        let formatDate=req.body.experienceDate.split("")
+        formatDate.pop()
+        formatDate=formatDate.join("")
       const Review = await ReviewController.service.create({
         company: company as Company,
         description: req.body.description,
         rating: req.body.rating,
         user: user as User,
         title: req.body.title,
+        experienceDate:formatDate
       } as Review);
       return res.status(201).send("review creada correctamente");
     } catch (error) {
-      return res.status(400).send("review creada correctamente");
+      return res.status(400).send("Error al crear la review");
     }
   }
   static async getReviews(req: Request, res: Response) {
