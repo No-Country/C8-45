@@ -34,7 +34,7 @@ export class AuthController {
     try {
       const mail =new MailService()
       const entity = await AuthController.AuthService.register(req.body);
-      await mail.sendRegisterMail("alvarocanales1599@gmail.com",`Confirmación de registro`,`Hola ${entity.name} te damos la bienvenida a nuestro sitio!`)
+      await mail.sendRegisterMail(entity.email,`Confirmación de registro`,`Hola ${entity.name} te damos la bienvenida a nuestro sitio!`)
       res.status(200).send(entity);
     } catch (error) {
       console.log(error);
