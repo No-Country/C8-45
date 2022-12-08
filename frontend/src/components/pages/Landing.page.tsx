@@ -1,53 +1,12 @@
-import { AiOutlineBank } from 'react-icons/ai';
-import { SlPlane } from 'react-icons/sl';
-import {
-  MdOutlineHealthAndSafety,
-  MdOutlineSportsVolleyball,
-} from 'react-icons/md';
-import { TbBooks } from 'react-icons/tb';
-import { IoFastFoodOutline } from 'react-icons/io5';
-import { CgScreen } from 'react-icons/cg';
-import { VscCircuitBoard } from 'react-icons/vsc';
 import Button from '../atoms/Button';
 import thumbsUp from '../../assets/thumbsUp.png';
 import thumbsDown from '../../assets/thumbsDown.png';
-import CategoryCard from '../atoms/CategoryCard';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../redux/store';
-import { RefinementList, SearchBox } from 'react-instantsearch-dom';
-import { Hits, useHits } from 'react-instantsearch-hooks-web';
-import CustomHit from './CustomHit';
-import algoliasearch from 'algoliasearch';
 import SearchBar from '../molecules/SearchBar';
 function Landing() {
   const { user, token } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
-  const Categories = [
-    { name: 'Finance', path: 'category/finance', icon: <AiOutlineBank /> },
-    { name: 'Travel', path: 'category/travel', icon: <SlPlane /> },
-    {
-      name: 'Health',
-      path: 'category/health',
-      icon: <MdOutlineHealthAndSafety />,
-    },
-    {
-      name: 'Education',
-      path: 'category/education',
-      icon: <TbBooks />,
-    },
-    { name: 'Food', path: 'category/food', icon: <IoFastFoodOutline /> },
-    {
-      name: 'Sports',
-      path: 'category/health',
-      icon: <MdOutlineSportsVolleyball />,
-    },
-    { name: 'TV', path: 'category/tv', icon: <CgScreen /> },
-    {
-      name: 'Technology',
-      path: 'category/technology',
-      icon: <VscCircuitBoard />,
-    },
-  ];
   const makeReviewHandler = () => {
     if (user && token) {
       navigate('/me');
@@ -55,10 +14,6 @@ function Landing() {
       navigate('/login');
     }
   };
-  const searchClient = algoliasearch(
-    import.meta.env.VITE_ALGOLIA_APP_ID,
-    import.meta.env.VITE_ALGOLIA_SEARCH_KEY
-  );
 
   return (
     <>
@@ -93,11 +48,6 @@ function Landing() {
               callback={makeReviewHandler}
             />
           </div>
-        </div>
-      </section>
-      <section className="py-20">
-        <div className="mx-auto w-full text-center py-10">
-          <h2 className="text-3xl font-title  ">Categories</h2>
         </div>
       </section>
     </>

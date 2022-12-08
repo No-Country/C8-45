@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BsLightningFill } from 'react-icons/bs';
-
+import logo from '../../assets/Logo.png';
 function Logo(props: Props) {
   const { type } = props;
   return (
@@ -10,7 +9,7 @@ function Logo(props: Props) {
           type === 'dark' ? 'text-white' : 'text-black'
         }`}
       >
-        <BsLightningFill />
+        <img src={logo} className="h-10" />
       </span>
       <span>Checksite</span>
     </Link>
