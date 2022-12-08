@@ -32,6 +32,7 @@ export const authApi = createApi({
     }),
     loginUser: builder.mutation<{ token: string; user: IUser }, LoginInput>({
       query(data) {
+        console.log(data);
         return {
           url: 'login',
           method: 'POST',
@@ -48,7 +49,10 @@ export const authApi = createApi({
         };
       },
     }),
-    loginCompany: builder.mutation<{ token: string; company: ICompany }, LoginInput>({
+    loginCompany: builder.mutation<
+      { token: string; company: ICompany },
+      LoginInput
+    >({
       query(data) {
         return {
           url: 'loginCompany',

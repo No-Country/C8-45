@@ -9,12 +9,16 @@ import { IoFastFoodOutline } from 'react-icons/io5';
 import { CgScreen } from 'react-icons/cg';
 import { VscCircuitBoard } from 'react-icons/vsc';
 import Button from '../atoms/Button';
-import SearchBar from '../molecules/SearchBar';
 import thumbsUp from '../../assets/thumbsUp.png';
 import thumbsDown from '../../assets/thumbsDown.png';
 import CategoryCard from '../atoms/CategoryCard';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../redux/store';
+import { RefinementList, SearchBox } from 'react-instantsearch-dom';
+import { Hits, useHits } from 'react-instantsearch-hooks-web';
+import CustomHit from './CustomHit';
+import algoliasearch from 'algoliasearch';
+import SearchBar from '../molecules/SearchBar';
 function Landing() {
   const { user, token } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -39,6 +43,10 @@ function Landing() {
       navigate('/login');
     }
   };
+  const searchClient = algoliasearch(
+    import.meta.env.VITE_ALGOLIA_APP_ID,
+    import.meta.env.VITE_ALGOLIA_SEARCH_KEY
+  );
 
   return (
     <>

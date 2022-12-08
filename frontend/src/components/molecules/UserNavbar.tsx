@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { CgSpinner } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import userApi from '../../redux/api/userApi';
@@ -25,8 +26,10 @@ const UserNavbar = () => {
 
   if (loading) {
     return (
-      <div>
-        <span>is Loading</span>
+      <div className="md:order-3 w-2/12 p-3 rounded-full bg-blue-100">
+        <span className="animate-spin flex justify-center text-2xl text-center text-blue-600">
+          <CgSpinner />
+        </span>
       </div>
     );
   }

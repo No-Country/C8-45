@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CgSpinner } from 'react-icons/cg';
 import { useMakeReviewMutation } from '../../redux/api/reviewApi';
 import { useAppDispatch } from '../../redux/store';
 import Input from '../atoms/Input';
@@ -28,6 +29,12 @@ export default function ReviewForm() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+  const handleInputDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const experienceDate = new Date(event.target.value);
+    const name = event.target.name;
+    const value = experienceDate;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
   const [makeReview, { isLoading, isSuccess, isError }] =
     useMakeReviewMutation();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -41,6 +48,7 @@ export default function ReviewForm() {
         <div className="flex flex-col w-full my-3">
           <label htmlFor="company">Company Name</label>
           <Input
+            disabled={isLoading && true}
             name="companyName"
             type="text"
             placeholder="Company Name"
@@ -53,6 +61,7 @@ export default function ReviewForm() {
             Company URL
           </label>
           <Input
+            disabled={isLoading && true}
             name="companyUrl"
             type="text"
             placeholder="example.com"
@@ -64,6 +73,7 @@ export default function ReviewForm() {
         <input
           type="range"
           name="rating"
+          disabled={isLoading && true}
           defaultValue={0}
           step={1}
           max={5}
@@ -76,10 +86,11 @@ export default function ReviewForm() {
             Experience Date
           </label>
           <input
+            disabled={isLoading && true}
             className="p-3 rounded-full mt-2 border"
             type="date"
             name="experienceDate"
-            onChange={handleChange}
+            onChange={handleInputDate}
           />
         </div>
         <div className="w-full flex flex-col my-3">
@@ -87,6 +98,7 @@ export default function ReviewForm() {
             Title
           </label>
           <Input
+            disabled={isLoading && true}
             name="title"
             type="text"
             placeholder="Your review title"
@@ -105,11 +117,19 @@ export default function ReviewForm() {
             onChange={handleTextAreaChange}
           />
         </div>
-        <input
+        <button
+          disabled={isLoading && true}
           type="submit"
-          value={'Publish'}
-          className="p-3 bg-blue-600 my-2 text-white font-poppins rounded-full cursor-pointer hover:bg-blue-700"
-        />
+          className="p-3 flex justify-center rounded-full bg-blue-600 text-white font-poppins"
+        >
+          {isLoading ? (
+            <span className="text-center text-3xl animate-spin">
+              <CgSpinner />
+            </span>
+          ) : (
+            <span>Create</span>
+          )}
+        </button>
       </div>
     </form>
   );
