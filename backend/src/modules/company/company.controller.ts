@@ -28,13 +28,14 @@ export class CompanyController {
     res.status(200).json(data);
     return;
   }
-
   static async createCompany(req: Request, res: Response) {
     try {
+      const host = new URL(req.body.website)
       const entity = await CompanyController.service.create({
         ...req.body,
         reviewsQuantity: 0,
         role: 3,
+        website:host.host,
         password: await Encryptor.hash(req.body.password),
         ratingGeneral: 0,
       });
