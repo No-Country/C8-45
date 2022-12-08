@@ -42,8 +42,7 @@ En este proyecto usamos las siguientes tecnologías:
 
 <h3>Equipo</h3>
 
-- [Pierre]
-- [Alvaro]
-- [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/)
-- [Ramiro]
-- [Jerry]
+- [Pierre] Frontend Developer
+- [Alvaro] Backend Developer
+- [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/) Frontend Developer
+- [Ramiro] Frontend Developer
