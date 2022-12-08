@@ -8,19 +8,39 @@
 <div align="center"><a href="https://c8-45.vercel.app/"> 🌩️ Visita el sitio web 🌩️ </a></div>
 
 <h3> 🖥️ Instalación</h3>
+Para correr este proyecto de forma local debes:
 
-1. Clonar el repositorio
+1. Descargar este repositorio.
+2. Abrir el proyecto con un editor de código.
+3. Instalar las dependencias usando el comando _npm install_ en las dos carpetas principales (backend y frontend).
+4. Crear un archivo _.env_ en ambas carpetas, y completar los siguientes datos:
+
+_en el .env del FRONTEND_
 ```sh
-git clone https://github.com/No-Country/C8-45.git
+VITE_SERVER_ENDPOINT=http://localhost:3000
 ```
-2. Instalar las dependencias (en las carpetas backend y frontend)
+_en el .env del BACKEND_
 ```sh
-npm install
+DB_NAME=
+DB_HOST=localhost
+DB_USER=root
+DB_DRIVER=mysql
+DB_PASSWORD=
+DB_PORT=3306
+PORT=3000
+SECRETORPRIVATEKEY=
 ```
-3. Iniciar el proyecto (en las carpetas backend y frontend)
+5. Crear una base de datos en MySQL con el mismo nombre puesto en el archivo _.env_ y conectarse a la misma.
+6. Asegurarse que la base de datos haya iniciado, y ejecutar las migraciones y los seeders.
+```sh
+npm run db:reset
+```
+7. Iniciar el proyecto en ambas carpetas.
 ```sh
 npm run dev
 ```
+8. Abrir http://localhost:3000
+
 <h3> 🎨 Diseño UX - UI</h3>
 
 - [Figma](https://www.figma.com/) [(Mockup)](https://www.figma.com/file/t4e9ldiztz1Ue6ideFkBTI/Reviews-App?node-id=0%3A1&t=Fr83rL2tTha6ptLC-1)
