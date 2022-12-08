@@ -47,7 +47,7 @@ const BusinessSettings = () => {
     <div>
       <span className="font-bold m-3 text-xl">Company Settings</span>
       <div className="flex justify-between m-3">
-        <div className="flex flex-col">
+         {/* <div className="flex flex-col">
           <Button
             callback={() => { }}
             type="Secondary"
@@ -58,8 +58,9 @@ const BusinessSettings = () => {
             type="Tertiary"
             value="Remove Profile Picture"
           />
-        </div>
+        </div> */}
       </div>
+      <div className="font-bold font-title text-xl my-4">Update Your Company's Inforamtion</div>
       <form id={'updateForm'} method="post" onSubmit={handleSubmit}>
         <div className="flex flex-col max-w-sm">
           <Input type="text" name="name" placeholder="Name" callback={handleChange} />
@@ -85,10 +86,9 @@ const BusinessSettings = () => {
       <div className="py-8">
         <div className="font-bold font-title text-xl my-4">Delete Account</div>
         <div className="pb-4 font-poppins">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Do you want to permanently delete your account? Note that this will NOT remove reviews about your company.
+          Users will still be able to view and create reviews about your company. 
+          You will NOT to log in and change or update information about your company.
         </div>
         <ButtonWithModal
           showFirstModal={showFirstDeleteModal}
