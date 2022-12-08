@@ -9,8 +9,8 @@ import type { Root } from 'react-dom/client';
 
 import '@algolia/autocomplete-theme-classic';
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
-const appId = 'JX9KVW05I5';
-const apiKey = '34a2f21c6506268a8666516f0f4cb351';
+const appId = import.meta.env.VITE_ALGOLIA_APP_ID;
+const apiKey = import.meta.env.VITE_ALGOLIA_SEARCH_KEY;
 const searchClient = algoliasearch(appId, apiKey);
 type ProductHit = Hit<{
   name: string;
