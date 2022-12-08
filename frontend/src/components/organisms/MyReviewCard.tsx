@@ -1,16 +1,19 @@
 import moment from 'moment';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import reviewApi, { useDeleteReviewMutation } from '../../redux/api/reviewApi';
+import reviewApi, {
+  useDeleteReviewMutation,
+  useUpdateReviewMutation,
+} from '../../redux/api/reviewApi';
 import { IMyReviewFetched } from '../../redux/api/types';
 import { useAppSelector } from '../../redux/store';
 import Avatar from '../atoms/Avatar';
 import Rating from '../atoms/Rating';
 const MyReviewCard = (props: Props) => {
-  const [edit, setEdit] = useState(false);
-  const [reviewData, setReviewData] = useState({});
-  const user = useAppSelector((state) => state.auth.user);
   const { review } = props;
+  const [edit, setEdit] = useState(false);
+  const [reviewData, setReviewData] = useState({ id: '' });
+  const user = useAppSelector((state) => state.auth.user);
   const formatedURl = review.companyURL.replace(
     /^(?:https?:\/\/)?(?:www\.)?/i,
     ''
@@ -28,11 +31,20 @@ const MyReviewCard = (props: Props) => {
     const value = event.target.value;
     setReviewData((values) => ({ ...values, [name]: value }));
   };
-  const [deleteReview, { isLoading, isSuccess, isError, data }] =
-    useDeleteReviewMutation();
+
   const handleClickDelete = async (e: any) => {
+    const [deleteReview, { isLoading, isSuccess, isError, data }] =
+      useDeleteReviewMutation();
     if (review.id) {
       const data = await deleteReview(review.id).unwrap();
+    }
+  };
+  const [updateReview, { isLoading, isSuccess, isError, data }] =
+    useUpdateReviewMutation();
+  const handleUpdateReview = async () => {
+    if (review.id) {
+      setReviewData({ ...reviewData, id: review.id });
+      await updateReview(reviewData);
     }
   };
   return (
@@ -121,6 +133,7 @@ const MyReviewCard = (props: Props) => {
         ) : (
           <button
             onClick={() => {
+              handleUpdateReview();
               setEdit(!edit);
             }}
             className="bg-indigo-50 m-3 w-32 p-2 rounded-xl text-blue-600 hover:bg-indigo-100"

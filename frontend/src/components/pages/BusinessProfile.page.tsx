@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { useGetCompanyQuery } from '../../redux/api/companyApi';
 import { getCompany } from '../../redux/features/companySlice';
+import CompanySidebar from '../molecules/CompanySidebar';
 import UserSidebar from '../molecules/UserSidebar';
 import BusinessStats from '../organisms/BusinessStats';
 
@@ -21,7 +22,7 @@ const BusinessProfile = () => {
       />
       <div className="flex flex-col md:flex-row mx-auto my-10 divide-x-2 ">
         <aside className="hidden md:block md:w-3/12 lg:w-3/12 ">
-          <UserSidebar />
+          <CompanySidebar />
         </aside>
         <main className="md:w-9/12 md:p-4">
           <Outlet />
