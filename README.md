@@ -5,6 +5,8 @@
 </p>
 <img src="./frontend/src/assets/Portada.jpg"/>
 
+<div align="center"> ⭐ [Checksite](https://c8-45.vercel.app/) ⭐ </div>
+
 <h3> ⭐ Instalación</h3>
 
 1. Clonar el repositorio
