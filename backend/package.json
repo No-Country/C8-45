@@ -19,7 +19,6 @@
     "db:reset": "npm run db:revert && npm run db:migration && npm run db:seed",
     "db:seed": "ts-node src/database/seed.ts",
     "testAlg": "ts-node src/common/algolia/algolia.ts"
-
   },
   "repository": {
     "type": "git",
@@ -37,6 +36,7 @@
     "@types/jsonwebtoken": "^8.5.9",
     "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.9",
+    "@types/nodemailer": "^6.4.6",
     "@types/supertest": "^2.0.12",
     "@types/swagger-ui-express": "^4.1.3",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
@@ -63,9 +63,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "googleapis": "^109.0.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
+    "nodemailer": "^6.8.0",
     "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.6.0",
     "typeorm": "^0.3.10",

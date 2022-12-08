@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import { ErrorBase } from "../../common/error/errorBase";
+import { MailService } from "../../common/gmail/gmail";
 import { AuthService } from "./auth.service";
 
 export class AuthController {
@@ -31,9 +32,13 @@ export class AuthController {
   }
   static async register(req: Request, res: Response) {
     try {
+      const mail =new MailService()
       const entity = await AuthController.AuthService.register(req.body);
+      await mail.sendRegisterMail("alvarocanales1599@gmail.com",`Confirmación de registro`,`Hola ${entity.name} te damos la bienvenida a nuestro sitio!`)
       res.status(200).send(entity);
     } catch (error) {
+      console.log(error);
+      
       const errorI = new ErrorBase(error);
       res.status(errorI.status).send(errorI.message);
     }
