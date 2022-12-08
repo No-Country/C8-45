@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { useLoginUserMutation } from '../../redux/api/authApi';
 import { setCredentials } from '../../redux/features/userSlice';
 import Input from '../atoms/Input';
 import InputPassword from '../atoms/InputPassword';
+import { ToastContainer, toast } from 'react-toastify';
+
 export default function LogInForm() {
   const [inputs, setInputs] = useState({ email: '', password: '' });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,6 +18,7 @@ export default function LogInForm() {
   const dispatch = useDispatch();
   const [loginUser, { isLoading, isSuccess, error, isError, data }] =
     useLoginUserMutation();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = await loginUser(inputs).unwrap();

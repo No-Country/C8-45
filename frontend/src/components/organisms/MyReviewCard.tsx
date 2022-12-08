@@ -12,7 +12,7 @@ import Rating from '../atoms/Rating';
 const MyReviewCard = (props: Props) => {
   const { review } = props;
   const [edit, setEdit] = useState(false);
-  const [reviewData, setReviewData] = useState({ id: '' });
+  const [reviewData, setReviewData] = useState({ id: review.id });
   const user = useAppSelector((state) => state.auth.user);
   const formatedURl = review.companyURL.replace(
     /^(?:https?:\/\/)?(?:www\.)?/i,
@@ -32,18 +32,10 @@ const MyReviewCard = (props: Props) => {
     setReviewData((values) => ({ ...values, [name]: value }));
   };
 
-  const handleClickDelete = async (e: any) => {
-    const [deleteReview, { isLoading, isSuccess, isError, data }] =
-      useDeleteReviewMutation();
-    if (review.id) {
-      const data = await deleteReview(review.id).unwrap();
-    }
-  };
   const [updateReview, { isLoading, isSuccess, isError, data }] =
     useUpdateReviewMutation();
   const handleUpdateReview = async () => {
     if (review.id) {
-      setReviewData({ ...reviewData, id: review.id });
       await updateReview(reviewData);
     }
   };
@@ -141,15 +133,33 @@ const MyReviewCard = (props: Props) => {
             Save changes
           </button>
         )}
-        <button
-          onClick={() => handleClickDelete(review.id)}
-          className="bg-red-50 w-32 p-2 rounded-xl text-red-600 hover:bg-red-100"
-        >
-          Delete
-        </button>
+        <DeleteButton reviewId={review.id} />
       </div>
     </div>
   );
+};
+
+export function DeleteButton(props: DeleteButtonProps) {
+  const { reviewId } = props;
+  const [deleteReview, { isLoading, isSuccess, isError, data }] =
+    useDeleteReviewMutation();
+
+  const handleClickDelete = async (e: any) => {
+    if (reviewId) {
+      const data = await deleteReview(reviewId).unwrap();
+    }
+  };
+  return (
+    <button
+      onClick={() => handleClickDelete(reviewId)}
+      className="bg-red-50 w-32 p-2 rounded-xl text-red-600 hover:bg-red-100"
+    >
+      Delete
+    </button>
+  );
+}
+type DeleteButtonProps = {
+  reviewId: string | undefined;
 };
 
 type Props = {

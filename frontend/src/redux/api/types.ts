@@ -35,7 +35,7 @@ export interface IMyReviewUpdated {
   rating?: number;
   title?: string;
   experienceDate?: string;
-  id: string;
+  id: string | undefined;
 }
 export interface IMyReviewCreated {
   description: string;

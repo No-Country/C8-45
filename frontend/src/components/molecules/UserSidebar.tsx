@@ -23,13 +23,24 @@ function UserSidebar() {
       >
         My reviews
       </NavLink>
-      <button
-        onClick={(e) => logOutHandler(e)}
-        className="bg-gray-100 p-2 text-lg rounded-lg font-poppins my-2 text-left"
-      >
-        Log Out
-      </button>
+      <LogOutButton />
     </nav>
+  );
+}
+export function LogOutButton() {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const logOutHandler = (e: React.MouseEvent<HTMLElement>) => {
+    dispatch(logOut());
+    navigate('/');
+  };
+  return (
+    <button
+      onClick={(e) => logOutHandler(e)}
+      className="bg-gray-100 p-2 text-lg rounded-lg font-poppins my-2 text-left"
+    >
+      Log Out
+    </button>
   );
 }
 
