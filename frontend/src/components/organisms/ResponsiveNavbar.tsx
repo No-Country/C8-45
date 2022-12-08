@@ -57,11 +57,21 @@ function ResponsiveNavbar() {
                   className={({ isActive }) =>
                     isActive ? className + activeClassName : className
                   }
-                  to={'/me/reviews'}
+                  to={user?.role.id === 3 ? '/my-company/reviews' : '/me/reviews'}
                 >
                   My reviews
                 </NavLink>
               </li>
+              {user?.role.id === 3 ? <li className="mb-1">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? className + activeClassName : className
+                  }
+                  to={'/my-company/settings'}
+                >
+                  Settings
+                </NavLink>
+              </li> : null}
               <li className="">
                 <LogOutButton />
               </li>
