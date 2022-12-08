@@ -1,29 +1,106 @@
-import React, { useState } from 'react';
+import { useEffect, useRef, createElement, Fragment } from 'react';
+import { createRoot } from 'react-dom/client';
+import { autocomplete, getAlgoliaResults } from '@algolia/autocomplete-js';
+import algoliasearch from 'algoliasearch/lite';
 
-function SearchBar() {
-  const [url, setUrl] = useState('');
+import type { AutocompleteComponents } from '@algolia/autocomplete-js';
+import type { Hit } from '@algolia/client-search';
+import type { Root } from 'react-dom/client';
+
+import '@algolia/autocomplete-theme-classic';
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
+const appId = 'JX9KVW05I5';
+const apiKey = '34a2f21c6506268a8666516f0f4cb351';
+const searchClient = algoliasearch(appId, apiKey);
+type ProductHit = Hit<{
+  name: string;
+  website: string;
+  id: string;
+}>;
+
+const SearchBar = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const panelRootRef = useRef<Root | null>(null);
+  const rootRef = useRef<HTMLElement | null>(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!containerRef.current) {
+      return undefined;
+    }
+
+    const search = autocomplete<ProductHit>({
+      container: containerRef.current,
+      placeholder: 'Search',
+      getSources({ query }) {
+        return [
+          {
+            sourceId: 'products',
+            getItems() {
+              return getAlgoliaResults<ProductHit>({
+                searchClient,
+                queries: [
+                  {
+                    indexName: 'companiesSearch',
+                    query,
+                  },
+                ],
+              });
+            },
+            templates: {
+              item({ item, components }) {
+                return (
+                  <ProductItem
+                    hit={item}
+                    components={components}
+                    callback={navigate}
+                  />
+                );
+              },
+              noResults() {
+                return 'No companies matching, make a new review for them  .';
+              },
+            },
+          },
+        ];
+      },
+      renderer: { createElement, Fragment, render: () => {} },
+      render({ children }, root) {
+        if (!panelRootRef.current || rootRef.current !== root) {
+          rootRef.current = root;
+          panelRootRef.current?.unmount();
+          panelRootRef.current = createRoot(root);
+        }
+
+        panelRootRef.current.render(children);
+      },
+    });
+
+    return () => {
+      search.destroy();
+    };
+  }, []);
+  return <div ref={containerRef} />;
+};
+type ProductItemProps = {
+  hit: ProductHit;
+  components: AutocompleteComponents;
+  callback: NavigateFunction;
+};
+function ProductItem({ hit, components, callback }: ProductItemProps) {
   return (
-    <div className="border rounded-full p-2 flex justify-between bg-white">
-      <form action={`/search/${url}`} className="flex w-full">
-        <input
-          type="text"
-          className="p-3 rounded-full font-poppins text-lg text-blue-600 w-8/12"
-          onChange={(e) => {
-            setUrl(e.target.value);
-          }}
-          placeholder="Insert the URL here"
-          required
-        />
-        <button
-          type="submit"
-          className="text-xl bg-blue-600 text-white p-3 rounded-full ml-2 w-4/12 hover:bg-blue-700"
-          onClick={() => {}}
-        >
-          Search
-        </button>
-      </form>
-    </div>
+    <button
+      onClick={() => {
+        callback(`/business/${hit.objectID}`);
+      }}
+      className="flex flex-col font-poppins"
+    >
+      <span className="text-blue-600 text-xl ">
+        <components.Highlight hit={hit} attribute="name" />
+      </span>
+      <span>
+        <components.Highlight hit={hit} attribute="website" />
+      </span>
+    </button>
   );
 }
-
 export default SearchBar;

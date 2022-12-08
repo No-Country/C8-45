@@ -16,7 +16,18 @@ const MyReviewCard = (props: Props) => {
     ''
   );
   const formatedData = moment(review.createdAt).fromNow();
-
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setReviewData((values) => ({ ...values, [name]: value }));
+  };
+  const handleTextAreaChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setReviewData((values) => ({ ...values, [name]: value }));
+  };
   const [deleteReview, { isLoading, isSuccess, isError, data }] =
     useDeleteReviewMutation();
   const handleClickDelete = async (e: any) => {
@@ -24,7 +35,6 @@ const MyReviewCard = (props: Props) => {
       const data = await deleteReview(review.id).unwrap();
     }
   };
-
   return (
     <div className="w-full border p-3 rounded-xl bg-zinc-50 mb-6 ">
       {/* Image profile and creation date */}
@@ -48,31 +58,76 @@ const MyReviewCard = (props: Props) => {
       {/* title */}
       <div className="mt-2">
         <span className="text-lg font-title">Title</span>
-        <p className="font-poppins text-gray-600">{review.title}</p>
+        {!edit ? (
+          <p className="font-poppins text-gray-600">{review.title}</p>
+        ) : (
+          <input
+            defaultValue={review.title}
+            name={'title'}
+            type="text"
+            onChange={handleChange}
+            className="w-full p-3 border rounded-full"
+          />
+        )}
       </div>
       {/* Rating */}
       <div className="mt-2">
         <span className="text-lg font-title">Your rating</span>
-        <Rating rating={review.rating} />
+        {!edit ? (
+          <Rating rating={review.rating} />
+        ) : (
+          <input
+            defaultValue={review.rating}
+            max={5}
+            name={'rating'}
+            min={0}
+            step={1}
+            type="range"
+            onChange={handleChange}
+            className="w-6/12 block border "
+          />
+        )}
       </div>
       {/* Descriptio */}
       <div className="mt-2">
         <span className="text-lg font-title">Message</span>
-        <p className="font-poppins text-gray-600">{review.description}</p>
-        <textarea
-          defaultValue={review.description}
-          className="w-full font-poppins text-gray-600 resize-none"
-        />
+        {!edit ? (
+          <p className="font-poppins text-gray-600">{review.description}</p>
+        ) : (
+          <textarea
+            name="description"
+            defaultValue={review.description}
+            onChange={handleTextAreaChange}
+            rows={5}
+            className="w-full font-poppins text-gray-600 resize-none p-2 border rounded-xl"
+          />
+        )}
       </div>
       {/* Experiece date */}
       <div className="mt-2">
         <span className="text-lg font-title">Experience Date</span>
-        <p className="font-poppins text-gray-600">02-January-2021</p>
+        <p className="font-poppins text-gray-600">{review.experienceDate}</p>
       </div>
       <div className="flex justify-end items-center">
-        <button className="bg-indigo-50 m-3 w-32 p-2 rounded-xl text-blue-600 hover:bg-indigo-100">
-          Edit
-        </button>
+        {!edit ? (
+          <button
+            onClick={() => {
+              setEdit(!edit);
+            }}
+            className="bg-indigo-50 m-3 w-32 p-2 rounded-xl text-blue-600 hover:bg-indigo-100"
+          >
+            Edit
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setEdit(!edit);
+            }}
+            className="bg-indigo-50 m-3 w-32 p-2 rounded-xl text-blue-600 hover:bg-indigo-100"
+          >
+            Save changes
+          </button>
+        )}
         <button
           onClick={() => handleClickDelete(review.id)}
           className="bg-red-50 w-32 p-2 rounded-xl text-red-600 hover:bg-red-100"

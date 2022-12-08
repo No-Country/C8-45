@@ -31,9 +31,6 @@ function Navbar() {
             <UserNavbar />
 
             <ul className="flex flex-col md:flex-row items-center  bg-white  ">
-              <li className="m-4 md:mx-4">
-                <NavigationLink path="how-it-works" value="How it works?" />
-              </li>
               <li className=" md:mx-4">
                 <NavigationLink path="for-business" value="For business" />
               </li>
