@@ -5,7 +5,7 @@
 </p>
 <img src="./frontend/src/assets/Portada.jpg"/>
 
-<a align="center" href="https://c8-45.vercel.app/"> ⭐ Checksite ⭐ </a>
+<div align="center"><a href="https://c8-45.vercel.app/"> ⭐ Checksite ⭐ </a></div>
 
 <h3> ⭐ Instalación</h3>
 
