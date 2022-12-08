@@ -62,7 +62,7 @@ const BusinessStats = (props: Props) => {
 
 type Props = {
   name: string;
-  reviewsQuantity: string;
+  reviewsQuantity: number;
   ratingGeneral: number;
   website: string;
   description: string;
