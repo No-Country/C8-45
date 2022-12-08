@@ -62,12 +62,12 @@ npm run dev
 
 <h3> 🤝 Equipo</h3>
 
-Backend
+**Backend**
 
-- Alvaro Canales - [Github](https://github.com/Alvaro1599)
+- **Alvaro Canales** - [Github](https://github.com/Alvaro1599)
 
-Frontend
+**Frontend**
 
-- Pierre Campoverde [Github](https://github.com/pierre-campoverde) [LinkedIn](https://www.linkedin.com/in/pierre-campoverde-6b748a205/)
-- Rony Puche [Github](https://github.com/rony171998) [LinkedIn](https://www.linkedin.com/in/rony-puche-a80275234/)
-- Ramiro Morard [Github](https://github.com/MorardRamiro) [LinkedIn](https://www.linkedin.com/in/morardramiro/)
+- **Pierre Campoverde** - [Github](https://github.com/pierre-campoverde) - [LinkedIn](https://www.linkedin.com/in/pierre-campoverde-6b748a205/)
+- **Rony Puche** - [Github](https://github.com/rony171998) - [LinkedIn](https://www.linkedin.com/in/rony-puche-a80275234/)
+- **Ramiro Morard** - [Github](https://github.com/MorardRamiro) - [LinkedIn](https://www.linkedin.com/in/morardramiro/)
