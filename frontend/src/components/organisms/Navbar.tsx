@@ -24,7 +24,7 @@ function Navbar() {
         {open && (
           <>
             <UserNavbar />
-            {!user && !token ? (
+            {!user || !token ? (
               <ul className="flex flex-col md:flex-row items-center  bg-white  ">
                 <li className=" md:mx-4">
                   <NavigationLink path="for-business" value="For business" />
