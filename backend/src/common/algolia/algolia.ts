@@ -45,18 +45,18 @@ export class Algolia {
     }
   }
 }
-
-/* (
+/* 
+(
     
     async ()=>{
         await AppDataSource.initialize()
     const data=await new CompanyService().findAll()
     try {
         await Algolia.index.saveObjects(data.map((x)=>Algolia.formatCompany(x)))
-        
+    console.log("listo");
     } catch (error) {
     console.log(error);
-            
     }
     }
-)() */
+)()
+ */
