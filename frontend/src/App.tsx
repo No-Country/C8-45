@@ -18,7 +18,6 @@ import BusinessSettings from './components/pages/Setting.business.page';
 import SearchPage from './components/pages/Search.page';
 import NoFound from './components/organisms/NoFound';
 import ReviewsCompanyID from './components/pages/Reviews.companyID.page';
-import CategoryPage from './components/pages/Category.page';
 
 function App() {
   return (
@@ -35,7 +34,6 @@ function App() {
           <Route path="for-business" element={<ForBusiness />} />
           <Route path="business/:id" element={<ReviewsCompanyID />} />
           <Route path="search/:search" element={<SearchPage />} />
-          <Route path="category/:category" element={<CategoryPage />} />
           <Route path="/me" element={<MyProfile />}>
             <Route index element={<ReviewFormPage />} />
             <Route path="reviews" element={<MyReviews />} />
