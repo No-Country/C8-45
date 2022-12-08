@@ -9,7 +9,7 @@ const MyProfile = () => {
   const { user, token } = useAppSelector((state) => state.auth);
   useEffect(() => {
     if (!user && !token) {
-      navigate('/');
+      navigate('/login');
     }
   }, [user]);
 

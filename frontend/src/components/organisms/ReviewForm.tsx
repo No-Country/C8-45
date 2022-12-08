@@ -118,7 +118,7 @@ export default function ReviewForm() {
         </div>
         <div className="w-full flex flex-col my-3">
           <label htmlFor="url" className="font-poppins">
-            Description
+            Description(max 256)
           </label>
           <textarea
             className="rounded-xl border mt-2 resize-none p-2"
