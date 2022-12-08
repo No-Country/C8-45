@@ -15,11 +15,14 @@ export default function ReviewForm() {
     title: '',
     description: '',
     rating: 0,
-    experienceDate: '',
+    experienceDate: '2022-12-08T13:41:58.602Z',
   });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
-    const value = event.target.value;
+    let value: string | number = event.target.value;
+    if (name === 'rating') {
+      value = parseInt(value);
+    }
     setInputs((values) => ({ ...values, [name]: value }));
   };
   const handleTextAreaChange = (
@@ -39,6 +42,14 @@ export default function ReviewForm() {
     useMakeReviewMutation();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(inputs);
+    const exampleBody = {
+      companyUrl: 'https://www.avianca.com/',
+      companyName: 'Avianca',
+      rating: 5,
+      experienceDate: '2022-12-08T13:41:58.602Z',
+    };
+
     const res = await makeReview(inputs).unwrap();
   };
 
@@ -81,7 +92,7 @@ export default function ReviewForm() {
           onChange={handleChange}
           id=""
         />
-        <div className="w-full flex flex-col my-3">
+        {/* <div className="w-full flex flex-col my-3">
           <label htmlFor="url" className="font-poppins">
             Experience Date
           </label>
@@ -92,7 +103,7 @@ export default function ReviewForm() {
             name="experienceDate"
             onChange={handleInputDate}
           />
-        </div>
+        </div> */}
         <div className="w-full flex flex-col my-3">
           <label htmlFor="url" className="font-poppins">
             Title

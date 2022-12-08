@@ -6,7 +6,8 @@ import Loading from '../molecules/Loading';
 import ReviewCard from '../organisms/ReviewCard';
 
 const MyBusinessReviews = () => {
-  const { data, error, isLoading, isFetching, isSuccess } = useGetCompanyReviewsQuery(null);
+  const { data, error, isLoading, isFetching, isSuccess } =
+    useGetCompanyReviewsQuery(null);
   const dispatch = useDispatch();
   dispatch(getCompanyReviews(null));
 
@@ -27,12 +28,15 @@ const MyBusinessReviews = () => {
             createdAt={review.createdAt}
             experienceDate={review.experienceDate}
           />
-        )))}
-        {data?.length < 1 ? <div className="border text-center py-16 rounded-xl bg-blue-50 items-center flex flex-col">
-            <span className="text-3xl font-title text-blue-600 ">
-              There are not reviews about your company yet.
-            </span>
-          </div> : null}
+        ))
+      )}
+      {data?.length < 1 ? (
+        <div className="border text-center py-16 rounded-xl bg-blue-50 items-center flex flex-col">
+          <span className="text-3xl font-title text-blue-600 ">
+            There are not reviews about your company yet.
+          </span>
+        </div>
+      ) : null}
     </div>
   );
 };

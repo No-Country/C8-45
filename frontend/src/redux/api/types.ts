@@ -38,10 +38,10 @@ export interface IMyReviewUpdated {
   id: string | undefined;
 }
 export interface IMyReviewCreated {
-  description: string;
+  description?: string;
   rating: number;
-  title: string;
-  experienceDate: string;
+  title?: string;
+  experienceDate?: string;
   companyUrl: string;
   companyName: string;
 }
