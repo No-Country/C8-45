@@ -21,9 +21,9 @@ npm install
 ```sh
 npm run dev
 ```
-<h3> ⭐ Diseño UX - UI</h3>
+<h3> 🎨 Diseño UX - UI</h3>
 
-- [Figma](https://www.figma.com/) [(Mockup)](https://www.figma.com/file/t4e9ldiztz1Ue6ideFkBTI/Reviews-App?node-id=0%3A1&t=Fr83rL2tTha6ptLC-1)
+<img height="18px" src="https://img.icons8.com/color/344/figma--v1.png"/> [Figma](https://www.figma.com/) [(Mockup)](https://www.figma.com/file/t4e9ldiztz1Ue6ideFkBTI/Reviews-App?node-id=0%3A1&t=Fr83rL2tTha6ptLC-1)
 
 
 <h3> ⭐ Tecnologías</h3>
