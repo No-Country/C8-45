@@ -1,7 +1,7 @@
 <h1 align="center">C8-45 CHECKSITE</h1>
 <h3>Acerca del Proyecto</h3>
 <p align="justify">
-  Consiste en un sitio web de reviews.
+  Consiste en un sitio web de reseñas de compañias, donde los usuarios pueden calificar y comentar acerca de sus experiencias con distintas compañias. Este producto buscar acercar a los consumidores con las empresas, así estas puedan obtener feedback transparente para poder mejorar los servicios que ofrecen. Y así los consumidores puedan utilizar sus servicios con tranquilidad, sabiendo que pueden confiar en ellas.
 </p>
 <img src="./frontend/src/assets/Portada.jpg"/>
 
@@ -38,12 +38,14 @@ En este proyecto usamos las siguientes tecnologías:
 
 En este proyecto usamos las siguientes tecnologías:
 
-- [MySQL](https://www.mysql.com/)
+- [MySQL](https://www.mysql.com/) 
+- [Typescript]
+- [Nodejs]
+- [TypeOrm]
 
 <h3>Equipo</h3>
 
-- [Pierre]
-- [Alvaro]
-- [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/)
-- [Ramiro]
-- [Jerry]
+- [Pierre Campoverde] - Frontend
+- [Alvaro Canales] - Backend
+- [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/) - Frontend
+- [Ramiro Morard] - Frontend
