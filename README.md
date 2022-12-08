@@ -3,7 +3,6 @@
 <p align="justify">
   Este proyecto consiste en un sitio web de reseñas de compañias, donde los usuarios pueden calificar y comentar acerca de sus experiencias con distintas compañias. Este producto buscar acercar a los consumidores con las empresas, así estas puedan obtener feedback transparente para poder mejorar los servicios que ofrecen. Y así los consumidores puedan utilizar sus servicios con tranquilidad, sabiendo que pueden confiar en ellas.
 </p>
-<img src="./frontend/src/assets/Portada.jpg"/>
 
 <div align="center"><a href="https://c8-45.vercel.app/"> 🌩️ Visita el sitio web 🌩️ </a></div>
 
@@ -63,7 +62,12 @@ npm run dev
 
 <h3> 🤝 Equipo</h3>
 
-- [Pierre Campoverde](https://github.com/pierre-campoverde) - Frontend
-- [Alvaro Canales](https://github.com/Alvaro1599) - Backend
-- [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/) - Frontend
-- [Ramiro Morard](https://github.com/MorardRamiro) - Frontend
+Backend
+
+- Alvaro Canales - [Github](https://github.com/Alvaro1599)
+
+Frontend
+
+- Pierre Campoverde [Github](https://github.com/pierre-campoverde) [LinkedIn](https://www.linkedin.com/in/pierre-campoverde-6b748a205/)
+- Rony Puche [Github](https://github.com/rony171998) [LinkedIn](https://www.linkedin.com/in/rony-puche-a80275234/)
+- Ramiro Morard [Github](https://github.com/MorardRamiro) [LinkedIn](https://www.linkedin.com/in/morardramiro/)
