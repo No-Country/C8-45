@@ -7,7 +7,7 @@ const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 const companyApi = createApi({
   reducerPath: 'companyApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}/`,
+    baseUrl: `${BASE_URL}`,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
       if (token) {
@@ -50,8 +50,8 @@ const companyApi = createApi({
         return {
           url: `/company/${id}`,
           method: 'GET',
-        }
-      }
+        };
+      },
     }),
     updateCompany: builder.mutation<IGenericResponse, ICompanyUpdate>({
       query(data) {
@@ -75,4 +75,10 @@ const companyApi = createApi({
 
 export default companyApi;
 
-export const { useGetCompanyQuery, useGetCompanyReviewsQuery, useGetCompanyByIDQuery, useUpdateCompanyMutation, useDeleteCompanyMutation } = companyApi;
+export const {
+  useGetCompanyQuery,
+  useGetCompanyReviewsQuery,
+  useGetCompanyByIDQuery,
+  useUpdateCompanyMutation,
+  useDeleteCompanyMutation,
+} = companyApi;
