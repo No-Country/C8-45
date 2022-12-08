@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 
+import { Algolia } from "../../common/algolia/algolia";
 import { CompanyService } from "../company/company.service";
 import { Company } from "../company/entities/company";
 import { User } from "../user/entities/user";
@@ -21,6 +22,9 @@ export class ReviewController {
       let company = await ReviewController.companyService.findOneByHostname(
         url.host
       );
+      if (!user) {
+        return res.status(404).send("Usuario no encontrado");
+      }
       if (!company) {
         company = await ReviewController.companyService.create({
           ...req.body.company,
@@ -30,6 +34,7 @@ export class ReviewController {
           website: url.host,
           role: 3,
         });
+        await Algolia.createCompany(company);
       }
       const { companyM, userM } = ReviewController.service.upQuantityR(
         user,
@@ -40,16 +45,20 @@ export class ReviewController {
       await ReviewController.companyService
         .getRepository()
         .save(companyM as Company);
-        let formatDate=req.body.experienceDate.split("")
-        formatDate.pop()
-        formatDate=formatDate.join("")
-      const Review = await ReviewController.service.create({
+      /*       if(!status){
+        await Algolia.updateCompany(companyM)
+      } */
+      let formatDate = req.body.experienceDate.split("");
+      formatDate.pop();
+      formatDate = formatDate.join("");
+
+      await ReviewController.service.create({
         company: company as Company,
         description: req.body.description,
         rating: req.body.rating,
         user: user as User,
         title: req.body.title,
-        experienceDate:formatDate
+        experienceDate: formatDate,
       } as Review);
       return res.status(201).send("review creada correctamente");
     } catch (error) {

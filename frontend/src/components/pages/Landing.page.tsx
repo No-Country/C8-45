@@ -23,18 +23,18 @@ function Landing() {
   const { user, token } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
   const Categories = [
-    { name: 'Finance', path: 'finance', icon: <AiOutlineBank /> },
-    { name: 'Travel', path: 'travel', icon: <SlPlane /> },
-    { name: 'Health', path: 'health', icon: <MdOutlineHealthAndSafety /> },
+    { name: 'Finance', path: 'category/finance', icon: <AiOutlineBank /> },
+    { name: 'Travel', path: 'category/travel', icon: <SlPlane /> },
+    { name: 'Health', path: 'category/health', icon: <MdOutlineHealthAndSafety /> },
     {
       name: 'Education',
-      path: 'education',
+      path: 'category/education',
       icon: <TbBooks />,
     },
-    { name: 'Food', path: 'food', icon: <IoFastFoodOutline /> },
-    { name: 'Sports', path: 'health', icon: <MdOutlineSportsVolleyball /> },
-    { name: 'TV', path: 'tv', icon: <CgScreen /> },
-    { name: 'Technology', path: 'technology', icon: <VscCircuitBoard /> },
+    { name: 'Food', path: 'category/food', icon: <IoFastFoodOutline /> },
+    { name: 'Sports', path: 'category/health', icon: <MdOutlineSportsVolleyball /> },
+    { name: 'TV', path: 'category/tv', icon: <CgScreen /> },
+    { name: 'Technology', path: 'category/technology', icon: <VscCircuitBoard /> },
   ];
   const makeReviewHandler = () => {
     if (user && token) {

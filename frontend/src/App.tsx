@@ -18,44 +18,37 @@ import BusinessSettings from './components/pages/Setting.business.page';
 import SearchPage from './components/pages/Search.page';
 import NoFound from './components/organisms/NoFound';
 import ReviewsCompanyID from './components/pages/Reviews.companyID.page';
-import { InstantSearch } from 'react-instantsearch-dom';
-import algoliasearch from 'algoliasearch';
+import CategoryPage from './components/pages/Category.page';
 
 function App() {
-  const searchClient = algoliasearch(
-    import.meta.env.VITE_ALGOLIA_APP_ID,
-    import.meta.env.VITE_ALGOLIA_SEARCH_KEY
-  );
   return (
-    <InstantSearch searchClient={searchClient} indexName={'companies'}>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Landing />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="login-business" element={<LogInBusiness />} />
-            <Route path="signup-business" element={<SignupBusiness />} />
-            <Route path="createReview" element={<CreateReview />} />
-            <Route path="how-it-works" element={<Howitworks />} />
-            <Route path="for-business" element={<ForBusiness />} />
-            <Route path="business/:id" element={<ReviewsCompanyID />} />
-            <Route path="search/:search" element={<SearchPage />} />
-            <Route path="/me" element={<MyProfile />}>
-              <Route index element={<ReviewFormPage />} />
-              <Route path="reviews" element={<MyReviews />} />
-              <Route path="settings" element={<UserSettings />} />
-              <Route path="*" element={<NoFound />} />
-            </Route>
-            <Route path="/my-company" element={<BusinessProfile />}>
-              <Route path="reviews" element={<MyBusinessReviews />} />
-              <Route path="settings" element={<BusinessSettings />} />
-              <Route path="*" element={<NoFound />} />
-            </Route>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Landing />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="login-business" element={<LogInBusiness />} />
+          <Route path="signup-business" element={<SignupBusiness />} />
+          <Route path="createReview" element={<CreateReview />} />
+          <Route path="how-it-works" element={<Howitworks />} />
+          <Route path="for-business" element={<ForBusiness />} />
+          <Route path="business/:id" element={<ReviewsCompanyID />} />
+          <Route path="search/:search" element={<SearchPage />} />
+          <Route path="/me" element={<MyProfile />}>
+            <Route index element={<ReviewFormPage />} />
+            <Route path="reviews" element={<MyReviews />} />
+            <Route path="settings" element={<UserSettings />} />
+            <Route path="*" element={<NoFound />} />
           </Route>
-        </Routes>
-      </div>
-    </InstantSearch>
+          <Route path="/my-company" element={<BusinessProfile />}>
+            <Route path="reviews" element={<MyBusinessReviews />} />
+            <Route path="settings" element={<BusinessSettings />} />
+            <Route path="*" element={<NoFound />} />
+          </Route>
+        </Route>
+      </Routes>
+    </div>
   );
 }
 

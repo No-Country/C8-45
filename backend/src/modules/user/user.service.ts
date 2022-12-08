@@ -10,14 +10,12 @@ export class userService extends RepositoryDB<User> {
   }
   async findOneByEmail(email: string) {
     try {
-     
-    const user = await this.getRepository().findOneBy({
-      email,
-    });
-    return user; 
+      const user = await this.getRepository().findOneBy({
+        email,
+      });
+      return user;
     } catch (error) {
-      throw error
-      
+      throw error;
     }
   }
   async findOneById(id: string) {
