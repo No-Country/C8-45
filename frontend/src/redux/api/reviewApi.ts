@@ -11,7 +11,7 @@ const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 const reviewApi = createApi({
   reducerPath: 'reviewApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}review`,
+    baseUrl: `${BASE_URL}/review`,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
       if (token) {
