@@ -8,9 +8,9 @@ const SearchPage = () => {
     const [reviews, setReviews] = useState([]);
     
     return (
-        <div className="md:w-6/12 mx-auto my-10 z-1">
+        <div className="md:w-6/12 mx-auto mt-5 z-1">
             <SearchBar />
-            <div className='mb-5' />
+            <div />
             {reviews.length === 0 ? (
                 <NoFoundReview />
             ) : (

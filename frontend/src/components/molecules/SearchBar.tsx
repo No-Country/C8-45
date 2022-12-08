@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function SearchBar() {
   const [url, setUrl] = useState('');
   return (
-    <div className="border rounded-full p-2 flex justify-between bg-white">
+    <div className="border rounded-full p-2 flex justify-between bg-white mx-3">
       <form action={`/search/${url}`} className="flex w-full">
         <input
           type="text"
