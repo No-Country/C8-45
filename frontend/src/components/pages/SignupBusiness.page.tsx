@@ -32,9 +32,9 @@ export default function SignUpBusiness() {
           </p>
         </div>
         <div className="my-3 w-11/12 sm:w-8/12 md:w-5/12 lg:w-1/4 mx-auto lg:ml-0">
-        <h2 className="text-center text-3xl font-title my-4">
-          Sign up with email
-        </h2>
+          <h2 className="text-center text-3xl font-title my-4">
+            Sign up with email
+          </h2>
           <SignUpBusinessForm callback={registerCompany} />
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import Logo from '../atoms/Logo';
 import NavigationLink from '../atoms/NavigationLink';
 import UserNavbar from '../molecules/UserNavbar';
@@ -12,7 +13,7 @@ function Navbar() {
     setOpen(!open);
   };
   let isLogged = false;
-
+  const { user, token } = useAppSelector((state) => state.auth);
   //Logged user
   return (
     <>
@@ -23,12 +24,13 @@ function Navbar() {
         {open && (
           <>
             <UserNavbar />
-
-            <ul className="flex flex-col md:flex-row items-center  bg-white  ">
-              <li className=" md:mx-4">
-                <NavigationLink path="for-business" value="For business" />
-              </li>
-            </ul>
+            {!user || !token ? (
+              <ul className="flex flex-col md:flex-row items-center  bg-white  ">
+                <li className=" md:mx-4">
+                  <NavigationLink path="for-business" value="For business" />
+                </li>
+              </ul>
+            ) : null}
           </>
         )}
       </nav>

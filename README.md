@@ -1,36 +1,53 @@
-<h1 align="center">CHECKSITE</h1>
+<h1 align="center"><a href="https://c8-45.vercel.app/">CHECKSITE</a></h1>
 
 <p align="justify">
   Este proyecto consiste en un sitio web de reseñas de compañias, donde los usuarios pueden calificar y comentar acerca de sus experiencias con distintas compañias. Este producto buscar acercar a los consumidores con las empresas, así estas puedan obtener feedback transparente para poder mejorar los servicios que ofrecen. Y así los consumidores puedan utilizar sus servicios con tranquilidad, sabiendo que pueden confiar en ellas.
 </p>
-<img src="./frontend/src/assets/Portada.jpg"/>
 
-<div align="center"><a href="https://c8-45.vercel.app/"> ⭐ Checksite ⭐ </a></div>
+<div align="center"><a href="https://c8-45.vercel.app/"> 🌩️ Visita el sitio web 🌩️ </a></div>
 
-<h3> ⭐ Instalación</h3>
+<h3> 🖥️ Instalación</h3>
+Para correr este proyecto de forma local debes:
 
-1. Clonar el repositorio
+1. Descargar este repositorio.
+2. Abrir el proyecto con un editor de código.
+3. Instalar las dependencias usando el comando _npm install_ en las dos carpetas principales (backend y frontend).
+4. Crear un archivo _.env_ en ambas carpetas, y completar los siguientes datos:
+
+_en el .env del FRONTEND_
 ```sh
-git clone https://github.com/No-Country/C8-45.git
+VITE_SERVER_ENDPOINT=http://localhost:3000
 ```
-2. Instalar las dependencias (en las carpetas backend y frontend)
+_en el .env del BACKEND_
 ```sh
-npm install
+DB_NAME=
+DB_HOST=localhost
+DB_USER=root
+DB_DRIVER=mysql
+DB_PASSWORD=
+DB_PORT=3306
+PORT=3000
+SECRETORPRIVATEKEY=
 ```
-3. Iniciar el proyecto (en las carpetas backend y frontend)
+5. Crear una base de datos en MySQL con el mismo nombre puesto en el archivo _.env_ y conectarse a la misma.
+6. Asegurarse que la base de datos haya iniciado, y ejecutar las migraciones y los seeders.
+```sh
+npm run db:reset
+```
+7. Iniciar el proyecto en ambas carpetas.
 ```sh
 npm run dev
 ```
+8. Abrir http://localhost:3000.
+
 <h3> 🎨 Diseño UX - UI</h3>
 
-<img height="18px" src="https://img.icons8.com/color/344/figma--v1.png"/> [Figma](https://www.figma.com/) [(Mockup)](https://www.figma.com/file/t4e9ldiztz1Ue6ideFkBTI/Reviews-App?node-id=0%3A1&t=Fr83rL2tTha6ptLC-1)
+- [Figma](https://www.figma.com/) [(Mockup)](https://www.figma.com/file/t4e9ldiztz1Ue6ideFkBTI/Reviews-App?node-id=0%3A1&t=Fr83rL2tTha6ptLC-1)
 
 
-<h3> ⭐ Tecnologías</h3>
+<h3> 🛠️ Tecnologías</h3>
 
 <h4>Frontend</h4>
-
-En este proyecto usamos las siguientes tecnologías:
 
 - [ReactJS](https://es.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -38,16 +55,19 @@ En este proyecto usamos las siguientes tecnologías:
 
 <h4>Backend</h4>
 
-En este proyecto usamos las siguientes tecnologías:
-
 - [MySQL](https://www.mysql.com/) 
 - [Typescript](https://www.typescriptlang.org/)
 - [Nodejs](https://nodejs.org/en/)
 - [TypeOrm](https://typeorm.io/)
 
-<h3> ⭐ Equipo</h3>
+<h3> 🤝 Equipo</h3>
 
-- [Pierre Campoverde](https://github.com/pierre-campoverde) - Frontend
-- [Alvaro Canales](https://github.com/Alvaro1599) - Backend
-- [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/) - Frontend
-- [Ramiro Morard](https://github.com/MorardRamiro) - Frontend
+**Backend**
+
+- **Alvaro Canales** - [Github](https://github.com/Alvaro1599)
+
+**Frontend**
+
+- **Pierre Campoverde** - [Github](https://github.com/pierre-campoverde) - [LinkedIn](https://www.linkedin.com/in/pierre-campoverde-6b748a205/)
+- **Rony Puche** - [Github](https://github.com/rony171998) - [LinkedIn](https://www.linkedin.com/in/rony-puche-a80275234/)
+- **Ramiro Morard** - [Github](https://github.com/MorardRamiro) - [LinkedIn](https://www.linkedin.com/in/morardramiro/)

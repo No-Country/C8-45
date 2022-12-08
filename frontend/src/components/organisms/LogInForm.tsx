@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { useLoginUserMutation } from '../../redux/api/authApi';
 import { setCredentials } from '../../redux/features/userSlice';
 import Input from '../atoms/Input';
 import InputPassword from '../atoms/InputPassword';
+import { ToastContainer, toast } from 'react-toastify';
+
 export default function LogInForm() {
   const [inputs, setInputs] = useState({ email: '', password: '' });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,18 +15,15 @@ export default function LogInForm() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loginUser, { isLoading, isSuccess, error, isError, data }] =
     useLoginUserMutation();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = await loginUser(inputs).unwrap();
     localStorage.setItem('auth_token', data.token);
     dispatch(setCredentials(data));
-    if (isSuccess) {
-      console.log('WOrks');
-    }
   };
 
   return (
@@ -51,7 +50,10 @@ export default function LogInForm() {
           )}
         </button>
       </form>
-      Don't have an account? <Link to='/signup' className='text-blue-600 hover:underline'>Sign up for free now.</Link>
+      Don't have an account?{' '}
+      <Link to="/signup" className="text-blue-600 hover:underline">
+        Sign up for free now.
+      </Link>
     </div>
   );
 }

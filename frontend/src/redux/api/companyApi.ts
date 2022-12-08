@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { setCompanyCredentials } from '../features/userSlice';
 import { RootState } from '../store';
 import { ICompanyUpdate, IGenericResponse } from './types';
 
@@ -6,7 +7,7 @@ const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 const companyApi = createApi({
   reducerPath: 'companyApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}/`,
+    baseUrl: `${BASE_URL}`,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
       if (token) {
@@ -24,6 +25,17 @@ const companyApi = createApi({
           method: 'GET',
         };
       },
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(
+            setCompanyCredentials({
+              company: data,
+              token: localStorage.getItem('auth_token'),
+            })
+          );
+        } catch (error) {}
+      },
     }),
     getCompanyReviews: builder.query({
       query() {
@@ -38,8 +50,8 @@ const companyApi = createApi({
         return {
           url: `/company/${id}`,
           method: 'GET',
-        }
-      }
+        };
+      },
     }),
     updateCompany: builder.mutation<IGenericResponse, ICompanyUpdate>({
       query(data) {
@@ -63,4 +75,10 @@ const companyApi = createApi({
 
 export default companyApi;
 
-export const { useGetCompanyQuery, useGetCompanyReviewsQuery, useGetCompanyByIDQuery, useUpdateCompanyMutation, useDeleteCompanyMutation } = companyApi;
+export const {
+  useGetCompanyQuery,
+  useGetCompanyReviewsQuery,
+  useGetCompanyByIDQuery,
+  useUpdateCompanyMutation,
+  useDeleteCompanyMutation,
+} = companyApi;
