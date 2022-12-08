@@ -1,4 +1,3 @@
-import { useAppSelector } from '../../redux/store';
 import defaultAvatar from '../../assets/defaultAvatar.png';
 export default function Avatar(props: Props) {
   const { avatar } = props;
@@ -14,5 +13,5 @@ export default function Avatar(props: Props) {
 }
 
 type Props = {
-  avatar?: string,
-}
+  avatar?: string;
+};

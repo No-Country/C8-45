@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import userApi from '../../redux/api/userApi';
-import { setCredentials } from '../../redux/features/userSlice';
-import Button from '../atoms/Button';
 import Logo from '../atoms/Logo';
 import NavigationLink from '../atoms/NavigationLink';
-import NavResButton from '../atoms/NavResButton';
-import NavBarAvatar from '../molecules/NavBarAvatar';
 import UserNavbar from '../molecules/UserNavbar';
 import ResponsiveNavbar from './ResponsiveNavbar';
 
