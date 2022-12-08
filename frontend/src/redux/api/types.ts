@@ -56,6 +56,7 @@ export interface ICompany {
     name: string;
   };
   id: string;
+  lastName?: string;
   address?: string;
   avatar?: string;
   banned: boolean;
