@@ -2,7 +2,7 @@ import VerifyBadge from '../atoms/VerifyBadge';
 import VisitWebsite from '../molecules/VisitWebsite';
 import { Link } from 'react-router-dom';
 import Rating from '../atoms/Rating';
-import defaultAvatar from '../../assets/defaultAvatar.png';
+import defaultCompanyAvatar from '../../assets/defaultCompanyAvatar.png';
 import { useAppSelector } from '../../redux/store';
 
 const BusinessStats = (props: Props) => {
@@ -15,7 +15,7 @@ const BusinessStats = (props: Props) => {
     <div className="bg-indigo-50 p-5 rounded-xl flex flex-col md:flex-row justify-between items-center">
       <div className="flex flex-col md:flex-row">
         <div className="flex flex-col items-center ">
-          <img alt='company profile pic' src={avatar || defaultAvatar} className="h-36 w-36 bg-gray-200 border-2 rounded my-2" />
+          <img alt='company profile pic' src={avatar || defaultCompanyAvatar} className="h-36 w-36 bg-indigo-50 rounded my-2" />
           <VerifyBadge />
         </div>
         <div className="flex flex-col mx-3 text-center md:text-left">
