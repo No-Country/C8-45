@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setCredentials } from '../features/userSlice';
 import { RootState } from '../store';
-import { IUser, IMyReviewFetched } from './types';
+import { IUser, IMyReviewFetched, ICompany } from './types';
 
 const BASE_URL = import.meta.env.VITE_SERVER_ENDPOINT as string;
 const userApi = createApi({
@@ -18,7 +18,7 @@ const userApi = createApi({
   }),
   tagTypes: ['User'],
   endpoints: (builder) => ({
-    getCurrentUser: builder.query<IUser, null>({
+    getCurrentUser: builder.query<IUser | ICompany, null>({
       query() {
         return {
           url: 'user/me',
