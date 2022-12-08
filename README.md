@@ -39,7 +39,7 @@ npm run db:reset
 ```sh
 npm run dev
 ```
-8. Abrir http://localhost:3000
+8. Abrir http://localhost:3000.
 
 <h3> 🎨 Diseño UX - UI</h3>
 
@@ -50,15 +50,11 @@ npm run dev
 
 <h4>Frontend</h4>
 
-En este proyecto usamos las siguientes tecnologías:
-
 - [ReactJS](https://es.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 
 <h4>Backend</h4>
-
-En este proyecto usamos las siguientes tecnologías:
 
 - [MySQL](https://www.mysql.com/) 
 - [Typescript](https://www.typescriptlang.org/)
