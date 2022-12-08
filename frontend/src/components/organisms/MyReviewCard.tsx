@@ -21,7 +21,10 @@ const MyReviewCard = (props: Props) => {
   const formatedData = moment(review.createdAt).fromNow();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
-    const value = event.target.value;
+    let value: string | number = event.target.value;
+    if (name === 'rating') {
+      value = parseInt(value);
+    }
     setReviewData((values) => ({ ...values, [name]: value }));
   };
   const handleTextAreaChange = (
@@ -36,6 +39,7 @@ const MyReviewCard = (props: Props) => {
     useUpdateReviewMutation();
   const handleUpdateReview = async () => {
     if (review.id) {
+      console.log(reviewData);
       await updateReview(reviewData);
     }
   };

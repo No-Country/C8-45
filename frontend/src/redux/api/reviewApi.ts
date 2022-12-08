@@ -25,7 +25,7 @@ const reviewApi = createApi({
     getReviews: builder.query({
       query() {
         return {
-          url: '/',
+          url: '/user',
           method: 'GET',
         };
       },
@@ -49,7 +49,6 @@ const reviewApi = createApi({
     }),
     updateReview: builder.mutation<IGenericResponse, IMyReviewUpdated>({
       query(data) {
-        console.log(data);
         return {
           url: `${data.id}`,
           method: 'PUT',

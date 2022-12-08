@@ -1,11 +1,11 @@
-import React from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
 const VisitWebsite = (props: Props) => {
   const { website } = props;
+
   return (
     <div className="bg-white p-4 pr-12 rounded-lg flex flex-col border">
-      <a className="text-blue-600 text-xl font-title" href={website}>
+      <a className="text-blue-600 text-xl font-title" href={`http://${website}`} target="_blank">
         {website}
       </a>
       <span className="flex items-centerm my-3">
