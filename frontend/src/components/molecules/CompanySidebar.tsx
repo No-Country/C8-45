@@ -4,7 +4,7 @@ import Button from '../atoms/Button';
 import { logOut } from '../../redux/features/userSlice';
 import { useAppDispatch } from '../../redux/store';
 import { NavLink, useNavigate, useNavigation } from 'react-router-dom';
-function UserSidebar() {
+function CompanySidebar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const logOutHandler = (e: React.MouseEvent<HTMLElement>) => {
@@ -23,6 +23,14 @@ function UserSidebar() {
       >
         My reviews
       </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? className + activeClassName : className
+        }
+        to={'settings'}
+      >
+        Settings
+      </NavLink>
       <button
         onClick={(e) => logOutHandler(e)}
         className="bg-gray-100 p-2 text-lg rounded-lg font-poppins my-2 text-left"
@@ -33,4 +41,4 @@ function UserSidebar() {
   );
 }
 
-export default UserSidebar;
+export default CompanySidebar;

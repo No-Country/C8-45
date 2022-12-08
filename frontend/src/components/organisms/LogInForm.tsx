@@ -13,7 +13,6 @@ export default function LogInForm() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loginUser, { isLoading, isSuccess, error, isError, data }] =
     useLoginUserMutation();
@@ -22,9 +21,6 @@ export default function LogInForm() {
     const data = await loginUser(inputs).unwrap();
     localStorage.setItem('auth_token', data.token);
     dispatch(setCredentials(data));
-    if (isSuccess) {
-      console.log('WOrks');
-    }
   };
 
   return (
@@ -51,7 +47,10 @@ export default function LogInForm() {
           )}
         </button>
       </form>
-      Don't have an account? <Link to='/signup' className='text-blue-600 hover:underline'>Sign up for free now.</Link>
+      Don't have an account?{' '}
+      <Link to="/signup" className="text-blue-600 hover:underline">
+        Sign up for free now.
+      </Link>
     </div>
   );
 }

@@ -9,7 +9,6 @@ const MyReviews = () => {
     userApi.endpoints.getMyReviews.useQuery(null, {
       skip: false,
     });
-  console.log(data);
   return (
     <div>
       {isLoading || isFetching ? (

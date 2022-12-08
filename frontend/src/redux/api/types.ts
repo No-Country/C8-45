@@ -30,6 +30,13 @@ export interface IMyReviewFetched {
   companyName: string;
   id?: string;
 }
+export interface IMyReviewUpdated {
+  description?: string;
+  rating?: number;
+  title?: string;
+  experienceDate?: string;
+  id: string;
+}
 export interface IMyReviewCreated {
   description: string;
   rating: number;
