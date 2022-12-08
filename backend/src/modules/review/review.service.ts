@@ -42,8 +42,8 @@ export class ReviewService extends RepositoryDB<Review> {
       companyM: company,
     };
   }
-  upQuantityR(user: User, company: Company, rating:number) {
-    user.reviewsQuantity = user.reviewsQuantity + 1;
+  upQuantityR(user: User, company: Company, rating: number) {
+    user.reviewsQuantity = user.reviewsQuantity + 1 ?? 1;
     company.ratingGeneral =
       (company.ratingGeneral * company.reviewsQuantity + rating) /
       (company.reviewsQuantity + 1);
@@ -73,7 +73,7 @@ export class ReviewService extends RepositoryDB<Review> {
           id,
         },
       },
-      relations:["company"],
+      relations: ["company"],
     });
     return entities.map((entity) => ({
       ...entity,

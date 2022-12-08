@@ -11,12 +11,10 @@ export class AuthService {
   companyService = new CompanyService();
 
   async login(email: string, passwordRequest: string) {
-    
     try {
       const entity = await this.userService.findOneByEmail(email);
-    if (!entity) throw new ErrorService(404, "Usuario no encontrado");
-    let validate: boolean;
-      validate = await Encryptor.compare(
+      if (!entity) throw new ErrorService(404, "Usuario no encontrado");
+      const validate = await Encryptor.compare(
         passwordRequest,
         entity.password as string
       );
@@ -26,11 +24,8 @@ export class AuthService {
       const { password, ...data } = entity;
       return { ...Jwt.encoder(data), user: { ...data } };
     } catch (error) {
-      console.log(error);
-      
       throw new ErrorService(500, "error en el servidor");
     }
-    
   }
   async loginCompany(email: string, passwordRequest: string) {
     const entity = await this.companyService.findOneByEmail(email);
