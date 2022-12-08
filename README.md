@@ -21,7 +21,7 @@ npm start
 ```
 <h3>Diseño UX - UI</h3>
 
-- [Figma]
+- [Figma](https://www.figma.com/)
 
 
 <h3>Tecnologías</h3>
@@ -39,13 +39,13 @@ En este proyecto usamos las siguientes tecnologías:
 En este proyecto usamos las siguientes tecnologías:
 
 - [MySQL](https://www.mysql.com/) 
-- [Typescript]
-- [Nodejs]
-- [TypeOrm]
+- [Typescript](https://www.typescriptlang.org/)
+- [Nodejs](https://nodejs.org/en/)
+- [TypeOrm](https://typeorm.io/)
 
 <h3>Equipo</h3>
 
-- [Pierre Campoverde] - Frontend
-- [Alvaro Canales] - Backend
+- [Pierre Campoverde](https://github.com/pierre-campoverde) - Frontend
+- [Alvaro Canales](https://github.com/Alvaro1599) - Backend
 - [Rony Puche](https://www.linkedin.com/in/rony-puche-a80275234/) - Frontend
-- [Ramiro Morard] - Frontend
+- [Ramiro Morard](https://github.com/MorardRamiro) - Frontend
